@@ -40,7 +40,7 @@ export const convertPremiumsToString = (premiums: string): string => {
 
 export const getJobAllocationByTimeSheetEntry = (
   tsEntry: ReduxDataTypes.TimesheetEntry
-): ReduxDataTypes.JobAllocation => {
+): ReduxDataTypes.JobAllocation | undefined => {
   if (tsEntry.EntryType === "Job") {
     const {
       Timesheet: { ResourceId },
@@ -51,12 +51,13 @@ export const getJobAllocationByTimeSheetEntry = (
     );
     return jobAllocation;
   }
-  return null;
+
+  return;
 };
 
 export const getActualLoggedTimeInMinute = (
   entry: ReduxDataTypes.TimesheetEntry
-): number => {
+): number | undefined => {
   const duration =
     entry.ActualDuration ||
     calculateDurationInMinutes(
