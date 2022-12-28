@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadOnly renders correctly 1`] = `
+<div
+  className="sk-flex"
+>
+  <div
+    className="sked-read-only group hover:sk-bg-grey-lightest"
+    data-read-only={true}
+    data-sk-input-id="hello-world"
+  >
+    Hello world
+     
+    <Icon
+      className="sk-flex-no-shrink sk-invisible group-hover:sk-fill-navy group-hover:sk-visible group-hover:sk-text-grey sk-mx-2 sk-pointer-events-none"
+      name="edit"
+      size={14}
+    />
+  </div>
+</div>
+`;

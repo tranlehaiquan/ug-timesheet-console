@@ -1,0 +1,34 @@
+.box {
+  display: flex;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 30px;
+  @apply sk-text-navy sk-font-medium sk-text-sm;
+  
+  &__icon {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+}
+
+.error-box {
+  @apply sk-bg-red-lightest;
+  
+  &__icon {
+    @apply sk-bg-red;
+  }
+}
+
+.warning-box {
+  @apply sk-bg-orange-lightest;
+  
+  &__icon {
+    @apply sk-bg-orange;
+  }
+}

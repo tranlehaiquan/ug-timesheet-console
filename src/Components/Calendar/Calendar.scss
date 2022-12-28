@@ -1,0 +1,187 @@
+.calendar--wrapper {
+  @apply sk-relative;
+
+}
+
+.calendar--bottomSmoother {
+  @apply sk-z-1;
+  content: '';
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 1px;
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 99%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 99%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.calendar--container {
+  @apply sk-relative sk-border;
+  overflow: auto;
+}
+
+.calendar--event_card {
+  @apply sk-text-xxs sk-px-2;
+  margin-right: 13px;
+  overflow-y: auto;
+
+  p {
+    @apply sk-my-2;
+  }
+}
+
+.calendar--head {
+  @apply sk-z-1;
+  display: grid;
+  position: sticky;
+  top: 0;
+}
+
+
+
+.calendar--timezone {
+  @apply sk-justify-center sk-items-center sk-flex sk-text-navy-lighter sk-text-xxs sk-bg-white sk-z-20;
+  position: sticky;
+  left: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #d4d7de;
+    margin-right: -1px;
+  }
+
+}
+
+.calendar--topSmoother {
+  @apply sk-z-20;
+  background: #fff;
+  position: sticky;
+  left: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #d4d7de;
+    margin-right: -1px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 35%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 35%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+.calendar--time_range_item {
+  @apply sk-text-xxs sk-text-navy-lighter sk-relative;
+  background-color: #fff;
+  position: sticky;
+  left: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 1px;
+    background-color: #d4d7de;
+    margin-top: -1px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #d4d7de;
+    margin-right: -1px;
+  }
+}
+
+.calendar--time_range_label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.calendar--viewportWrapper {
+  @apply sk-relative;
+}
+.calendar--viewport {
+  @apply sk-relative;
+  // scroll-snap-type: y mandatory;
+}
+
+.calendar--container::-webkit-scrollbar,
+.calendar__scrollMeasurer::-webkit-scrollbar,
+.calendar--viewport::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  border-left: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+}
+
+.calendar--container::-webkit-scrollbar-button,
+.calendar__scrollMeasurer::-webkit-scrollbar-button,
+.calendar--viewport::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.calendar--container::-webkit-scrollbar-corner,
+.calendar__scrollMeasurer::-webkit-scrollbar-corner,
+.calendar--viewport::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.calendar--container::-webkit-scrollbar-thumb,
+.calendar__scrollMeasurer::-webkit-scrollbar-thumb,
+.calendar--viewport::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  background-color: #b7bcc8;
+}
+
+.calendar__dayCell {
+  @apply sk-border-l sk-border-b sk-bg-white;
+  border-bottom-style: dashed;
+  // scroll-snap-align: start;
+  // scroll-snap-stop: always;
+}
+
+.calendar__dayCell--weekend {
+  background-color: #e8ebf1;
+}
+
+.calendar__scrollMeasurer {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  overflow: scroll;
+  top: -9999px;
+}

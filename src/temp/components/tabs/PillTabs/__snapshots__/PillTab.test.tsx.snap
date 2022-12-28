@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PillTabs it renders correctly 1`] = `
+<ul
+  class="sk-list-reset sk-flex sk-bg-navy-lighter sk-p-2 sk-text-xs"
+>
+  <li
+    class="sk-mr-4 sk-px-3 sk-py-1 sk-uppercase sk-rounded sk-text-white sk-cursor-pointer sk-font-semibold sk-tracking-wider sk-opacity-75 hover:sk-opacity-100 hover:sk-bg-navy-light hover:sk-shadow-tabs sk-bg-navy-light sk-opacity-100 sk-shadow "
+  >
+    Tab one
+  </li>
+  <li
+    class="sk-mr-4 sk-px-3 sk-py-1 sk-uppercase sk-rounded sk-text-white sk-cursor-pointer sk-font-semibold sk-tracking-wider sk-opacity-75 hover:sk-opacity-100 hover:sk-bg-navy-light hover:sk-shadow-tabs"
+  >
+    Tab two
+  </li>
+  <li
+    class="sk-mr-4 sk-px-3 sk-py-1 sk-uppercase sk-rounded sk-text-white sk-cursor-pointer sk-font-semibold sk-tracking-wider sk-opacity-75 hover:sk-opacity-100 hover:sk-bg-navy-light hover:sk-shadow-tabs"
+  >
+    Tab three
+  </li>
+  <li
+    class="sk-mr-4 sk-px-3 sk-py-1 sk-uppercase sk-rounded sk-text-white sk-cursor-pointer sk-font-semibold sk-tracking-wider sk-opacity-75 hover:sk-opacity-100 hover:sk-bg-navy-light hover:sk-shadow-tabs"
+  >
+    Tab four
+  </li>
+</ul>
+`;

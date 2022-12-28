@@ -1,0 +1,22 @@
+.sked-button-group {
+  display: inline-grid;
+  grid-gap: config('margin.2');
+  grid-auto-flow: column;
+  width: max-content;
+
+  &--compact {
+    grid-gap: 0;
+
+    .sked-button:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: 0;
+    }
+
+    .sked-button:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+}

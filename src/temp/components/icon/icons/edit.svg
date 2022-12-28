@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="14px" viewBox="0 0 12 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.0896 6.79564065e-05 9.8928 6.79564065e-05 9.8928 11.2426588 0.0896 11.2426588"></polygon>
+        <polygon id="path-3" points="0 0.399823529 3.43728 0.399823529 3.43728 4.11732689 0 4.11732689"></polygon>
+    </defs>
+    <g id="Resource-profile" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-243.000000, -133.000000)">
+            <g id="Group" transform="translate(243.000000, 133.000000)">
+                <g id="Group-3" transform="translate(1.600000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M9.5568,1.38830588 L8.2064,0.272423529 C7.688,-0.155811765 6.9208,-0.0693411765 6.5056,0.463482353 L5.4656,1.7976 L0.0896,8.76548235 L3.0872,11.2426588 L8.4816,4.28877647 L8.4816,4.2896 L9.6848,2.74630588 C10.0088,2.31065882 9.9456,1.70948235 9.5568,1.38830588" id="Fill-1" fill="#B7BCC8" mask="url(#mask-2)"></path>
+                </g>
+                <g id="Group-6" transform="translate(0.000000, 9.882353)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-5"></g>
+                    <path d="M0.00208,3.76394118 C-0.02432,3.99288235 0.19808,4.17570588 0.40928,4.09994118 L3.43728,2.87782353 L0.45568,0.399823529 L0.00208,3.76394118 Z" id="Fill-4" fill="#7D879C" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

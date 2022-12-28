@@ -1,0 +1,36 @@
+// Triangle variables
+$global-triangle-size: 4px;
+$custom-triangle-size: $global-triangle-size * 3;
+
+// Tooltip variables
+$tooltip-size: 10px !default;
+$tooltip-box-shadow: 0 2px 6px 0 rgba(34, 48, 73, 0.24);
+
+@mixin custom-triangle ($position: top, $background: $white-1) {
+    content: '';
+    display: block;
+    width: $custom-triangle-size;
+    height: $custom-triangle-size;
+    background: $background;
+    position: absolute;
+    transform: rotate(45deg);
+    z-index: 0;
+    box-shadow: 0 2px 6px 0 rgba(34, 48, 73, 0.24);
+    border-radius: $global-radius;
+
+    @if ($position == top) {
+      top: -$global-triangle-size + 2;
+    }
+
+    @if ($position == bottom) {
+      bottom: -$global-triangle-size + 2;
+    }
+
+    @if ($position == left) {
+      left: -$global-triangle-size + 2;
+    }
+
+    @if ($position == right) {
+      right: -$global-triangle-size + 2;
+    }
+  }

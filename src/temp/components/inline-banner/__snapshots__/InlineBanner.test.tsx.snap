@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineBanner error 1`] = `
+<div
+  className="sk-text-navy sk-text-sm sk-font-medium sk-flex sk-items-center sk-w-full sk-py-3 sk-rounded sk-bg-red-lightest"
+>
+  <div
+    className="sk-flex sk-justify-center sk-items-center sk-rounded-full sk-mx-3 sk-w-5 sk-h-5 sk-bg-red"
+  >
+    <Icon
+      className="sk-text-white"
+      name="exclamation"
+      size={10}
+    />
+  </div>
+  Inline banner
+</div>
+`;
+
+exports[`InlineBanner general 1`] = `
+<div
+  className="sk-text-navy sk-text-sm sk-font-medium sk-flex sk-items-center sk-w-full sk-py-3 sk-rounded sk-bg-blue-lighter"
+>
+  <div
+    className="sk-flex sk-justify-center sk-items-center sk-rounded-full sk-mx-3 sk-w-5 sk-h-5 sk-bg-blue"
+  >
+    <Icon
+      className="sk-text-white"
+      name="info"
+      size={10}
+    />
+  </div>
+  Inline banner
+</div>
+`;
+
+exports[`InlineBanner success 1`] = `
+<div
+  className="sk-text-navy sk-text-sm sk-font-medium sk-flex sk-items-center sk-w-full sk-py-3 sk-rounded sk-bg-green-lightest"
+>
+  <div
+    className="sk-flex sk-justify-center sk-items-center sk-rounded-full sk-mx-3 sk-w-5 sk-h-5 sk-bg-green"
+  >
+    <Icon
+      className="sk-text-white"
+      name="tick"
+      size={10}
+    />
+  </div>
+  Inline banner
+</div>
+`;
+
+exports[`InlineBanner warning 1`] = `
+<div
+  className="sk-text-navy sk-text-sm sk-font-medium sk-flex sk-items-center sk-w-full sk-py-3 sk-rounded sk-bg-orange-lightest"
+>
+  <div
+    className="sk-flex sk-justify-center sk-items-center sk-rounded-full sk-mx-3 sk-w-5 sk-h-5 sk-bg-orange"
+  >
+    <Icon
+      className="sk-text-white"
+      name="exclamation"
+      size={10}
+    />
+  </div>
+  Inline banner
+</div>
+`;

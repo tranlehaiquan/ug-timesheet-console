@@ -1,0 +1,11 @@
+// This is too stop the rest of the itmes from bouncing out when a tab item is active.
+.sked-active-tab { 
+  &::after {
+    display: block;
+    content: attr(title);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}

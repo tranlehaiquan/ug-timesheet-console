@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineTabs it renders correctly 1`] = `
+<div
+  class="sk-flex sk-border-b sk-border-grey-light sk-text-navy-lighter sk-capitalize sk-text-base sk-flex-no-shrink"
+>
+  <ul
+    class="sk-list-reset"
+  >
+    <li
+      class="sk-cursor-pointer sk-mx-3 sk-px-1 sk-pb-2 sk-inline-block sk-whitespace-no-wrap sk-leading-tight hover:sk-text-navy sked-active-tab sk-border-b-2 sk-border-navy sk--mb-px sk-text-navy sk-font-semibold  "
+      data-active="true"
+      id="tab-one"
+      title="Tab one"
+    >
+      Tab one
+    </li>
+    <li
+      class="sk-cursor-pointer sk-mx-3 sk-px-1 sk-pb-2 sk-inline-block sk-whitespace-no-wrap sk-leading-tight hover:sk-text-navy sked-active-tab"
+      data-active="false"
+      id="tab-two"
+      title="Tab two"
+    >
+      Tab two
+    </li>
+    <li
+      class="sk-cursor-pointer sk-mx-3 sk-px-1 sk-pb-2 sk-inline-block sk-whitespace-no-wrap sk-leading-tight hover:sk-text-navy sked-active-tab"
+      data-active="false"
+      id="tab-three"
+      title="Tab three"
+    >
+      Tab three
+    </li>
+    <li
+      class="sk-cursor-pointer sk-mx-3 sk-px-1 sk-pb-2 sk-inline-block sk-whitespace-no-wrap sk-leading-tight hover:sk-text-navy sked-active-tab"
+      data-active="false"
+      id="tab-four"
+      title="Tab four"
+    >
+      Tab four
+    </li>
+  </ul>
+</div>
+`;

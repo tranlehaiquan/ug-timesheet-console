@@ -1,0 +1,12 @@
+.timesheets-table {
+  &__section {
+    padding-bottom: 1.5rem;
+    [data-sk-name~="th-select-all"] {
+      width: 24px !important;
+    }
+  }
+
+  &__stats {
+    @apply sk-mx-6;
+  }
+}

@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buttons it renders primary - compact correctly 1`] = `
+<button
+  class="sked-button sked-button--primary sked-button--compact"
+>
+  <div
+    class="sk-visible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-invisible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Buttons it renders primary - disabled correctly 1`] = `
+<button
+  class="sked-button sked-button--primary"
+  disabled=""
+>
+  <div
+    class="sk-visible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-invisible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Buttons it renders primary - loading correctly 1`] = `
+<button
+  class="sked-button sked-button--primary sk-pointer-events-none"
+>
+  <div
+    class="sk-invisible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-visible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Buttons it renders primary correctly 1`] = `
+<button
+  class="sked-button sked-button--primary"
+>
+  <div
+    class="sk-visible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-invisible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Buttons it renders secondary correctly 1`] = `
+<button
+  class="sked-button sked-button--secondary"
+>
+  <div
+    class="sk-visible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-invisible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;
+
+exports[`Buttons it renders transparent correctly 1`] = `
+<button
+  class="sked-button sked-button--transparent"
+>
+  <div
+    class="sk-visible"
+  />
+  <div
+    class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+  >
+    <div
+      class="loading-spinner sk-invisible"
+    >
+      <svg
+        class="loading-spinner--circular"
+        height="18"
+        viewBox="25 25 50 50"
+        width="18"
+      >
+        <circle
+          class="loading-spinner--path"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="20"
+          stroke="currentColor"
+          stroke-miterlimit="10"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;

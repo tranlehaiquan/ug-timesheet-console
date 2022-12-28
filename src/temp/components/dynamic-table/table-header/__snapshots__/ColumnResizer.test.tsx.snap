@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColumnResizer Renders properly 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th>
+        <p>
+          sample_cell_content
+        </p>
+        <Component
+          min={120}
+          onResize={[Function]}
+        >
+          <span
+            className="sked-column-resizer-container"
+            data-sk-name="sk-resize-container"
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            <span
+              className="sked-column-resizer-indicator sk-hidden"
+              data-sk-name="sk-resize-indicator"
+              style={
+                Object {
+                  "height": 0,
+                }
+              }
+            />
+            <span
+              className="sked-column-resizer-handle sk-hidden"
+              data-sk-name="sk-resize-handle"
+            />
+          </span>
+        </Component>
+      </th>
+    </tr>
+  </thead>
+</table>
+`;

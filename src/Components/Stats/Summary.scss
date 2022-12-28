@@ -1,0 +1,52 @@
+@import '../../variables.scss';
+
+.summary {
+  @apply sk-py-8 sk-px-12 sk-h-full;
+
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "label1 value1 . label2 value2"
+    "label3 value3 . label4 value4";
+  grid-column-gap: 2rem;
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-around;
+
+  &__value {
+    &--1 { grid-area: value1; } 
+    &--2 { grid-area: value2; } 
+    &--3 { grid-area: value3; } 
+    &--4 { grid-area: value4; }
+  }
+
+  &__label {
+    &--1 { grid-area: label1; } 
+    &--2 { grid-area: label2; } 
+    &--3 { grid-area: label3; } 
+    &--4 { grid-area: label4; }
+  }
+
+  &__label {
+    @apply sk-flex sk-items-end sk-uppercase sk-mr-8;
+    white-space: nowrap;
+
+    color: $grey-1;
+  }
+
+  &__number {
+    @apply sk-text-xl sk-font-medium;
+    color: $black-1;
+  }
+
+  &__unit {
+    @apply sk-font-medium sk-pl-1 sk-text-xxs;
+    color: $black-1;
+  }
+
+  &__icon {
+    @apply sk-text-blue sk-mr-4 sk-relative;
+    top: 3px;
+  }
+}

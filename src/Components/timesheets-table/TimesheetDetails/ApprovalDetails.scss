@@ -1,0 +1,32 @@
+@import '../../../variables.scss';
+
+.approval-details {
+  border: thin solid $grey-4;
+  border-radius: 3px;
+
+  &__col-1-label {
+    display: flex;
+    min-width: 11rem;
+    width: 11rem;
+  }
+
+  &__col-2-label {
+    display: flex;
+    min-width: 13rem;
+    width: 13rem;
+  }
+
+  svg {
+    display: block
+  }
+
+  &__comment {
+    overflow: hidden;
+    max-width: 35rem;
+    word-wrap: break-word;
+  }
+
+  &__icon-container {
+    height: 2rem;
+  }
+}

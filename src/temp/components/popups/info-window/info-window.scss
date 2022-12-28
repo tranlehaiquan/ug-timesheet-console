@@ -1,0 +1,82 @@
+@import '../../../../variables.scss';
+@import '../../../../styles/core.scss';
+@import '../popup.scss';
+
+$info-window-header-height: 42px;
+$info-window-background-color: $white-1 !default;
+$info-window-font-size: $font-size-normal !default;
+$info-window-font-weight: $font-weight-regular !default;
+$box-shadow-color: rgba(34, 48, 73, 0.24);
+
+// Is container
+$container-triangle-box-shadow: 0 3px 6px -3px $box-shadow-color;
+$container-triangle-box-shadow-bottom: -2px -3px 8px -3px $box-shadow-color;
+$container-triangle-box-shadow-left: 0 -3px 6px -3px $box-shadow-color;
+$container-box-shadow: $tooltip-box-shadow !default;
+$container-color: $font-colour-regular !default;
+$container-background-color: $white-1 !default;
+
+/* purgecss start ignore */
+.sked-infowindow {
+  position: absolute;
+  z-index: $z-index-max;
+  top: 0;
+  left: 0;
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 4px;
+  }
+
+  &__title {
+    font-weight: $font-weight-semi-bold;
+    padding: 0 32px 0 $global-padding;
+    border-bottom: 1px solid $grey-4;
+    letter-spacing: 0.3px;
+    height: $info-window-header-height;
+    line-height: $info-window-header-height;
+    display: flex;
+  }
+
+  &__content {
+    position: relative;
+    font-size: $info-window-font-size;
+    font-weight: $info-window-font-weight;
+    border-radius: $global-radius;
+    color: $container-color;
+    background-color: $container-background-color;
+    box-shadow: $container-box-shadow;
+  }
+
+  &__triangle {
+    @include custom-triangle('', $background: $container-background-color);
+    position: absolute;
+    box-shadow: $container-triangle-box-shadow;
+    width: $tooltip-size;
+    height: $tooltip-size;
+
+    &--position-top {
+      margin-top: -($tooltip-size / 2) - 1;
+      margin-left: $tooltip-size / 4;
+    }
+
+    &--position-bottom {
+      margin-top: $tooltip-size / 4;
+      margin-left: $tooltip-size / 4;
+      box-shadow: $container-triangle-box-shadow-bottom;
+    }
+
+    &--position-right {
+      margin-top: $tooltip-size / 4;
+      margin-left: $tooltip-size;
+    }
+
+    &--position-left {
+      margin-top: $tooltip-size / 4;
+      margin-left: -($tooltip-size / 2) - 1;
+      box-shadow: $container-triangle-box-shadow-left;
+    }
+  }
+}
+/* purgecss end ignore */

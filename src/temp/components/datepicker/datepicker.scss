@@ -1,0 +1,128 @@
+/* purgecss start ignore */
+
+.react-datepicker {
+  @apply sk-cursor-default sk-bg-white sk-border sk-border-grey-lighter sk-text-grey sk-rounded-medium sk-shadow-md sk-p-4 sk-relative;
+
+  &__header {
+    @apply sk-text-center sk-text-navy;
+  }
+
+  &__navigation {
+    @apply sk-cursor-pointer sk-absolute sk-border-none;
+    top: 7px;
+
+    &--next,
+    &--previous {
+      @apply sk-rounded sk-w-8 sk-h-8 sk-text-grey sk-mt-2 sk-overflow-hidden;
+
+      &:before {
+        @apply sk-border-navy sk-rounded sk-content-center;
+      }
+
+      &:hover {
+        @apply sk-bg-grey-lightest;
+      }
+
+      &:focus {
+        @apply sk-outline-none;
+      }
+    }
+
+    &--previous {
+      &::before {
+        content: svg-load('../temp/components/icon/icons/calendar-nav-left.svg', height='10.5px', fill='#485875');
+      }
+    }
+
+    &--next {
+      right: 1rem;
+
+      &:before {
+        content: svg-load('../temp/components/icon/icons/calendar-nav-right.svg', height='10.5px', fill='#485875');
+      }
+    }
+  }
+
+  &__current-month {
+    @apply sk-text-base sk-rounded sk-leading-loose sk-font-medium sk-pb-2;
+  }
+
+  &__day-name,
+  &__day {
+    @apply sk-w-8 sk-h-8 sk-text-center sk-text-sm sk-text-navy sk-font-normal sk-pt-2 sk-inline-block;
+  }
+
+  &__day-name {
+    @apply sk-text-navy-lighter sk-text-xs;
+  }
+
+  &__day {
+    @apply sk-border-transparent sk-border;
+
+    &:hover {
+      @apply sk-bg-grey-lightest sk-cursor-pointer sk-rounded;
+    }
+
+    &--outside-month {
+      @apply sk-text-navy-lightest;
+    }
+
+    &--today {
+      @apply sk-text-blue sk-border sk-rounded;
+    }
+
+    &--selected,
+    &--highlighted {
+      @apply sk-border sk-rounded sk-bg-blue sk-text-white sk-rounded sk-border-blue;
+      &:hover {
+        @apply sk-bg-blue sk-text-white sk-rounded sk-border-blue;
+      }
+    }
+
+    &--week-hovered {
+      @apply sk-border-grey-lightest sk-bg-grey-lightest;
+
+      &:first-child {
+        @apply sk-rounded-l;
+      }
+
+      &:last-child {
+        @apply sk-rounded-r;
+      }
+    }
+
+    &--week-selected,
+    &--week-selected:hover {
+      @apply sk-border sk-border-blue sk-text-white sk-bg-blue sk-rounded-none;
+
+      &:first-child,
+      &:first-child:hover{
+        @apply sk-border-blue sk-rounded-l;
+      }
+
+      &:last-child,
+      &:last-child:hover{
+        @apply sk-border-blue sk-rounded-r;
+      }
+    }
+
+    &--today {
+      @apply sk-border-blue;
+    }
+  }
+
+  &__month {
+    @apply sk-cursor-pointer sk-pt-1;
+  }
+
+  &__tether-element-attached-top,
+  &__tether-element-attached-bottom {
+    .react-datepicker__triangle {
+      &:before {
+        height: 0;
+        width: 1px;
+      }
+    }
+  }
+}
+/* purgecss end ignore */

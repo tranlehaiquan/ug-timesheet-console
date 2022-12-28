@@ -1,0 +1,148 @@
+/*
+  .sk-form-element takes care of the validation styling and spacing
+*/
+.sked-form-element {
+  &--invalid {
+    /*
+     We are targeting text type inputs via the 'invalid' modifier on .form-element because we do not always have access
+     to the input to apply a dedicated input modifier class (such is the case with a third party library eg. reactdatepicker). 
+     This is the main reason, though it also prevents us from having to pass down a prop to decide whether an input needs
+     an error class, as we have widgets that wrap other widgets that wrap others and so
+     on. It can be four layers deep before you get to the actual input.
+    */
+    .sked-form-element__outline,
+    .sked-form-element__outline:hover,
+    .sked-form-element__outline:focus {
+      @apply sk-border-red;
+    }
+  }
+
+  &__errors {
+    @apply sk-text-red sk-mt-1 sk-text-xs sk-leading-tight;
+  }
+}
+
+/*
+  Callout
+*/
+.sked-error-callout {
+  @apply sk-p-3 sk-border-l sk-text-sm sk-font-normal;
+  border-color: #fd7d44;
+  background: #fff5f0;
+}
+
+
+/*
+  Styles for text-type inputs
+*/
+.sked-input-textbox {
+  @apply sk-block sk-w-full sk-px-2 sk-border sk-text-sm sk-font-normal sk-rounded sk-text-navy sk-py-2;
+  line-height: 1.3;
+  box-sizing: border-box;
+
+  &:hover {
+    @apply sk-border-grey;
+  }
+
+  &:focus, &:active {
+    @apply sk-outline-none sk-border-blue;
+  }
+
+  &:disabled {
+    @apply sk-bg-grey-lightest sk-border-grey-lightest sk-text-navy-lighter;
+  }
+
+  &::placeholder {
+    @apply sk-text-grey sk-opacity-100;
+  }
+}
+
+
+.sked-read-only {
+  @apply sk-flex sk-text-sm sk-cursor-pointer sk-flex sk-pl-2 sk-items-center sk-py-2 sk-rounded sk-border sk-border-transparent;
+  line-height: 1.3;
+}
+
+/*
+  Checkboxes and radios
+*/
+.sked-checkbox, .sked-radio {
+  @apply sk-relative sk-w-4 sk-h-4 sk-border-0 sk-border-grey-light sk-cursor-pointer sk-bg-transparent sk-align-bottom;
+  -webkit-appearance: none;
+
+  &:focus {
+    @apply sk-outline-none;
+  }
+
+  &:disabled, &[readonly] {
+    @apply sk-cursor-default;
+
+    &:before,
+    &:checked:before {
+      @apply sk-bg-grey-lightest sk-border-grey-light;
+    }
+
+    &:checked:after {
+      background: transparent;
+      content: svg-load('../temp/components/icon/icons/check-box-tick.svg', fill=#9aa2b2);
+    }
+  }
+
+  &:before {
+    @apply sk-rounded sk-border sk-w-full sk-h-full sk-bg-white sk-block;
+    box-sizing: border-box;
+    content: ' ';
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  &:after {
+    @apply sk-rounded sk-bg-blue sk-absolute sk-opacity-0 sk-w-full sk-h-full sk-text-white;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: svg-load('../temp/components/icon/icons/check-box-tick.svg', fill=#ffffff);
+    transition: opacity 0.05s ease-in-out;
+  }
+
+  &:checked {
+    &:before {
+      @apply sk-border-blue;
+    }
+
+    &:after {
+      @apply sk-opacity-100;
+    }
+  }
+}
+
+.sked-radio {
+  &:before,
+  &:after {
+    @apply sk-rounded-full;
+  }
+}
+
+.sked-form-element-wrapper-x-small {
+  width: 5rem;
+}
+
+.sked-form-element-wrapper-small {
+  width: 10rem;
+}
+
+.sked-form-element-wrapper-medium {
+  width: 15rem;
+}
+
+.sked-form-element-wrapper-large {
+  width: 20rem;
+}
+
+.sked-form-element-wrapper-x-large {
+  width: 30rem;
+}
+
+.sked-form-element-wrapper-full {
+  @apply sk-w-full;
+}

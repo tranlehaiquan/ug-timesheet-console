@@ -1,0 +1,26 @@
+.sked-avatar {
+  @apply sk-font-sans sk-bg-navy-lighter sk-w-8 sk-h-8 sk-text-xxs sk-font-medium sk-text-white sk-rounded-full sk-text-center sk-relative sk-flex-no-shrink;
+  line-height: 30px;
+
+  &__image {
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+  }
+
+  &--tiny {
+    @apply sk-w-4 sk-h-4;
+    font-size: 7px;
+    line-height: 16px;
+  }
+
+  &--small {
+    @apply sk-w-6 sk-h-6;
+    line-height: 22px;
+  }
+
+  &--large {
+    @apply sk-w-20 sk-h-20 sk-text-3xl;
+    line-height: config('height.20');
+  }
+}

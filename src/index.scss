@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  font-family: 'sofiapro', 'system-ui', 'BlinkMacSystemFont', '-apple-system',
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', 'sans-serif';
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 80px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+// fix for react datepicker library
+.react-datepicker-popper {
+  z-index: 20
+}
+
+.Toastify__toast {
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  font-family: inherit;
+
+  .Toastify__close-button {
+    color: #000;
+  }
+
+  &.Toastify__toast--success {
+    background: #fff;
+    border-left: 2px solid #84e7b5;
+  }
+  &.Toastify__toast--error {
+    background: #fff;
+    border-left: 2px solid #f10b0b;
+  }
+  &.Toastify__toast--info {
+    background: #fff;
+    border-left: 2px solid #007ee6;
+  }
+}

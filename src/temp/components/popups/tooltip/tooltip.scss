@@ -1,0 +1,52 @@
+@import '../../../../variables.scss';
+@import '../popup.scss';
+
+$tooltip-max-width: 360px;
+$tooltip-default-height: 32px;
+$tooltip-dark-background-color: $midnight-blue-1 !default;
+$tooltip-light-background-color: $white-1 !default;
+$tooltip-color: $white-1 !default;
+$tooltip-color-inverse: $black-1;
+$tooltip-padding: 9px 12px 7px !default;
+$tooltip-line-height: 1.2 !default;
+$tooltip-letter-spacing: 0.2px !default;
+
+/* purgecss start ignore */
+.sked-tooltip {
+  .sked-infowindow__content {
+    box-sizing: border-box;
+    padding: $tooltip-padding;
+    border: none;
+    box-shadow: $tooltip-box-shadow;
+
+    max-width: $tooltip-max-width !important;
+    min-width: 100px;
+    min-height: $tooltip-default-height;
+    text-align: center;
+    line-height: $tooltip-line-height;
+    letter-spacing: $tooltip-letter-spacing;
+  }
+
+  &--dark {
+    .sked-infowindow__content {
+      color: $tooltip-color;
+      background: $tooltip-dark-background-color;
+    }
+
+    .sked-infowindow__triangle {
+      background: $tooltip-dark-background-color;
+    }
+  }
+
+  &--light {
+    .sked-infowindow__content {
+      color: $tooltip-color-inverse;
+      background: $tooltip-light-background-color;
+    }
+
+    .sked-infowindow__triangle {
+      background: $tooltip-light-background-color;
+    }
+  }
+}
+/* purgecss end ignore */

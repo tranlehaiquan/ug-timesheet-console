@@ -1,0 +1,28 @@
+.sked-calendar-controls {
+  > div {
+    @apply sk-inline-block sk-pl-3;
+  }
+
+  &__navigate-backwards,
+  &__navigate-forwards {
+    @apply sk-rounded sk-w-8 sk-h-8 sk-text-grey sk-text-sm sk-p-0;
+
+    &:hover {
+      @apply sk-bg-grey-lightest sk-border-grey-lightest sk-border-0;
+    }
+  }
+
+  &__navigate-backwards {
+    @apply sk-ml-3;
+  }
+
+  &__navigate-forwards {
+    @apply sk-ml-3;
+  }
+
+  &__date-range-display {
+    &:hover {
+      @apply sk-bg-grey-lightest;
+    }
+  }
+}

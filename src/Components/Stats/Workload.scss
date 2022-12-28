@@ -1,0 +1,30 @@
+.workload {
+  @apply sk-h-full sk-flex sk-py-4 sk-px-8 sk-justify-around;
+
+  &__legend {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2rem;
+  }
+
+  &__chart-container {
+    width: 7rem;
+  }
+
+  $tooltip-hoverable-size: 10px;
+
+  &__tooltip-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $tooltip-hoverable-size;
+    height: $tooltip-hoverable-size;
+    display: none;
+  }
+
+  &__tooltip-hoverable {
+    width: $tooltip-hoverable-size;
+    height: $tooltip-hoverable-size;
+    display: none;
+  }
+}

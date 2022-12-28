@@ -1,0 +1,51 @@
+/*----------------
+ *---  Global  ---
+ *----------------
+*/
+// spacing vars
+$global-padding: 16px;
+$global-margin: 16px;
+$global-margin-half: calc($global-margin / 2);
+$global-form-element-height: 36px;
+$global-radius: 2px;
+
+
+/*-----------------
+ *---  Colours  ---
+ *-----------------
+*/
+$white-1: #fff;
+$black-1: #0c131e;
+
+$midnight-blue-1: #223049;
+
+$skedblue-1: #008cff;
+
+$silver-1: #e7ecf3;
+
+$grey-1: #7d879c;
+$grey-3: #b7bcc8;
+$grey-4: #d4d7de;
+
+$blue-slate-4: #97a5bf;
+
+
+/*-----------------
+ *---  Z-Index  ---
+ *-----------------
+*/
+$z-index-max: 9999;
+
+
+/*---------------
+ *---  Fonts  ---
+ *---------------
+*/
+// Font sizes
+$font-size-normal: 13px;
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+// Font colours
+$font-colour-regular: $black-1;
