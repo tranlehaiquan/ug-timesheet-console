@@ -1,8 +1,8 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import { Button, ButtonTypes } from 'skedulo-ui'
+import * as React from "react";
+import classnames from "classnames";
+import { Button, ButtonTypes } from "skedulo-ui";
 // import { TimesheetEntriesTable } from './TimesheetEntriesTable'
-import ApprovalDetails from './ApprovalDetails'
+import ApprovalDetails from "./ApprovalDetails";
 // import CalendarView from './CalendarView'
 
 // import TimesheetEntryForm from '../../Forms/TimesheetEntryForm/TimesheetEntryForm'
@@ -10,18 +10,20 @@ import ApprovalDetails from './ApprovalDetails'
 // import ReduxDataTypes, { UID } from '../../../Store/DataTypes'
 
 interface ITimesheetDetails {
-  timeSheetEntryId: string
+  timeSheetEntryId: string;
 }
 
 enum View {
   Entries,
   Calendar,
-  Approval
+  Approval,
 }
 
-export const TimesheetDetails: React.FC<ITimesheetDetails> = ({ timeSheetEntryId }) => {
+export const TimesheetDetails: React.FC<ITimesheetDetails> = ({
+  timeSheetEntryId,
+}) => {
   // const [visiblePopup, setVisiblePopup] = React.useState(false)
-  const [currentView, setCurrentView] = React.useState(View.Approval)
+  const [currentView, setCurrentView] = React.useState(View.Approval);
 
   return (
     <div>
@@ -44,10 +46,12 @@ export const TimesheetDetails: React.FC<ITimesheetDetails> = ({ timeSheetEntryId
             Calendar view
           </Button> */}
           <Button
-            buttonType={ 'transparent' as ButtonTypes }
+            buttonType={"transparent" as ButtonTypes}
             compact
-            className={ classnames('sk-mr-2', { 'sk-text-blue': currentView === View.Approval }) }
-            onClick={ () => setCurrentView(View.Approval) }
+            className={classnames("sk-mr-2", {
+              "sk-text-blue": currentView === View.Approval,
+            })}
+            onClick={() => setCurrentView(View.Approval)}
           >
             Approval Details
           </Button>
@@ -63,7 +67,9 @@ export const TimesheetDetails: React.FC<ITimesheetDetails> = ({ timeSheetEntryId
       </div>
 
       {/* { currentView === View.Entries && <TimesheetEntriesTable timesheet={ timesheet } /> } */}
-      { currentView === View.Approval && <ApprovalDetails timeSheetEntryId={ timeSheetEntryId } /> }
+      {currentView === View.Approval && (
+        <ApprovalDetails timeSheetEntryId={timeSheetEntryId} />
+      )}
       {/* { currentView === View.Calendar && <CalendarView timesheet={ timesheet } /> } */}
 
       {/* <BaseModal
@@ -77,5 +83,5 @@ export const TimesheetDetails: React.FC<ITimesheetDetails> = ({ timeSheetEntryId
         />
       </BaseModal> */}
     </div>
-  )
-}
+  );
+};

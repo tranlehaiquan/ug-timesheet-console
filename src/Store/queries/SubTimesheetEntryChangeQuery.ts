@@ -22,5 +22,5 @@ export const TimesheetEntryChange = `subscription TimesheetEntryChange {
     }
   }
 }
-`
-export default TimesheetEntryChange
+`;
+export default TimesheetEntryChange;

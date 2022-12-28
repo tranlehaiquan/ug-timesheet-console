@@ -1,4 +1,4 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 
 .approval-details {
   border: thin solid $grey-4;
@@ -17,7 +17,7 @@
   }
 
   svg {
-    display: block
+    display: block;
   }
 
   &__comment {

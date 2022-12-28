@@ -1,17 +1,21 @@
-import * as React from 'react'
+import * as React from "react";
 
-import { InfoWindow, IInfoWindowProps, Position } from '../info-window/InfoWindow'
+import {
+  InfoWindow,
+  IInfoWindowProps,
+  Position,
+} from "../info-window/InfoWindow";
 
-import './tooltip.scss'
+import "./tooltip.scss";
 
-export type ITooltipPosition = Position
-type IColorScheme = 'dark' | 'light'
+export type ITooltipPosition = Position;
+type IColorScheme = "dark" | "light";
 
 export interface ITooltipProps extends IInfoWindowProps {
   /**
    * Colour scheme for the tooltip content.  Available options are 'dark' and 'light'
    */
-  colorScheme?: IColorScheme
+  colorScheme?: IColorScheme;
 }
 
 /**
@@ -19,19 +23,21 @@ export interface ITooltipProps extends IInfoWindowProps {
  */
 export class Tooltip extends React.PureComponent<ITooltipProps, {}> {
   static defaultProps = {
-    event: 'hover',
+    event: "hover",
     delayShow: 250,
-    colorScheme: 'dark'
-  }
+    colorScheme: "dark",
+  };
 
   render() {
-    const { colorScheme, children, containerClassName } = this.props
+    const { colorScheme, children, containerClassName } = this.props;
 
-    const containerClasses = `sked-tooltip sked-tooltip--${colorScheme} ${containerClassName || ''}`
+    const containerClasses = `sked-tooltip sked-tooltip--${colorScheme} ${
+      containerClassName || ""
+    }`;
     return (
-      <InfoWindow { ...this.props } containerClassName={ containerClasses }>
-        { children }
+      <InfoWindow {...this.props} containerClassName={containerClasses}>
+        {children}
       </InfoWindow>
-    )
+    );
   }
 }

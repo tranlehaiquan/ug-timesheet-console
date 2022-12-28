@@ -14,5 +14,5 @@ export const TimesheetUpdate = `subscription TimesheetUpdate {
     }
   }
 }
-`
-export default TimesheetUpdate
+`;
+export default TimesheetUpdate;

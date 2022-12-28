@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import * as _ from "lodash";
 
 /**
  * API wise this is a near 1 to 1 implementation of Option from `https://github.com/gcanti/fp-ts`
@@ -26,134 +26,135 @@ import * as _ from 'lodash'
  */
 export abstract class Option<T> {
   static of<V>(v: V | null | undefined): Option<V> {
-    return _.isNil(v) ? new None() : new Some(v)
+    return _.isNil(v) ? new None() : new Some(v);
   }
 
-  abstract next<K extends keyof T>(key: K): Option<T[K]>
-  abstract nextAll<K extends keyof T>(...keys: K[]): Option<Pick<T, K>>
-  abstract map<R>(fn: (v: T) => R): Option<R>
-  abstract flatMap<R>(fn: (v: T) => Option<R>): Option<R>
-  abstract getOrElse(fallback: T): T
-  abstract getOrElseL(fn: () => T): T
-  abstract or(fallback: T | null | undefined): Option<T>
-  abstract match<R>(none: () => R, some: (v: T) => R): R
-  abstract filter(fn: (v: T) => boolean): Option<T>
-  abstract get orNull(): T | null
-  abstract get toArray(): T[]
-  abstract get isDefined(): boolean
+  abstract next<K extends keyof T>(key: K): Option<T[K]>;
+  abstract nextAll<K extends keyof T>(...keys: K[]): Option<Pick<T, K>>;
+  abstract map<R>(fn: (v: T) => R): Option<R>;
+  abstract flatMap<R>(fn: (v: T) => Option<R>): Option<R>;
+  abstract getOrElse(fallback: T): T;
+  abstract getOrElseL(fn: () => T): T;
+  abstract or(fallback: T | null | undefined): Option<T>;
+  abstract match<R>(none: () => R, some: (v: T) => R): R;
+  abstract filter(fn: (v: T) => boolean): Option<T>;
+  abstract get orNull(): T | null;
+  abstract get toArray(): T[];
+  abstract get isDefined(): boolean;
 }
 
 export class Some<T> extends Option<T> {
   static some<T>(v: T): Option<T> {
-    return new Some(v)
+    return new Some(v);
   }
 
   constructor(readonly value: T) {
-    super()
+    super();
   }
 
   next<K extends keyof T>(key: K): Option<T[K]> {
-    return Option.of(this.value[key])
+    return Option.of(this.value[key]);
   }
 
   nextAll<K extends keyof T>(...keys: K[]): Option<Pick<T, K>> {
-    const values = keys.map(k => this.value[k])
-    return values.some(_.isNil) ? new None() : new Some<any>(_.zipObject(keys, values))
+    const values = keys.map((k) => this.value[k]);
+    return values.some(_.isNil)
+      ? new None()
+      : new Some<any>(_.zipObject(keys, values));
   }
 
   map<R>(fn: (v: T) => R): Option<R> {
-    return Option.of(fn(this.value))
+    return Option.of(fn(this.value));
   }
 
   flatMap<R>(fn: (v: T) => Option<R>): Option<R> {
-    return fn(this.value)
+    return fn(this.value);
   }
 
   getOrElse(fallback: T): T {
-    return this.value
+    return this.value;
   }
 
   getOrElseL(fn: () => T): T {
-    return this.value
+    return this.value;
   }
 
   or(fallback: T | null | undefined): Option<T> {
-    return this
+    return this;
   }
 
   match<R>(none: () => R, some: (v: T) => R): R {
-    return some(this.value)
+    return some(this.value);
   }
 
   filter(fn: (v: T) => boolean): Option<T> {
-    return fn(this.value) ? Option.of(this.value) : none
+    return fn(this.value) ? Option.of(this.value) : none;
   }
 
   get orNull(): T | null {
-    return this.value
+    return this.value;
   }
 
   get toArray(): T[] {
-    return [this.value]
+    return [this.value];
   }
 
   get isDefined(): boolean {
-    return true
+    return true;
   }
 }
 
 class None<T> extends Option<T> {
-
-  static none: Option<never> = new None()
+  static none: Option<never> = new None();
 
   next<K extends keyof T>(key: K): Option<T[K]> {
-    return None.none
+    return None.none;
   }
 
   nextAll<K extends keyof T>(...keys: K[]): Option<Pick<T, K>> {
-    return None.none
+    return None.none;
   }
 
   map<R>(fn: (v: T) => R): Option<R> {
-    return None.none
+    return None.none;
   }
 
   flatMap<R>(fn: (v: T) => Option<R>): Option<R> {
-    return None.none
+    return None.none;
   }
 
   getOrElse(fallback: T): T {
-    return fallback
+    return fallback;
   }
 
   getOrElseL(fn: () => T): T {
-    return fn()
+    return fn();
   }
 
   or(fallback: T | null | undefined): Option<T> {
-    return Option.of(fallback)
+    return Option.of(fallback);
   }
 
   match<R>(none: () => R, some: (v: T) => R): R {
-    return none()
+    return none();
   }
 
   filter(fn: (v: T) => boolean): Option<T> {
-    return none
+    return none;
   }
 
   get orNull(): T | null {
-    return null
+    return null;
   }
 
   get toArray(): T[] {
-    return []
+    return [];
   }
 
   get isDefined(): boolean {
-    return false
+    return false;
   }
 }
 
-export const none = None.none
-export const some = Some.some
+export const none = None.none;
+export const some = Some.some;

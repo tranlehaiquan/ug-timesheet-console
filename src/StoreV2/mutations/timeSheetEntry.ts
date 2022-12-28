@@ -4,4 +4,4 @@ mutation updateTimesheetEntry($updateInput: UpdateTimesheetEntry!) {
     updateTimesheetEntry(input: $updateInput)
   }
 }
-`
+`;

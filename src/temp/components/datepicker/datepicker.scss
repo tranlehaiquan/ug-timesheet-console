@@ -30,7 +30,11 @@
 
     &--previous {
       &::before {
-        content: svg-load('../temp/components/icon/icons/calendar-nav-left.svg', height='10.5px', fill='#485875');
+        content: svg-load(
+          "../temp/components/icon/icons/calendar-nav-left.svg",
+          height= "10.5px",
+          fill= "#485875"
+        );
       }
     }
 
@@ -38,7 +42,11 @@
       right: 1rem;
 
       &:before {
-        content: svg-load('../temp/components/icon/icons/calendar-nav-right.svg', height='10.5px', fill='#485875');
+        content: svg-load(
+          "../temp/components/icon/icons/calendar-nav-right.svg",
+          height= "10.5px",
+          fill= "#485875"
+        );
       }
     }
   }
@@ -96,12 +104,12 @@
       @apply sk-border sk-border-blue sk-text-white sk-bg-blue sk-rounded-none;
 
       &:first-child,
-      &:first-child:hover{
+      &:first-child:hover {
         @apply sk-border-blue sk-rounded-l;
       }
 
       &:last-child,
-      &:last-child:hover{
+      &:last-child:hover {
         @apply sk-border-blue sk-rounded-r;
       }
     }

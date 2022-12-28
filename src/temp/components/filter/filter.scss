@@ -1,5 +1,5 @@
 .sked-dropdownlist {
-  @apply sk-bg-white sk-border sk-border-grey-lighter sk-rounded sk-text-navy-lighter ;
+  @apply sk-bg-white sk-border sk-border-grey-lighter sk-rounded sk-text-navy-lighter;
   margin-top: 1px;
   margin-left: -1px;
   box-shadow: 0 5px 10px 0 rgba(28, 46, 72, 0.17);
@@ -35,8 +35,8 @@
       margin-left: 0.4rem;
     }
   }
-  
-  label { 
+
+  label {
     @apply sk-flex-grow sk-py-2 sk-leading-none sk-px-3 sk-ml-0;
   }
 
@@ -52,4 +52,3 @@
 .sked-dropdownlist-searchonly {
   width: 20rem;
 }
-

@@ -1,4 +1,4 @@
-import ReduxDataTypes from '../DataTypes'
+import ReduxDataTypes from "../DataTypes";
 
 export const AllTimesheetsQuery = (vendor: ReduxDataTypes.VendorType) => `
 query getTimesheets($filters: EQLQueryFilterTimesheet!, $first: PositiveIntMax200, $offset:  NonNegativeInt){
@@ -53,7 +53,7 @@ query getTimesheets($filters: EQLQueryFilterTimesheet!, $first: PositiveIntMax20
           Distance
           EndDate
           IsNew
-          ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'EndTime' : ''}
+          ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "EndTime" : ""}
           EntryType
           Timesheet {
             ResourceId
@@ -100,7 +100,7 @@ query getTimesheets($filters: EQLQueryFilterTimesheet!, $first: PositiveIntMax20
           }
           ShiftId
           StartDate
-          ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'StartTime' : ''}
+          ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "StartTime" : ""}
           TimesheetId
           UnavailabilityId
           UID
@@ -142,6 +142,6 @@ query getTimesheets($filters: EQLQueryFilterTimesheet!, $first: PositiveIntMax20
     }
   }
 }
-`
+`;
 
-export default AllTimesheetsQuery
+export default AllTimesheetsQuery;

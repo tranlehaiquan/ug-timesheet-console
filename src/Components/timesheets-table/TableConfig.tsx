@@ -1,20 +1,20 @@
-import React from 'react'
-import { TableConfigColumns, sortDirection } from 'skedulo-ui'
-import { isEmpty } from 'lodash'
+import React from "react";
+import { TableConfigColumns, sortDirection } from "skedulo-ui";
+import { isEmpty } from "lodash";
 import {
   getActualLoggedTimeInMinute,
   getEntryType,
-  getJobAllocationByTimeSheetEntry
-} from '../../common/utils/timesheetEntry'
-import { ReduxDataTypes, TimesheetStatus } from '../../StoreV2/DataTypes'
-import { NumberCell } from './cell-formatters/NumberCell'
-import { DurationCell } from './cell-formatters/DurationCell'
-import { ResourceCell } from './cell-formatters/ResourceCell'
-import { StatusCell } from './cell-formatters/StatusCell'
-import { DateRangeCell } from './cell-formatters/DateRangeCell'
-import { ActionsCell } from './cell-formatters/ActionsCell'
-import { TimesheetDetails } from './TimesheetDetails/TimesheetDetails'
-import { DateTimeCell } from './cell-formatters/DateTimeCell'
+  getJobAllocationByTimeSheetEntry,
+} from "../../common/utils/timesheetEntry";
+import { ReduxDataTypes, TimesheetStatus } from "../../StoreV2/DataTypes";
+import { NumberCell } from "./cell-formatters/NumberCell";
+import { DurationCell } from "./cell-formatters/DurationCell";
+import { ResourceCell } from "./cell-formatters/ResourceCell";
+import { StatusCell } from "./cell-formatters/StatusCell";
+import { DateRangeCell } from "./cell-formatters/DateRangeCell";
+import { ActionsCell } from "./cell-formatters/ActionsCell";
+import { TimesheetDetails } from "./TimesheetDetails/TimesheetDetails";
+import { DateTimeCell } from "./cell-formatters/DateTimeCell";
 // import { TotalDistanceCell } from './cell-formatters/TotalDistanceCell'
 
 interface TableConfigOptions<T> {
@@ -23,22 +23,22 @@ interface TableConfigOptions<T> {
       sortedData?: T[],
       sortedBy?: string,
       sortDirection?: sortDirection
-    ) => void
-    sortKey?: string
-    initialSortDirection?: sortDirection
-  }
+    ) => void;
+    sortKey?: string;
+    initialSortDirection?: sortDirection;
+  };
   selectable?: {
-    selectBy: keyof T
-    onSelect: (selectBy: keyof T, selection: Set<string>, data: T[]) => void
-    selectAll?: boolean
-  }
+    selectBy: keyof T;
+    onSelect: (selectBy: keyof T, selection: Set<string>, data: T[]) => void;
+    selectAll?: boolean;
+  };
   expandable?: {
-    onExpand: (rowData: T) => React.ReactElement
-  }
-  fixedFirstColumn?: boolean
+    onExpand: (rowData: T) => React.ReactElement;
+  };
+  fixedFirstColumn?: boolean;
 }
 interface IGetOptions<T> {
-  onSelect: (selectBy: keyof T, selection: Set<string>, data: T[]) => void
+  onSelect: (selectBy: keyof T, selection: Set<string>, data: T[]) => void;
 }
 
 export const getTableOptions: (
@@ -46,22 +46,22 @@ export const getTableOptions: (
 ) => TableConfigOptions<ReduxDataTypes.TimesheetEntry> = ({ onSelect }) => ({
   selectable: {
     onSelect,
-    selectBy: 'UID',
-    selectAll: true
+    selectBy: "UID",
+    selectAll: true,
   },
   expandable: {
-    onExpand: rowData => {
-      return <TimesheetDetails timeSheetEntryId={ rowData.UID } />
-    }
-  }
-})
+    onExpand: (rowData) => {
+      return <TimesheetDetails timeSheetEntryId={rowData.UID} />;
+    },
+  },
+});
 
 interface IGetColumns {
-  onSubmit: (id: string) => void
-  onApprove: (id: string) => void
-  onRecall: (id: string) => void
-  onReject: (id: string) => void
-  onDelete: (id: string) => void
+  onSubmit: (id: string) => void;
+  onApprove: (id: string) => void;
+  onRecall: (id: string) => void;
+  onReject: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 export const getTSEntryColumns = (
@@ -70,276 +70,274 @@ export const getTSEntryColumns = (
 ) => {
   const columns = [
     {
-      key: 'Timesheet.Resource' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Resource Name',
-      cellRenderer: (resource: ReduxDataTypes.Timesheet['Resource']) => {
-        return <ResourceCell resource={ resource } />
+      key: "Timesheet.Resource" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Resource Name",
+      cellRenderer: (resource: ReduxDataTypes.Timesheet["Resource"]) => {
+        return <ResourceCell resource={resource} />;
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'EntryType' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Job',
-      className: 'sk-pl-0',
+      key: "EntryType" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Job",
+      className: "sk-pl-0",
       cellRenderer: (uid: string, entry: ReduxDataTypes.TimesheetEntry) => {
-        return <span>{getEntryType(entry)}</span>
+        return <span>{getEntryType(entry)}</span>;
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'Job.Account' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Account',
-      emptyPlaceholderText: '-',
-      className: 'sk-pl-0',
+      key: "Job.Account" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Account",
+      emptyPlaceholderText: "-",
+      className: "sk-pl-0",
       cellRenderer: (uid: string, entry: ReduxDataTypes.TimesheetEntry) => {
         return (
           <span>
-            {entry.Job && entry.Job.Account ? entry.Job.Account.Name : '-'}
+            {entry.Job && entry.Job.Account ? entry.Job.Account.Name : "-"}
           </span>
-        )
+        );
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'StartDate' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Date and Time',
+      key: "StartDate" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Date and Time",
       cellRenderer: (uid: string, entry: ReduxDataTypes.TimesheetEntry) => {
-        const jobTimeZone = entry.Job ? entry.Job.Timezone : defaultTimezone
+        const jobTimeZone = entry.Job ? entry.Job.Timezone : defaultTimezone;
         return (
           <>
             <DateTimeCell
-              date={ entry.StartDate }
-              time={ entry.StartTime }
-              timezone={ jobTimeZone }
+              date={entry.StartDate}
+              time={entry.StartTime}
+              timezone={jobTimeZone}
               format="D MMM YYYY hh:mm a (z)"
-            />{' '}
-            -{' '}
+            />{" "}
+            -{" "}
             <DateTimeCell
-              date={ entry.EndDate }
-              time={ entry.EndTime }
-              timezone={ jobTimeZone }
+              date={entry.EndDate}
+              time={entry.EndTime}
+              timezone={jobTimeZone}
               format="D MMM YYYY hh:mm a (z)"
             />
           </>
-        )
+        );
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'LunchBreakDuration' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Lunch Break',
-      cellRenderer: (lunchBreakDuration: string, entry: ReduxDataTypes.TimesheetEntry) => {
-        const jobAllocation = getJobAllocationByTimeSheetEntry(entry)
+      key: "LunchBreakDuration" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Lunch Break",
+      cellRenderer: (
+        lunchBreakDuration: string,
+        entry: ReduxDataTypes.TimesheetEntry
+      ) => {
+        const jobAllocation = getJobAllocationByTimeSheetEntry(entry);
         if (!isEmpty(jobAllocation) && jobAllocation.LunchBreakDuration) {
-          const lunchBreakDurationJA = jobAllocation.LunchBreakDuration || lunchBreakDuration
+          const lunchBreakDurationJA =
+            jobAllocation.LunchBreakDuration || lunchBreakDuration;
           return (
-            <DurationCell
-              value={
-                lunchBreakDurationJA as number
-              }
-              isInMinutes
-            />
-          )
+            <DurationCell value={lunchBreakDurationJA as number} isInMinutes />
+          );
         }
-        return <span>0</span>
+        return <span>0</span>;
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'ActualDuration' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Total Hours',
-      emptyPlaceholderText: '-',
+      key: "ActualDuration" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Total Hours",
+      emptyPlaceholderText: "-",
       cellRenderer: (id: string, entry: ReduxDataTypes.TimesheetEntry) => {
-        const loggedTimeInMinute = getActualLoggedTimeInMinute(entry)
+        const loggedTimeInMinute = getActualLoggedTimeInMinute(entry);
         return (
           <DurationCell
             value={
-              typeof loggedTimeInMinute === 'number'
+              typeof loggedTimeInMinute === "number"
                 ? loggedTimeInMinute
                 : undefined
             }
             isInMinutes
           />
-        )
+        );
       },
-      sortable: true
+      sortable: true,
     },
     {
-      key: 'Distance' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Travel Distance',
-      emptyPlaceholderText: '-',
+      key: "Distance" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Travel Distance",
+      emptyPlaceholderText: "-",
       cellRenderer: (
         uid: string,
         { Distance, DistanceUnit }: ReduxDataTypes.TimesheetEntry
       ) => {
         return (
           <NumberCell
-            value={ Distance! % 1 ? Distance!.toFixed(2) : Distance }
-            unit={ DistanceUnit }
+            value={Distance! % 1 ? Distance!.toFixed(2) : Distance}
+            unit={DistanceUnit}
           />
-        )
-      }
+        );
+      },
       // sortable: true
     },
     {
-      key: 'UID' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Premiums',
-      emptyPlaceholderText: '-',
+      key: "UID" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Premiums",
+      emptyPlaceholderText: "-",
       cellRenderer: (uid: string, entry: ReduxDataTypes.TimesheetEntry) => {
-        const jobAllocation = getJobAllocationByTimeSheetEntry(entry)
+        const jobAllocation = getJobAllocationByTimeSheetEntry(entry);
         if (!isEmpty(jobAllocation) && !isEmpty(jobAllocation.Premiums)) {
-          const premiums = jobAllocation.Premiums.join(', ') || '-'
-          return <span>{premiums}</span>
+          const premiums = jobAllocation.Premiums.join(", ") || "-";
+          return <span>{premiums}</span>;
         }
-        return <span>-</span>
-      }
+        return <span>-</span>;
+      },
     },
     {
-      key: 'Timesheet.Status' as keyof ReduxDataTypes.Timesheet,
-      name: 'Status',
+      key: "Timesheet.Status" as keyof ReduxDataTypes.Timesheet,
+      name: "Status",
       width: 130,
-      emptyPlaceholderText: '-',
-      cellRenderer: (status: TimesheetStatus) => (
-        <StatusCell type={ status } />
-      ),
-      sortable: true
+      emptyPlaceholderText: "-",
+      cellRenderer: (status: TimesheetStatus) => <StatusCell type={status} />,
+      sortable: true,
     },
     {
-      key: 'UID' as keyof ReduxDataTypes.TimesheetEntry,
-      name: 'Action',
+      key: "UID" as keyof ReduxDataTypes.TimesheetEntry,
+      name: "Action",
       width: 180,
-      emptyPlaceholderText: '-',
+      emptyPlaceholderText: "-",
       cellRenderer: (uid: string, entry: ReduxDataTypes.TimesheetEntry) => {
         return (
           <ActionsCell
-            timeSheetEntryId={ uid }
-            timesheetStatus={ entry.Timesheet.Status }
-            onSubmit={ onSubmit }
-            onApprove={ onApprove }
-            onReject={ onReject }
-            onRecall={ onRecall }
+            timeSheetEntryId={uid}
+            timesheetStatus={entry.Timesheet.Status}
+            onSubmit={onSubmit}
+            onApprove={onApprove}
+            onReject={onReject}
+            onRecall={onRecall}
           />
-        )
-      }
-    }
-  ]
-  return columns
-}
+        );
+      },
+    },
+  ];
+  return columns;
+};
 
 export const getColumns = ({
   onSubmit,
   onApprove,
   onRecall,
-  onReject
-}: IGetColumns) => [
-  {
-    key: 'Resource',
-    name: 'Resource name',
-    width: 200,
-    emptyPlaceholderText: '-',
-    cellRenderer: resource => <ResourceCell resource={ resource } />
-  },
-  {
-    name: 'Date',
-    key: 'StartDate',
-    width: 145,
-    emptyPlaceholderText: '-',
-    cellRenderer: (startDate, row) => (
-      <DateRangeCell startDate={ startDate } endDate={ row.EndDate } />
-    )
-  },
-  {
-    key: 'Job',
-    name: 'Jobs',
-    width: 110,
-    emptyPlaceholderText: '-',
-    cellRenderer: job => <DurationCell value={ job * 60 } isInMinutes />
-  },
-  {
-    key: 'Shift',
-    name: 'Shifts',
-    width: 110,
-    emptyPlaceholderText: '-',
-    cellRenderer: shift => <DurationCell value={ shift } />
-  },
-  {
-    key: 'Activity',
-    name: 'Activities',
-    width: 110,
-    emptyPlaceholderText: '-',
-    cellRenderer: activity => <DurationCell value={ activity } />
-  },
-  {
-    key: 'Unavailability',
-    width: 120,
-    emptyPlaceholderText: '-',
-    cellRenderer: unavailability => <DurationCell value={ unavailability } />
-  },
-  {
-    key: 'Manual',
-    width: 110,
-    emptyPlaceholderText: '-',
-    cellRenderer: manual => <DurationCell value={ manual } />
-  },
-  {
-    key: 'Logged',
-    name: 'Total Time Logged',
-    width: 120,
-    emptyPlaceholderText: '-',
-    cellRenderer: logged => (
-      <DurationCell value={ logged * 60 } bold isInMinutes />
-    )
-  },
-  {
-    key: 'Distance',
-    width: 110,
-    emptyPlaceholderText: '-',
-    cellRenderer: (distance, item) => (
-      <NumberCell
-        value={ distance! % 1 ? distance!.toFixed(2) : distance }
-        unit={ item.DistanceUnit }
-      />
-    )
-  },
-  {
-    key: 'Status',
-    width: 130,
-    emptyPlaceholderText: '-',
-    cellRenderer: status => <StatusCell type={ status } />
-  },
-  {
-    key: 'UID',
-    name: 'Action',
-    width: 180,
-    emptyPlaceholderText: '-',
-    cellRenderer: (id, row) => {
-      return (
-        <ActionsCell
-          timeSheetEntryId={ id }
-          timesheetStatus={ row.Timesheet.Status }
-          onSubmit={ onSubmit }
-          onApprove={ onApprove }
-          onReject={ onReject }
-          onRecall={ onRecall }
+  onReject,
+}: IGetColumns) =>
+  [
+    {
+      key: "Resource",
+      name: "Resource name",
+      width: 200,
+      emptyPlaceholderText: "-",
+      cellRenderer: (resource) => <ResourceCell resource={resource} />,
+    },
+    {
+      name: "Date",
+      key: "StartDate",
+      width: 145,
+      emptyPlaceholderText: "-",
+      cellRenderer: (startDate, row) => (
+        <DateRangeCell startDate={startDate} endDate={row.EndDate} />
+      ),
+    },
+    {
+      key: "Job",
+      name: "Jobs",
+      width: 110,
+      emptyPlaceholderText: "-",
+      cellRenderer: (job) => <DurationCell value={job * 60} isInMinutes />,
+    },
+    {
+      key: "Shift",
+      name: "Shifts",
+      width: 110,
+      emptyPlaceholderText: "-",
+      cellRenderer: (shift) => <DurationCell value={shift} />,
+    },
+    {
+      key: "Activity",
+      name: "Activities",
+      width: 110,
+      emptyPlaceholderText: "-",
+      cellRenderer: (activity) => <DurationCell value={activity} />,
+    },
+    {
+      key: "Unavailability",
+      width: 120,
+      emptyPlaceholderText: "-",
+      cellRenderer: (unavailability) => <DurationCell value={unavailability} />,
+    },
+    {
+      key: "Manual",
+      width: 110,
+      emptyPlaceholderText: "-",
+      cellRenderer: (manual) => <DurationCell value={manual} />,
+    },
+    {
+      key: "Logged",
+      name: "Total Time Logged",
+      width: 120,
+      emptyPlaceholderText: "-",
+      cellRenderer: (logged) => (
+        <DurationCell value={logged * 60} bold isInMinutes />
+      ),
+    },
+    {
+      key: "Distance",
+      width: 110,
+      emptyPlaceholderText: "-",
+      cellRenderer: (distance, item) => (
+        <NumberCell
+          value={distance! % 1 ? distance!.toFixed(2) : distance}
+          unit={item.DistanceUnit}
         />
-      )
-    }
-  }
-  // TODO: dev helper - remove when no more required
-  // {
-  //   key: 'Name',
-  //   name: 'Delete',
-  //   width: 100,
-  //   cellRenderer: (dev, row) => (
-  //     <Button
-  //       buttonType="secondary"
-  //       compact
-  //       onClick={ () => onDelete(row.UID) }
-  //     >Delete
-  //     </Button>
-  //   )
-  // } as TableConfigColumns<ReduxDataTypes.TimesheetTableItem, 'Name'>
-] as TableConfigColumns<ReduxDataTypes.TimesheetEntry>[]
+      ),
+    },
+    {
+      key: "Status",
+      width: 130,
+      emptyPlaceholderText: "-",
+      cellRenderer: (status) => <StatusCell type={status} />,
+    },
+    {
+      key: "UID",
+      name: "Action",
+      width: 180,
+      emptyPlaceholderText: "-",
+      cellRenderer: (id, row) => {
+        return (
+          <ActionsCell
+            timeSheetEntryId={id}
+            timesheetStatus={row.Timesheet.Status}
+            onSubmit={onSubmit}
+            onApprove={onApprove}
+            onReject={onReject}
+            onRecall={onRecall}
+          />
+        );
+      },
+    },
+    // TODO: dev helper - remove when no more required
+    // {
+    //   key: 'Name',
+    //   name: 'Delete',
+    //   width: 100,
+    //   cellRenderer: (dev, row) => (
+    //     <Button
+    //       buttonType="secondary"
+    //       compact
+    //       onClick={ () => onDelete(row.UID) }
+    //     >Delete
+    //     </Button>
+    //   )
+    // } as TableConfigColumns<ReduxDataTypes.TimesheetTableItem, 'Name'>
+  ] as TableConfigColumns<ReduxDataTypes.TimesheetEntry>[];
 
 // const getTotalColumns = () => {
 //   const columns = getColumns({
@@ -434,10 +432,10 @@ export const getColumns = ({
 
 export type TimesheetTableTotalItem = Pick<
   ReduxDataTypes.TimesheetTableItem,
-  'Job' | 'Activity' | 'Logged' | 'Availability' | 'Unavailability' | 'Distance'
+  "Job" | "Activity" | "Logged" | "Availability" | "Unavailability" | "Distance"
 > & {
-  Resource: string
-  [index: string]: string | number | null | undefined
+  Resource: string;
+  [index: string]: string | number | null | undefined;
 };
 
 // const getTotalData = (tableData: ReduxDataTypes.TimesheetTableItem[]) => {

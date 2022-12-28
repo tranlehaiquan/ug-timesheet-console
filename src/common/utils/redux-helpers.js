@@ -1,12 +1,12 @@
-let showWarnings = true
+let showWarnings = true;
 
 /**
  * Disables printing out runtime warnings (like failed results from action creators).
  * For use in tests.
  */
 export const suppressReduxHelpersWarnings = () => {
-  showWarnings = false
-}
+  showWarnings = false;
+};
 
 /**
  * A reducer helper that increases "busyness" state.
@@ -17,10 +17,14 @@ export const suppressReduxHelpersWarnings = () => {
  *
  * @return {Object}
  */
-export const incrBusy = (state, name, { busy = 'busy', busyCnt = 'busyCnt' } = {}) => ({
+export const incrBusy = (
+  state,
+  name,
+  { busy = "busy", busyCnt = "busyCnt" } = {}
+) => ({
   [busyCnt]: [...state[busyCnt], name],
-  [busy]: true
-})
+  [busy]: true,
+});
 
 /**
  * A reducer helper that decreases "busyness" state.
@@ -31,13 +35,17 @@ export const incrBusy = (state, name, { busy = 'busy', busyCnt = 'busyCnt' } = {
  *
  * @return {Object}
  */
-export const decrBusy = (state, name, { busy = 'busy', busyCnt = 'busyCnt' } = {}) => {
-  const newCnt = [...state[busyCnt].filter(element => element !== name)]
+export const decrBusy = (
+  state,
+  name,
+  { busy = "busy", busyCnt = "busyCnt" } = {}
+) => {
+  const newCnt = [...state[busyCnt].filter((element) => element !== name)];
   return {
     [busyCnt]: newCnt,
-    [busy]: newCnt.length > 0
-  }
-}
+    [busy]: newCnt.length > 0,
+  };
+};
 
 /**
  * A reducer helper that adds error to state.
@@ -49,12 +57,9 @@ export const decrBusy = (state, name, { busy = 'busy', busyCnt = 'busyCnt' } = {
  * @return {Array}
  */
 export const addError = (state, error, name) => {
-  const newError = { name, errorMsg: error.message }
-  return [
-    ...state.errors,
-    newError
-  ]
-}
+  const newError = { name, errorMsg: error.message };
+  return [...state.errors, newError];
+};
 
 /**
  * Creates a new action creator. Action can have predefined constant payloads and can have
@@ -68,19 +73,19 @@ export const addError = (state, error, name) => {
  */
 export const makeActionCreator = (type, defPayload = null, fields = null) => {
   if (fields) {
-    const picker = nameFields(fields)
+    const picker = nameFields(fields);
     return (...args) => ({
       type,
       ...defPayload,
-      ...picker(args)
-    })
+      ...picker(args),
+    });
   }
   return (payload = null) => ({
     type,
     ...defPayload,
-    ...payload
-  })
-}
+    ...payload,
+  });
+};
 
 /**
  * Creates a function that maps subsequent parameters to named properties of a returned object.
@@ -89,15 +94,16 @@ export const makeActionCreator = (type, defPayload = null, fields = null) => {
  *
  * @return {Function}
  */
-const nameFields = fields => {
+const nameFields = (fields) => {
   if (!Array.isArray(fields)) {
-    fields = [fields] // eslint-disable-line no-param-reassign
+    fields = [fields]; // eslint-disable-line no-param-reassign
   }
-  return args => fields.reduce((acc, field, idx) => {
-    acc[field] = args[idx] // eslint-disable-line no-param-reassign
-    return acc
-  }, {})
-}
+  return (args) =>
+    fields.reduce((acc, field, idx) => {
+      acc[field] = args[idx]; // eslint-disable-line no-param-reassign
+      return acc;
+    }, {});
+};
 
 /**
  * If given parameter is not an action creator, then it converts it to one.
@@ -105,14 +111,16 @@ const nameFields = fields => {
  * @param {string|Function} action
  * @return {Function}
  */
-const ensureActionCreator = action => {
+const ensureActionCreator = (action) => {
   switch (typeof action) {
-    case 'string': return makeActionCreator(action)
-    case 'function': return action
+    case "string":
+      return makeActionCreator(action);
+    case "function":
+      return action;
     default:
-      throw new Error(`Bad action :${action}`)
+      throw new Error(`Bad action :${action}`);
   }
-}
+};
 
 /**
  * Creates an action creator for asynchronous tasks that automatically dispatches 2 of 3 actions.
@@ -124,27 +132,31 @@ const ensureActionCreator = action => {
  *
  * @return {Function}
  */
-export const makeAsyncActionCreatorSimp = ({ START, SUCCESS, ERROR }, handler) => {
-  const start = ensureActionCreator(START)
-  const success = ensureActionCreator(SUCCESS)
-  const failure = ensureActionCreator(ERROR)
+export const makeAsyncActionCreatorSimp = (
+  { START, SUCCESS, ERROR },
+  handler
+) => {
+  const start = ensureActionCreator(START);
+  const success = ensureActionCreator(SUCCESS);
+  const failure = ensureActionCreator(ERROR);
 
-  return (...extArgs) => async (...thunkArgs) => {
-    const [dispatch] = thunkArgs
-    dispatch(start())
-    try {
-      const result = await (handler(...extArgs)(...thunkArgs))
-      dispatch(success(result))
-      return result
-    } catch (error) {
-      if (showWarnings) {
-        console.warn('async action', error)
+  return (...extArgs) =>
+    async (...thunkArgs) => {
+      const [dispatch] = thunkArgs;
+      dispatch(start());
+      try {
+        const result = await handler(...extArgs)(...thunkArgs);
+        dispatch(success(result));
+        return result;
+      } catch (error) {
+        if (showWarnings) {
+          console.warn("async action", error);
+        }
+        dispatch(failure({ error: (error && error.errorInfo) || error }));
+        return Promise.reject(error);
       }
-      dispatch(failure({ error: error && error.errorInfo || error }))
-      return Promise.reject(error)
-    }
-  }
-}
+    };
+};
 
 /**
  * Creates a set of standard, prefixed action names (START/SUCCESS/ERROR).
@@ -154,28 +166,29 @@ export const makeAsyncActionCreatorSimp = ({ START, SUCCESS, ERROR }, handler) =
  *
  * @return {Object}
  */
-export const makeActionsSet = (prefix, lowerCase = false) => lowerCase
-  ? ({
-    START: `${prefix}_start`,
-    SUCCESS: `${prefix}_success`,
-    ERROR: `${prefix}_error`,
-    NAME: prefix
-  })
-  : ({
-    START: `${prefix}_START`,
-    SUCCESS: `${prefix}_SUCCESS`,
-    ERROR: `${prefix}_ERROR`,
-    NAME: prefix
-  })
+export const makeActionsSet = (prefix, lowerCase = false) =>
+  lowerCase
+    ? {
+        START: `${prefix}_start`,
+        SUCCESS: `${prefix}_success`,
+        ERROR: `${prefix}_error`,
+        NAME: prefix,
+      }
+    : {
+        START: `${prefix}_START`,
+        SUCCESS: `${prefix}_SUCCESS`,
+        ERROR: `${prefix}_ERROR`,
+        NAME: prefix,
+      };
 
 /**
  * Part of the default state to be used along with makeResourceReducers or incrBusy/decrBusy.
  */
 export const DEF_RES_STATE = {
   busy: false,
-  busyCnt: []
-}
-Object.freeze(DEF_RES_STATE)
+  busyCnt: [],
+};
+Object.freeze(DEF_RES_STATE);
 
 /**
  * Creates a function that copies given field names from one object to another
@@ -185,15 +198,16 @@ Object.freeze(DEF_RES_STATE)
  *
  * @return {Object}
  */
-const pickFields = fields => {
+const pickFields = (fields) => {
   if (!Array.isArray(fields)) {
-    fields = [fields] // eslint-disable-line no-param-reassign
+    fields = [fields]; // eslint-disable-line no-param-reassign
   }
-  return action => fields.reduce((acc, field) => {
-    acc[field] = action[field] // eslint-disable-line no-param-reassign
-    return acc
-  }, {})
-}
+  return (action) =>
+    fields.reduce((acc, field) => {
+      acc[field] = action[field]; // eslint-disable-line no-param-reassign
+      return acc;
+    }, {});
+};
 
 /**
  * Creates a set of functions for handling a standard 3 actions for some asynchronous process (start/success/error).
@@ -212,47 +226,47 @@ export const makeReducers = (
   { START, SUCCESS, ERROR, NAME },
   {
     dataField = null,
-    loadedField = 'loaded',
-    errorField = 'errors',
+    loadedField = "loaded",
+    errorField = "errors",
     transform = null,
-    busyField = 'busy'
-  } = {},
+    busyField = "busy",
+  } = {}
 ) => {
-  const picker = transform || pickFields(dataField)
-  const hasFields = dataField != null || !!transform
-  const busyOpts = { busy: busyField, busyCnt: `${busyField}Cnt` }
+  const picker = transform || pickFields(dataField);
+  const hasFields = dataField != null || !!transform;
+  const busyOpts = { busy: busyField, busyCnt: `${busyField}Cnt` };
   return {
     [START]: hasFields
-      ? (state => ({
-        ...state,
-        ...incrBusy(state, NAME, busyOpts),
-        [loadedField]: false,
-        [errorField]: state.errors
-      }))
-      : (state => ({
-        ...state,
-        ...incrBusy(state, NAME, busyOpts)
-      })),
+      ? (state) => ({
+          ...state,
+          ...incrBusy(state, NAME, busyOpts),
+          [loadedField]: false,
+          [errorField]: state.errors,
+        })
+      : (state) => ({
+          ...state,
+          ...incrBusy(state, NAME, busyOpts),
+        }),
 
     [SUCCESS]: hasFields
-      ? ((state, action) => ({
-        ...state,
-        ...decrBusy(state, NAME, busyOpts),
-        ...picker(action, state),
-        [loadedField]: true
-      }))
-      : (state => ({
-        ...state,
-        ...decrBusy(state, NAME, busyOpts)
-      })),
+      ? (state, action) => ({
+          ...state,
+          ...decrBusy(state, NAME, busyOpts),
+          ...picker(action, state),
+          [loadedField]: true,
+        })
+      : (state) => ({
+          ...state,
+          ...decrBusy(state, NAME, busyOpts),
+        }),
 
     [ERROR]: (state, { error }) => ({
       ...state,
       ...decrBusy(state, NAME, busyOpts),
-      [errorField]: addError(state, error, NAME)
-    })
-  }
-}
+      [errorField]: addError(state, error, NAME),
+    }),
+  };
+};
 
 /**
  * Creates a set of reducer that uses action map instead of switch-case.
@@ -263,30 +277,35 @@ export const makeReducers = (
  *
  * @return {Function}
  */
-export const makeReducer = (actionReducers, defaultState, fallbackReducer = null) => (state = defaultState, action) => {
-  if (Object.keys(actionReducers).includes('undefined')) {
-    throw new TypeError('Undefined action name! Check your imports/property names in reducer file.')
-  }
-  const subReducer = actionReducers[action.type]
-  if (subReducer) {
-    return subReducer(state, action)
-  } if (fallbackReducer) {
-    return fallbackReducer(state, action)
-  }
-  return state
-}
+export const makeReducer =
+  (actionReducers, defaultState, fallbackReducer = null) =>
+  (state = defaultState, action) => {
+    if (Object.keys(actionReducers).includes("undefined")) {
+      throw new TypeError(
+        "Undefined action name! Check your imports/property names in reducer file."
+      );
+    }
+    const subReducer = actionReducers[action.type];
+    if (subReducer) {
+      return subReducer(state, action);
+    }
+    if (fallbackReducer) {
+      return fallbackReducer(state, action);
+    }
+    return state;
+  };
 
 /**
  * Deletes all empty (string) or null/undefined entries in an object (in place).
  *
  * @param {Object} obj
  */
-export const deleteEmpty = obj => {
+export const deleteEmpty = (obj) => {
   for (const key in obj) {
-    const value = obj[key]
-    if (value === '' || value == null) {
+    const value = obj[key];
+    if (value === "" || value == null) {
       // eslint-disable-next-line no-param-reassign
-      delete obj[key]
+      delete obj[key];
     }
   }
-}
+};

@@ -1,8 +1,10 @@
-import ReduxDataTypes from '../DataTypes'
+import ReduxDataTypes from "../DataTypes";
 
 export const AllTimesheetEntriesQuery = (vendor: ReduxDataTypes.VendorType) => `
 query getRelatedEntries($filters: EQLQueryFilterTimesheetEntry!){
-  timesheetEntry(filter: $filters, orderBy: "StartDate ASC${vendor === ReduxDataTypes.VendorType.SKEDULO ? ', StartTime ASC' : ''}") {
+  timesheetEntry(filter: $filters, orderBy: "StartDate ASC${
+    vendor === ReduxDataTypes.VendorType.SKEDULO ? ", StartTime ASC" : ""
+  }") {
     edges {
       node {
         Activity {
@@ -16,7 +18,7 @@ query getRelatedEntries($filters: EQLQueryFilterTimesheetEntry!){
         Description
         Distance
         EndDate
-        ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'EndTime' : ''}
+        ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "EndTime" : ""}
         EntryType
         Job {
           UID
@@ -30,7 +32,7 @@ query getRelatedEntries($filters: EQLQueryFilterTimesheetEntry!){
         }
         ShiftId
         StartDate
-        ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'StartTime' : ''}
+        ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "StartTime" : ""}
         TimesheetId
         UnavailabilityId
         UID
@@ -68,6 +70,6 @@ query getRelatedEntries($filters: EQLQueryFilterTimesheetEntry!){
     }
   }
 }
-`
+`;
 
-export default AllTimesheetEntriesQuery
+export default AllTimesheetEntriesQuery;

@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .summary {
   @apply sk-py-8 sk-px-12 sk-h-full;
@@ -15,17 +15,33 @@
   align-content: space-around;
 
   &__value {
-    &--1 { grid-area: value1; } 
-    &--2 { grid-area: value2; } 
-    &--3 { grid-area: value3; } 
-    &--4 { grid-area: value4; }
+    &--1 {
+      grid-area: value1;
+    }
+    &--2 {
+      grid-area: value2;
+    }
+    &--3 {
+      grid-area: value3;
+    }
+    &--4 {
+      grid-area: value4;
+    }
   }
 
   &__label {
-    &--1 { grid-area: label1; } 
-    &--2 { grid-area: label2; } 
-    &--3 { grid-area: label3; } 
-    &--4 { grid-area: label4; }
+    &--1 {
+      grid-area: label1;
+    }
+    &--2 {
+      grid-area: label2;
+    }
+    &--3 {
+      grid-area: label3;
+    }
+    &--4 {
+      grid-area: label4;
+    }
   }
 
   &__label {

@@ -13,6 +13,6 @@ query NewEntryActivity ($filters: EQLQueryFilterActivities)  {
     }
   }
 }
-`
+`;
 
-export default NewEntryActivityQuery
+export default NewEntryActivityQuery;

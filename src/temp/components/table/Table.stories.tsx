@@ -1,23 +1,29 @@
-import * as React from 'react'
-import { storiesOf } from '@storybook/react'
+import * as React from "react";
+import { storiesOf } from "@storybook/react";
 
-import { Table, TableHead, TableCell, TableRow, TableBody } from './Table'
-import { number } from '@storybook/addon-knobs'
+import { Table, TableHead, TableCell, TableRow, TableBody } from "./Table";
+import { number } from "@storybook/addon-knobs";
 
-storiesOf('Table', module)
-  .add('Example', () => (
+storiesOf("Table", module)
+  .add("Example", () => (
     <Table>
       <TableHead
-        cells={ [
-          { name: 'Resource Resource Resource Resource Resource Resource Resource Resource ', width: number('width', 200), resizable: true },
-          { name: 'Tags', resizable: true },
-          { name: 'Region' }
-        ] }
+        cells={[
+          {
+            name: "Resource Resource Resource Resource Resource Resource Resource Resource ",
+            width: number("width", 200),
+            resizable: true,
+          },
+          { name: "Tags", resizable: true },
+          { name: "Region" },
+        ]}
       />
       <TableBody>
         <TableRow>
           <TableCell>Elliot Alderson</TableCell>
-          <TableCell>Hacking, IT Security, Irony, A bit ... disrupted</TableCell>
+          <TableCell>
+            Hacking, IT Security, Irony, A bit ... disrupted
+          </TableCell>
           <TableCell>New York City</TableCell>
         </TableRow>
         <TableRow>
@@ -28,7 +34,27 @@ storiesOf('Table', module)
       </TableBody>
     </Table>
   ))
-  .add('TableHead', () => <TableHead cells={ [{ name: 'Resource', width: 300 }, { name: 'Tags' }, { name: 'Region' }] } />)
-  .add('TableBody', () => <TableBody><TableRow><TableCell>Cell One</TableCell><TableCell>Cell two</TableCell></TableRow></TableBody>)
-  .add('TableRow', () => <TableRow><TableCell>Cell One</TableCell><TableCell>Cell two</TableCell></TableRow>)
-  .add('TableCell', () => <TableCell>Cell content</TableCell>)
+  .add("TableHead", () => (
+    <TableHead
+      cells={[
+        { name: "Resource", width: 300 },
+        { name: "Tags" },
+        { name: "Region" },
+      ]}
+    />
+  ))
+  .add("TableBody", () => (
+    <TableBody>
+      <TableRow>
+        <TableCell>Cell One</TableCell>
+        <TableCell>Cell two</TableCell>
+      </TableRow>
+    </TableBody>
+  ))
+  .add("TableRow", () => (
+    <TableRow>
+      <TableCell>Cell One</TableCell>
+      <TableCell>Cell two</TableCell>
+    </TableRow>
+  ))
+  .add("TableCell", () => <TableCell>Cell content</TableCell>);

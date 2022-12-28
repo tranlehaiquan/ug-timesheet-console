@@ -1,2 +1,2 @@
-export { AllTimeSheetEntriesQuery } from './AllTimeSheetEntriesQuery'
-export { AllResourcesQuery } from './AllResourcesQuery'
+export { AllTimeSheetEntriesQuery } from "./AllTimeSheetEntriesQuery";
+export { AllResourcesQuery } from "./AllResourcesQuery";

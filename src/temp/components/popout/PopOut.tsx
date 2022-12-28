@@ -1,20 +1,20 @@
-import * as React from 'react'
+import * as React from "react";
 
-import { PopOutBase, IPopOutBase } from './PopOutBase'
+import { PopOutBase, IPopOutBase } from "./PopOutBase";
 
 interface IPopOutProps {
   /**
    * The element you are rendering the content from
    */
-  trigger: IPopOutBase['trigger'],
+  trigger: IPopOutBase["trigger"];
   /**
    * The position where the content will try to fit
    */
-  placement?: IPopOutBase['placement']
+  placement?: IPopOutBase["placement"];
 }
 
 export interface IPopOutState {
-  openPopout: boolean
+  openPopout: boolean;
 }
 
 /**
@@ -25,55 +25,52 @@ export interface IPopOutState {
  */
 export class PopOut extends React.PureComponent<IPopOutProps, IPopOutState> {
   constructor(props: IPopOutProps) {
-    super(props)
+    super(props);
 
     this.state = {
-      openPopout: false
-    }
+      openPopout: false,
+    };
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.hideDropdown)
+    window.addEventListener("resize", this.hideDropdown);
   }
 
   componentWillUnmount() {
-    this.closeDropdown()
-    window.removeEventListener('resize', this.hideDropdown)
+    this.closeDropdown();
+    window.removeEventListener("resize", this.hideDropdown);
   }
 
   closeDropdown = () => {
     if (this.state.openPopout) {
-      this.hideDropdown()
-      document.removeEventListener('click', this.closeDropdown)
+      this.hideDropdown();
+      document.removeEventListener("click", this.closeDropdown);
     }
-  }
+  };
 
   listenerClick = (e: React.MouseEvent) => {
-    this.showDropdown()
-    document.addEventListener('click', this.closeDropdown)
-  }
+    this.showDropdown();
+    document.addEventListener("click", this.closeDropdown);
+  };
 
   showDropdown = () => {
-    this.setState({ openPopout: true })
-  }
+    this.setState({ openPopout: true });
+  };
 
   hideDropdown = () => {
-    this.setState({ openPopout: false })
-  }
+    this.setState({ openPopout: false });
+  };
 
   render() {
-    const { trigger, placement, children } = this.props
-    const { openPopout } = this.state
+    const { trigger, placement, children } = this.props;
+    const { openPopout } = this.state;
 
-    return openPopout
-      ? (
-        <PopOutBase
-          placement={ placement || 'bottom-start' }
-          trigger={ trigger }
-        >
-          { children }
-        </PopOutBase>
-      )
-      : <div onClick={ this.listenerClick }>{ trigger }</div>
+    return openPopout ? (
+      <PopOutBase placement={placement || "bottom-start"} trigger={trigger}>
+        {children}
+      </PopOutBase>
+    ) : (
+      <div onClick={this.listenerClick}>{trigger}</div>
+    );
   }
 }

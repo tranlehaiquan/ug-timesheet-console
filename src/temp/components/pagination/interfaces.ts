@@ -1,26 +1,26 @@
-export interface IProps  {
+export interface IProps {
   /**
    * number of all items
    */
-  itemsTotal: number
+  itemsTotal: number;
   /**
    * number of items on one page
    */
-  itemsPerPage: number
+  itemsPerPage: number;
   /**
    * current page in pagination
    */
-  currentPage: number
+  currentPage: number;
   /**
    * optional value for number of pages displayed before/after current page item @default 1
    */
-  currentPageDelta?: number
+  currentPageDelta?: number;
   /**
    * optional value for number of pages displayed without truncating page items @default 7
    */
-  truncateLimiter?: number
+  truncateLimiter?: number;
   /**
    *  function returning page number changed in pagination
    */
-  onPageChange?: (pageNumber: number) => void
+  onPageChange?: (pageNumber: number) => void;
 }

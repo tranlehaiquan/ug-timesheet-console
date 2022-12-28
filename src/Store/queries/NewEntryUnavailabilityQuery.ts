@@ -11,6 +11,6 @@ query NewEntryUnavailability ($filters: EQLQueryFilterAvailabilities) {
     }
   }
 }
-`
+`;
 
-export default NewEntryUnavailabilityQuery
+export default NewEntryUnavailabilityQuery;

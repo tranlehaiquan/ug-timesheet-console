@@ -1,80 +1,93 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import moment from 'moment'
-import { format } from 'date-fns'
-import ReduxDataTypes from '../DataTypes'
-import { RootState } from '../store'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import moment from "moment";
+import { format } from "date-fns";
+import ReduxDataTypes from "../DataTypes";
+import { RootState } from "../store";
 
 interface FilterState {
-  filterValues: ReduxDataTypes.Filter[]
-  dateRange: {startDate: string, endDate: string}
+  filterValues: ReduxDataTypes.Filter[];
+  dateRange: { startDate: string; endDate: string };
 }
 
-const SLICE_NAME = 'TIME_SHEET_FILTER'
+const SLICE_NAME = "TIME_SHEET_FILTER";
 
 export const getDefaultTimeRange = () => {
   function getMonday(date: Date) {
-    const d = new Date(date)
-    const day = d.getDay()
-    const diff = d.getDate() - day + (day === 0 ? -6 : 1)
-    return new Date(d.setDate(diff))
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+    return new Date(d.setDate(diff));
   }
 
-  const today = getMonday(moment().toDate())
-  const startDate = format(new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0), 'yyyy-MM-dd')
-  const endDate = format(new Date(today.getFullYear(), today.getMonth(), today.getDate() + 6, 23, 59, 59), 'yyyy-MM-dd')
+  const today = getMonday(moment().toDate());
+  const startDate = format(
+    new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 0, 0),
+    "yyyy-MM-dd"
+  );
+  const endDate = format(
+    new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 6,
+      23,
+      59,
+      59
+    ),
+    "yyyy-MM-dd"
+  );
 
   return {
     startDate,
-    endDate
-  }
-}
+    endDate,
+  };
+};
 
 const initialState: FilterState = {
   filterValues: [],
-  dateRange: getDefaultTimeRange()
-}
+  dateRange: getDefaultTimeRange(),
+};
 
 const buildFilters = (
   resources: ReduxDataTypes.Resource[]
 ): ReduxDataTypes.Filter[] => {
   const filterNames = Object.keys(
     resources[0] || {}
-  ) as (keyof ReduxDataTypes.Resource)[]
+  ) as (keyof ReduxDataTypes.Resource)[];
   const statusFilter: ReduxDataTypes.Filter = {
-    description: 'Status',
-    name: 'Status',
-    selector: 'Timesheet.Status',
-    options: ['Draft', 'Submitted', 'Approved', 'Rejected'],
-    value: []
-  }
+    description: "Status",
+    name: "Status",
+    selector: "Timesheet.Status",
+    options: ["Draft", "Submitted", "Approved", "Rejected"],
+    value: [],
+  };
 
   const filtersMap: {
     [index: string]: {
-      label: string
-      selector: string
-    }
+      label: string;
+      selector: string;
+    };
   } = {
     Name: {
-      label: 'Resource',
-      selector: 'Timesheet.Resource.Name'
+      label: "Resource",
+      selector: "Timesheet.Resource.Name",
     },
     Category: {
-      label: 'Category',
-      selector: 'Timesheet.Resource.Category'
+      label: "Category",
+      selector: "Timesheet.Resource.Category",
     },
     ResourceType: {
-      label: 'Resource Type',
-      selector: 'Timesheet.Resource.ResourceType'
+      label: "Resource Type",
+      selector: "Timesheet.Resource.ResourceType",
     },
     WorkingHourType: {
-      label: 'Working Hour Type',
-      selector: 'Timesheet.Resource.WorkingHourType'
+      label: "Working Hour Type",
+      selector: "Timesheet.Resource.WorkingHourType",
     },
     PrimaryRegion: {
-      label: 'Primary Region',
-      selector: 'Timesheet.Resource.PrimaryRegion.Name'
-    }
-  }
+      label: "Primary Region",
+      selector: "Timesheet.Resource.PrimaryRegion.Name",
+    },
+  };
 
   function createSimpleTypeFilterOptions(
     name: keyof ReduxDataTypes.Resource,
@@ -82,11 +95,11 @@ const buildFilters = (
   ) {
     const allOptions = new Set(
       resources
-        .map(resource => resource[name] as string)
-        .filter(value => value !== null)
-    )
+        .map((resource) => resource[name] as string)
+        .filter((value) => value !== null)
+    );
 
-    return [...allOptions]
+    return [...allOptions];
   }
 
   const createFilter = (
@@ -95,42 +108,42 @@ const buildFilters = (
   ) => {
     const options = customFiltersOptionsMap[name]
       ? customFiltersOptionsMap[name](name, resources)
-      : createSimpleTypeFilterOptions(name, resources)
+      : createSimpleTypeFilterOptions(name, resources);
 
-    options.sort()
+    options.sort();
 
     return {
       name,
       options,
       selector: filtersMap[name].selector,
       value: null as string[],
-      description: filtersMap[name].label
-    }
-  }
+      description: filtersMap[name].label,
+    };
+  };
 
   function createPrimaryRegionFilterOptions(
     name: string,
     resources: ReduxDataTypes.Resource[]
   ) {
-    const allRegions = resources.map(resource => resource.PrimaryRegion.Name)
-    return [...new Set(allRegions)]
+    const allRegions = resources.map((resource) => resource.PrimaryRegion.Name);
+    return [...new Set(allRegions)];
   }
 
   const customFiltersOptionsMap: {
     [index: string]: (
       name: string,
       resources: ReduxDataTypes.Resource[]
-    ) => string[]
+    ) => string[];
   } = {
-    PrimaryRegion: createPrimaryRegionFilterOptions
-  }
+    PrimaryRegion: createPrimaryRegionFilterOptions,
+  };
 
   const filters = filterNames
-    .filter(name => !!filtersMap[name])
-    .map(name => createFilter(name, resources))
+    .filter((name) => !!filtersMap[name])
+    .map((name) => createFilter(name, resources));
 
-  return [statusFilter, ...filters]
-}
+  return [statusFilter, ...filters];
+};
 
 export const filterSlice = createSlice({
   name: SLICE_NAME,
@@ -139,52 +152,56 @@ export const filterSlice = createSlice({
     initFilters: (state, action: PayloadAction<ReduxDataTypes.Resource[]>) => {
       return {
         ...state,
-        filterValues: buildFilters(action.payload)
-      }
+        filterValues: buildFilters(action.payload),
+      };
     },
 
     setFilters: (
       state,
-      action: PayloadAction<{ name: string, value: string[] }[]>
+      action: PayloadAction<{ name: string; value: string[] }[]>
     ) => {
-      const parsedFilters = state.filterValues.map(filter => {
+      const parsedFilters = state.filterValues.map((filter) => {
         const filterValue = action.payload.find(
-          value => value.name === filter.name
-        )
+          (value) => value.name === filter.name
+        );
         return {
           ...filter,
-          filterValues: filterValue ? filterValue.value : null
-        }
-      })
+          filterValues: filterValue ? filterValue.value : null,
+        };
+      });
 
       return {
         ...state,
-        filterValues: parsedFilters
-      }
+        filterValues: parsedFilters,
+      };
     },
 
-    setDateRange: (state, action: PayloadAction<{startDate: Date, endDate: Date}>) => {
-      const { startDate, endDate } = action.payload
+    setDateRange: (
+      state,
+      action: PayloadAction<{ startDate: Date; endDate: Date }>
+    ) => {
+      const { startDate, endDate } = action.payload;
       return {
         ...state,
         dateRange: {
-          startDate: format(startDate, 'yyyy-MM-dd'),
-          endDate: format(endDate, 'yyyy-MM-dd')
-        }
-      }
+          startDate: format(startDate, "yyyy-MM-dd"),
+          endDate: format(endDate, "yyyy-MM-dd"),
+        },
+      };
     },
 
-    resetFilters: state => {
+    resetFilters: (state) => {
       return {
         ...state,
-        ...initialState
-      }
-    }
-  }
-})
+        ...initialState,
+      };
+    },
+  },
+});
 
-export const { initFilters, setFilters, setDateRange, resetFilters } = filterSlice.actions
+export const { initFilters, setFilters, setDateRange, resetFilters } =
+  filterSlice.actions;
 
-export const selectTimeSheetFilter = (state: RootState) => state.filter
+export const selectTimeSheetFilter = (state: RootState) => state.filter;
 
-export default filterSlice.reducer
+export default filterSlice.reducer;

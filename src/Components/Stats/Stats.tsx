@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Loading } from 'skedulo-ui'
-import { RootState } from 'src/StoreV2/store'
-import { doTimeSheetStatistics } from '../../StoreV2/slices/summarySlice'
-import Summary from './Summary'
-import Workload from './Workload'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Loading } from "skedulo-ui";
+import { RootState } from "src/StoreV2/store";
+import { doTimeSheetStatistics } from "../../StoreV2/slices/summarySlice";
+import Summary from "./Summary";
+import Workload from "./Workload";
 
 const Stats: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { filterValues, dateRange } = useSelector(
     (state: RootState) => state.filter
-  )
-  const isLoading = useSelector((state: RootState) => state.summary.loading)
+  );
+  const isLoading = useSelector((state: RootState) => state.summary.loading);
 
   useEffect(() => {
-    dispatch(doTimeSheetStatistics(''))
+    dispatch(doTimeSheetStatistics(""));
   }, [
     JSON.stringify(
       filterValues.map(({ filterValues }) => filterValues).filter(Boolean)
     ),
-    JSON.stringify(dateRange)
-  ])
+    JSON.stringify(dateRange),
+  ]);
 
   return (
     <div className="sk-flex sk-justify-around sk-text-xxs">
@@ -33,7 +33,7 @@ const Stats: React.FC = () => {
         {!isLoading && <Workload />}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Stats
+export default Stats;

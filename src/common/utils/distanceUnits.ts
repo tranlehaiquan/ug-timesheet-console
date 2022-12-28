@@ -1,25 +1,25 @@
-const kmMiMultiplier = 1.609
+const kmMiMultiplier = 1.609;
 
 export const kilometersToMiles = (kmDistance: number) => {
-  return kmDistance / kmMiMultiplier
-}
+  return kmDistance / kmMiMultiplier;
+};
 
 export const milesToKilometers = (miDistance: number) => {
-  return miDistance * kmMiMultiplier
-}
+  return miDistance * kmMiMultiplier;
+};
 
 export const kilometersToMeters = (kmDistance: number) => {
-  return kmDistance * 1000
-}
+  return kmDistance * 1000;
+};
 
 export const milesToMeters = (miDistance: number) => {
-  return kilometersToMeters(milesToKilometers(miDistance))
-}
+  return kilometersToMeters(milesToKilometers(miDistance));
+};
 
 export const metersToKilometers = (mDistance: number) => {
-  return mDistance / 1000
-}
+  return mDistance / 1000;
+};
 
 export const metersToMiles = (mDistance: number) => {
-  return kilometersToMiles(metersToKilometers(mDistance))
-}
+  return kilometersToMiles(metersToKilometers(mDistance));
+};

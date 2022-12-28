@@ -1,33 +1,33 @@
-import * as React from 'react'
-import { render } from 'enzyme'
+import * as React from "react";
+import { render } from "enzyme";
 
-import { Loading } from '../Loading'
+import { Loading } from "../Loading";
 
-describe('Loading', () => {
-  test('center', () => {
+describe("Loading", () => {
+  test("center", () => {
     // Arrange
-    const component = render(<Loading />)
+    const component = render(<Loading />);
 
     // Assert
-    expect(component).toMatchSnapshot()
-    expect(component.prop('class')).toContain('sk-text-center')
-  })
+    expect(component).toMatchSnapshot();
+    expect(component.prop("class")).toContain("sk-text-center");
+  });
 
-  test('left', () => {
+  test("left", () => {
     // Arrange
-    const component = render(<Loading align="left" />)
+    const component = render(<Loading align="left" />);
 
     // Assert
-    expect(component).toMatchSnapshot()
-    expect(component.prop('class')).toContain('sk-text-left')
-  })
+    expect(component).toMatchSnapshot();
+    expect(component.prop("class")).toContain("sk-text-left");
+  });
 
-  test('right', () => {
+  test("right", () => {
     // Arrange
-    const component = render(<Loading align="right" />)
+    const component = render(<Loading align="right" />);
 
     // Assert
-    expect(component).toMatchSnapshot()
-    expect(component.prop('class')).toContain('sk-text-right')
-  })
-})
+    expect(component).toMatchSnapshot();
+    expect(component.prop("class")).toContain("sk-text-right");
+  });
+});

@@ -140,6 +140,6 @@ query getTimesheets($filters: EQLQueryFilterTimesheet!, $first: PositiveIntMax20
     }
   }
 }
-`
+`;
 
-export default AllTimesheetsQuery
+export default AllTimesheetsQuery;

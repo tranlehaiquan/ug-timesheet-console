@@ -35,6 +35,6 @@ query NewEntryJobs ($filters: EQLQueryFilterJobAllocations) {
     }
   }
 }
-`
+`;
 
-export default NewEntryJobsQuery
+export default NewEntryJobsQuery;

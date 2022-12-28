@@ -1,6 +1,6 @@
 .sked-button-group {
   display: inline-grid;
-  grid-gap: config('margin.2');
+  grid-gap: config("margin.2");
   grid-auto-flow: column;
   width: max-content;
 
@@ -18,5 +18,4 @@
       border-bottom-left-radius: 0;
     }
   }
-
 }

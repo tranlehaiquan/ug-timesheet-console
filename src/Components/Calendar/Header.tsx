@@ -1,41 +1,50 @@
-import * as React from 'react'
-import { format, isSameDay } from 'date-fns'
+import * as React from "react";
+import { format, isSameDay } from "date-fns";
 
-import { CalendarEvent } from './Calendar'
+import { CalendarEvent } from "./Calendar";
 
-import './Header.scss'
+import "./Header.scss";
 
 interface HeaderProps {
-  columnId: number
-  day: Date
-  events: CalendarEvent[]
-  customSubheader?: (data: { day: Date, dayEvents: CalendarEvent[], allEvents: CalendarEvent[] }) => React.ReactElement
+  columnId: number;
+  day: Date;
+  events: CalendarEvent[];
+  customSubheader?: (data: {
+    day: Date;
+    dayEvents: CalendarEvent[];
+    allEvents: CalendarEvent[];
+  }) => React.ReactElement;
 }
 
-export const Header = ({ columnId, day, events, customSubheader }: HeaderProps) => {
-  const dayEvents = events.filter(event => isSameDay(event.start, day))
+export const Header = ({
+  columnId,
+  day,
+  events,
+  customSubheader,
+}: HeaderProps) => {
+  const dayEvents = events.filter((event) => isSameDay(event.start, day));
   return (
     <>
       <div
         className="calendar--header_cell sk-bg-white"
-        style={ {
+        style={{
           gridColumnStart: columnId,
-          gridRowStart: 1
-        } }
+          gridRowStart: 1,
+        }}
       >
-        { format(day, 'E d') }
+        {format(day, "E d")}
       </div>
-      { customSubheader && (
+      {customSubheader && (
         <div
           className="calendar--header_cell sk-bg-grey-lightest"
-          style={ {
+          style={{
             gridColumnStart: columnId,
-            gridRowStart: 2
-          } }
+            gridRowStart: 2,
+          }}
         >
-          { customSubheader({ day, dayEvents, allEvents: events }) }
+          {customSubheader({ day, dayEvents, allEvents: events })}
         </div>
-      ) }
+      )}
     </>
-  )
-}
+  );
+};

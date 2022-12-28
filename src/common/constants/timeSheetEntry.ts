@@ -1,19 +1,19 @@
-import ReduxDataTypes from '../../StoreV2/DataTypes'
+import ReduxDataTypes from "../../StoreV2/DataTypes";
 
-export const ITEMS_PER_PAGE = 25
+export const ITEMS_PER_PAGE = 25;
 
 export const DEFAULT_TS_ENTRY_PAGINATION = {
   entriesPerPage: ITEMS_PER_PAGE,
-  page: 0
-}
+  page: 0,
+};
 
 export const getEntryTimezone = (entry: ReduxDataTypes.TimesheetEntry) => {
   switch (entry.EntryType) {
-    case 'Job':
-      return entry.Job ? entry.Job.Timezone : null
-    case 'Activity':
-      return entry.Activity ? entry.Activity.Timezone : null
+    case "Job":
+      return entry.Job ? entry.Job.Timezone : null;
+    case "Activity":
+      return entry.Activity ? entry.Activity.Timezone : null;
     default:
-      return null
+      return null;
   }
-}
+};

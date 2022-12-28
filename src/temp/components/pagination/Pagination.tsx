@@ -1,40 +1,44 @@
-import * as React from 'react'
+import * as React from "react";
 
-import { PaginationCount } from './pagination-count/PaginationCount'
-import { PaginationPages } from './pagination-pages/PaginationPages'
-import { IProps } from './interfaces'
+import { PaginationCount } from "./pagination-count/PaginationCount";
+import { PaginationPages } from "./pagination-pages/PaginationPages";
+import { IProps } from "./interfaces";
 
-interface IState  {
+interface IState {
   /**
    * current page in pagination
    */
-  currentPage: number
+  currentPage: number;
 }
 export class Pagination extends React.PureComponent<IProps, IState> {
   state = {
-    currentPage: this.props.currentPage
-  }
+    currentPage: this.props.currentPage,
+  };
 
   componentDidUpdate(prevProps: IProps) {
-    if (prevProps.itemsPerPage !==  this.props.itemsPerPage ||
-      prevProps.itemsTotal !== this.props.itemsTotal) {
-      this.setState({ currentPage: 1 }, () => this.props.onPageChange(1))
+    if (
+      prevProps.itemsPerPage !== this.props.itemsPerPage ||
+      prevProps.itemsTotal !== this.props.itemsTotal
+    ) {
+      this.setState({ currentPage: 1 }, () => this.props.onPageChange(1));
     }
     if (prevProps.currentPage !== this.props.currentPage) {
-      this.setState({ currentPage: this.props.currentPage }, () => this.props.onPageChange(this.props.currentPage))
+      this.setState({ currentPage: this.props.currentPage }, () =>
+        this.props.onPageChange(this.props.currentPage)
+      );
     }
   }
 
   pageUpdateHandler = (pageNumber: number) => {
-    this.setState(
-      { currentPage: pageNumber },
-      () => this.props.onPageChange(this.state.currentPage)
-    )
-  }
+    this.setState({ currentPage: pageNumber }, () =>
+      this.props.onPageChange(this.state.currentPage)
+    );
+  };
 
   render() {
-    const { itemsTotal, itemsPerPage, truncateLimiter, currentPageDelta }  = this.props
-    const { currentPage } = this.state
+    const { itemsTotal, itemsPerPage, truncateLimiter, currentPageDelta } =
+      this.props;
+    const { currentPage } = this.state;
 
     return (
       <div
@@ -42,19 +46,19 @@ export class Pagination extends React.PureComponent<IProps, IState> {
         data-sk-name="pagination-container"
       >
         <PaginationCount
-          itemsPerPage={ itemsPerPage }
-          itemsTotal={ itemsTotal }
-          currentPage={ currentPage }
+          itemsPerPage={itemsPerPage}
+          itemsTotal={itemsTotal}
+          currentPage={currentPage}
         />
         <PaginationPages
-          itemsPerPage={ itemsPerPage }
-          itemsTotal={ itemsTotal }
-          currentPage={ currentPage }
-          onPageChange={ this.pageUpdateHandler }
-          truncateLimiter={ truncateLimiter }
-          currentPageDelta={ currentPageDelta }
+          itemsPerPage={itemsPerPage}
+          itemsTotal={itemsTotal}
+          currentPage={currentPage}
+          onPageChange={this.pageUpdateHandler}
+          truncateLimiter={truncateLimiter}
+          currentPageDelta={currentPageDelta}
         />
       </div>
-    )
+    );
   }
 }

@@ -1,5 +1,5 @@
 // This is too stop the rest of the itmes from bouncing out when a tab item is active.
-.sked-active-tab { 
+.sked-active-tab {
   &::after {
     display: block;
     content: attr(title);

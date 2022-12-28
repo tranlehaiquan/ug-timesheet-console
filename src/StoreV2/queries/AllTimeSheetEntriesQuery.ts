@@ -88,4 +88,4 @@ query getEntries($orderBy: EQLOrderByClauseTimesheetEntry, $first: PositiveIntMa
     }
   }
 }
-`
+`;

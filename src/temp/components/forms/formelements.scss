@@ -31,7 +31,6 @@
   background: #fff5f0;
 }
 
-
 /*
   Styles for text-type inputs
 */
@@ -44,7 +43,8 @@
     @apply sk-border-grey;
   }
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     @apply sk-outline-none sk-border-blue;
   }
 
@@ -57,7 +57,6 @@
   }
 }
 
-
 .sked-read-only {
   @apply sk-flex sk-text-sm sk-cursor-pointer sk-flex sk-pl-2 sk-items-center sk-py-2 sk-rounded sk-border sk-border-transparent;
   line-height: 1.3;
@@ -66,7 +65,8 @@
 /*
   Checkboxes and radios
 */
-.sked-checkbox, .sked-radio {
+.sked-checkbox,
+.sked-radio {
   @apply sk-relative sk-w-4 sk-h-4 sk-border-0 sk-border-grey-light sk-cursor-pointer sk-bg-transparent sk-align-bottom;
   -webkit-appearance: none;
 
@@ -74,7 +74,8 @@
     @apply sk-outline-none;
   }
 
-  &:disabled, &[readonly] {
+  &:disabled,
+  &[readonly] {
     @apply sk-cursor-default;
 
     &:before,
@@ -84,14 +85,17 @@
 
     &:checked:after {
       background: transparent;
-      content: svg-load('../temp/components/icon/icons/check-box-tick.svg', fill=#9aa2b2);
+      content: svg-load(
+        "../temp/components/icon/icons/check-box-tick.svg",
+        fill=#9aa2b2
+      );
     }
   }
 
   &:before {
     @apply sk-rounded sk-border sk-w-full sk-h-full sk-bg-white sk-block;
     box-sizing: border-box;
-    content: ' ';
+    content: " ";
     transition: background-color 0.1s ease-in-out;
   }
 
@@ -101,7 +105,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    content: svg-load('../temp/components/icon/icons/check-box-tick.svg', fill=#ffffff);
+    content: svg-load(
+      "../temp/components/icon/icons/check-box-tick.svg",
+      fill=#ffffff
+    );
     transition: opacity 0.05s ease-in-out;
   }
 

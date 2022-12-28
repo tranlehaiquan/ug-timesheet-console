@@ -1,182 +1,227 @@
-import * as React from 'react'
-import { PopperProps } from 'react-popper'
-import { get } from 'lodash'
+import * as React from "react";
+import { PopperProps } from "react-popper";
+import { get } from "lodash";
 
-import { ResponsiveDropdown, PopOutBase, Button, Icon, FormInputElement, DropdownListProps } from 'skedulo-ui'
+import {
+  ResponsiveDropdown,
+  PopOutBase,
+  Button,
+  Icon,
+  FormInputElement,
+  DropdownListProps,
+} from "skedulo-ui";
 
 const containsString = (value: object, searchString: string) => {
-  return value !== undefined &&
+  return (
+    value !== undefined &&
     value !== null &&
     value.toString().toLowerCase().indexOf(searchString.toLowerCase()) > -1
-}
+  );
+};
 
-const searchObject = (item: object, paths: string[] = [], searchString: string) => {
+const searchObject = (
+  item: object,
+  paths: string[] = [],
+  searchString: string
+) => {
   if (!searchString) {
-    return true
+    return true;
   }
 
   for (const path of paths) {
-    const value = get(item, path)
-    if (value !== null && value !== undefined && containsString(value, searchString)) {
-      return true
+    const value = get(item, path);
+    if (
+      value !== null &&
+      value !== undefined &&
+      containsString(value, searchString)
+    ) {
+      return true;
     }
   }
 
-  return false
-}
+  return false;
+};
 
 export const Select: React.FC<{
-  data: object[]
-  label?: string | React.ReactNode
-  optionLabel?: string | string[]
-  searchFields?: string[]
-  loading?: boolean
-  disabled?: boolean
-  onOptionClick: (data: object) => void
-  customOptionRenderer?: (option: object) => React.ReactNode
-} > = ({
+  data: object[];
+  label?: string | React.ReactNode;
+  optionLabel?: string | string[];
+  searchFields?: string[];
+  loading?: boolean;
+  disabled?: boolean;
+  onOptionClick: (data: object) => void;
+  customOptionRenderer?: (option: object) => React.ReactNode;
+}> = ({
   data,
-  label = 'Search items',
+  label = "Search items",
   optionLabel,
   searchFields,
   onOptionClick,
   disabled = false,
   loading = false,
-  customOptionRenderer
+  customOptionRenderer,
 }) => {
-  const [isDropdownVisible, setIsDropdownVisible] = React.useState(false)
-  const [searchValue, setSearchValue] = React.useState('')
+  const [isDropdownVisible, setIsDropdownVisible] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState("");
 
   const filteredData = searchFields
-    ? data.filter(item => searchObject(item, searchFields, searchValue))
-    : data
+    ? data.filter((item) => searchObject(item, searchFields, searchValue))
+    : data;
 
   const hideDropdown = () => {
-    setIsDropdownVisible(false)
-  }
+    setIsDropdownVisible(false);
+  };
 
   React.useEffect(() => {
-    document.addEventListener('click', hideDropdown)
+    document.addEventListener("click", hideDropdown);
     return () => {
-      document.removeEventListener('click', hideDropdown)
-    }
-  })
+      document.removeEventListener("click", hideDropdown);
+    };
+  });
 
   React.useEffect(() => {
     if (!isDropdownVisible) {
-      setSearchValue('')
+      setSearchValue("");
     }
-  }, [isDropdownVisible])
+  }, [isDropdownVisible]);
 
   const onOptionClickHandler = (option: object) => {
-    onOptionClick(option)
-    hideDropdown()
-  }
+    onOptionClick(option);
+    hideDropdown();
+  };
 
   return (
     <ResponsiveDropdown>
-      { (modifiers: PopperProps['modifiers'], placement: PopperProps['placement']) => (
+      {(
+        modifiers: PopperProps["modifiers"],
+        placement: PopperProps["placement"]
+      ) => (
         <PopOutBase
-          visible={ isDropdownVisible }
-          placement={ placement }
-          modifiers={ modifiers }
+          visible={isDropdownVisible}
+          placement={placement}
+          modifiers={modifiers}
           trigger={
             <Button
               className="tse-element__select"
               buttonType="secondary"
-              onClick={ () => !disabled && setIsDropdownVisible(true) }
-              disabled={ disabled }
-              loading={ loading }
+              onClick={() => !disabled && setIsDropdownVisible(true)}
+              disabled={disabled}
+              loading={loading}
             >
-              { label }
-              <Icon name="chevronDown" className="sk-ml-2" size={ 8 } />
+              {label}
+              <Icon name="chevronDown" className="sk-ml-2" size={8} />
             </Button>
-              }
+          }
         >
           <ArrayOptionRenderer
-            options={ filteredData }
-            onOptionClick={ onOptionClickHandler }
-            searchable={ !!searchFields }
-            onSearch={ setSearchValue }
-            optionLabel={ optionLabel }
-            customOptionRenderer={ customOptionRenderer }
+            options={filteredData}
+            onOptionClick={onOptionClickHandler}
+            searchable={!!searchFields}
+            onSearch={setSearchValue}
+            optionLabel={optionLabel}
+            customOptionRenderer={customOptionRenderer}
           />
         </PopOutBase>
-      ) }
+      )}
     </ResponsiveDropdown>
-  )
-}
+  );
+};
 
 const ArrayOptionRenderer: React.FC<{
-  options: object[]
-  optionLabel?: string | string[]
-  onSearch: (searchValue: string) => void
-  onOptionClick: (option: object) => void
-  searchPlaceholder?: string
-  customOptionRenderer?: (option: object) => React.ReactNode
-  searchable: boolean
+  options: object[];
+  optionLabel?: string | string[];
+  onSearch: (searchValue: string) => void;
+  onOptionClick: (option: object) => void;
+  searchPlaceholder?: string;
+  customOptionRenderer?: (option: object) => React.ReactNode;
+  searchable: boolean;
 }> = ({
   onSearch,
-  searchPlaceholder = 'Search',
+  searchPlaceholder = "Search",
   onOptionClick,
   options,
   optionLabel,
   children,
   customOptionRenderer,
-  searchable
+  searchable,
 }) => {
-  const onSearchHandler: (ev: React.ChangeEvent<HTMLInputElement>) => void = event => onSearch(event.target.value)
+  const onSearchHandler: (ev: React.ChangeEvent<HTMLInputElement>) => void = (
+    event
+  ) => onSearch(event.target.value);
 
   return (
-    <div data-sk-name="sk-dropdownlist" className="sk-dropdownlist sk-mx-1" style={ { maxWidth: 'auto' } }>
-      { children }
-      { searchable && <SearchItem onSearch={ onSearchHandler } searchPlaceholder={ searchPlaceholder || 'Search' } /> }
+    <div
+      data-sk-name="sk-dropdownlist"
+      className="sk-dropdownlist sk-mx-1"
+      style={{ maxWidth: "auto" }}
+    >
+      {children}
+      {searchable && (
+        <SearchItem
+          onSearch={onSearchHandler}
+          searchPlaceholder={searchPlaceholder || "Search"}
+        />
+      )}
       <DropdownBr />
       <ul className="sk-dropdownlist-list">
-        { options && options.length ? options.map((option, index) => (
-          <DropdownRow
-            onClick={ () => onOptionClick(option) }
-            className="sk-dropdownlist-item sk-dropdownlist-item--array sk-py-2 sk-text-navy sk-flex sk-px-3"
-            key={ index }
-          >
-            { customOptionRenderer ? customOptionRenderer(option) : get(option, optionLabel!, '-') }
-          </DropdownRow>
-        )) : <p className="sk-m-2 sk-ml-3">No items found</p> }
+        {options && options.length ? (
+          options.map((option, index) => (
+            <DropdownRow
+              onClick={() => onOptionClick(option)}
+              className="sk-dropdownlist-item sk-dropdownlist-item--array sk-py-2 sk-text-navy sk-flex sk-px-3"
+              key={index}
+            >
+              {customOptionRenderer
+                ? customOptionRenderer(option)
+                : get(option, optionLabel!, "-")}
+            </DropdownRow>
+          ))
+        ) : (
+          <p className="sk-m-2 sk-ml-3">No items found</p>
+        )}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 const DropdownRow: React.FC<{
-  children: React.ReactNode
-  onClick?: (ev: React.MouseEvent) => void
-  className?: string
-}> = ({
-  children,
-  className,
-  onClick
-}) => (<li data-sk-name="sk-filter-dropdown-row" className={ className } onClick={ onClick }>{ children }</li>)
+  children: React.ReactNode;
+  onClick?: (ev: React.MouseEvent) => void;
+  className?: string;
+}> = ({ children, className, onClick }) => (
+  <li
+    data-sk-name="sk-filter-dropdown-row"
+    className={className}
+    onClick={onClick}
+  >
+    {children}
+  </li>
+);
 
-export const SearchItem: React.FC<Pick<DropdownListProps, 'onSearch' | 'searchPlaceholder'>> = ({ onSearch, searchPlaceholder }) => {
-  const ref = React.useRef<HTMLInputElement>(null)
+export const SearchItem: React.FC<
+  Pick<DropdownListProps, "onSearch" | "searchPlaceholder">
+> = ({ onSearch, searchPlaceholder }) => {
+  const ref = React.useRef<HTMLInputElement>(null);
   React.useEffect(() => {
     if (ref.current) {
-      ref.current.focus()
+      ref.current.focus();
     }
-  }, [])
+  }, []);
   return (
     <div className="sk-text-navy-light sk-text-sm sk-flex sk-items-center sk-px-3 sk-my-1">
-      <Icon name="search" size={ 18 } className="sk-text-navy-lightest" />
+      <Icon name="search" size={18} className="sk-text-navy-lightest" />
       <FormInputElement
         data-sk-name="sk-filter-search-input"
         type="text"
-        placeholder={ searchPlaceholder }
-        onChange={ onSearch }
+        placeholder={searchPlaceholder}
+        onChange={onSearch}
         className="sk-border-0"
-        inputRef={ ref }
+        inputRef={ref}
       />
     </div>
-  )
-}
+  );
+};
 
-const DropdownBr = () => <div className="sk-border-t sk-border-solid sk-border-grey-light" />
+const DropdownBr = () => (
+  <div className="sk-border-t sk-border-solid sk-border-grey-light" />
+);

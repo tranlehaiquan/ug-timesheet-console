@@ -1,1 +1,1 @@
-export { TimesheetDetails as default } from './TimesheetDetails'
+export { TimesheetDetails as default } from "./TimesheetDetails";

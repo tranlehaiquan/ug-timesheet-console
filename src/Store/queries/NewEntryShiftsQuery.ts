@@ -27,6 +27,6 @@ query NewEntryShifts ($filters: EQLQueryFilterResourceShifts) {
     }
   }
 }
-`
+`;
 
-export default NewEntryShiftsQuery
+export default NewEntryShiftsQuery;

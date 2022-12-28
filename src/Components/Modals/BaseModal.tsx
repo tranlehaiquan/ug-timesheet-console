@@ -1,46 +1,45 @@
-import * as React from 'react'
-import { BaseModal as UIBaseModal, Icon, Button } from 'skedulo-ui'
+import * as React from "react";
+import { BaseModal as UIBaseModal, Icon, Button } from "skedulo-ui";
 
-
-import './Modals.scss'
+import "./Modals.scss";
 
 export interface BaseModalProps {
-  title: string
-  isOpened: boolean
-  onClose: () => void
-  children: React.ReactNode
-  className?: string
+  title: string;
+  isOpened: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  className?: string;
 }
 
-export const BaseModal: React.FC<BaseModalProps> = props => {
-  let className = 'base-modal__content sk-p-6'
+export const BaseModal: React.FC<BaseModalProps> = (props) => {
+  let className = "base-modal__content sk-p-6";
   if (props.className) {
-    className = `${className} ${props.className}`
+    className = `${className} ${props.className}`;
   }
 
   return props.isOpened ? (
     <UIBaseModal>
-      <div className={ className }>
+      <div className={className}>
         <header className="sk-flex sk-justify-between sk-items-center sk-mb-8">
-          <h3 style={ { fontSize: 20, color: '#223049' } }>{ props.title }</h3>
+          <h3 style={{ fontSize: 20, color: "#223049" }}>{props.title}</h3>
           <Button
             buttonType="transparent"
-            onClick={ props.onClose }
+            onClick={props.onClose}
             compact
             className="sk-p-1 sk-leading-none"
           >
             <Icon
               name="remove"
-              size={ 12 }
+              size={12}
               color="#485875"
               className="sk-cursor-pointer"
             />
           </Button>
         </header>
-        { props.children }
+        {props.children}
       </div>
     </UIBaseModal>
-  ) : null
-}
+  ) : null;
+};
 
-export default BaseModal
+export default BaseModal;

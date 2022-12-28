@@ -1,6 +1,6 @@
-@import '../../../../variables.scss';
-@import '../../../../styles/core.scss';
-@import '../popup.scss';
+@import "../../../../variables.scss";
+@import "../../../../styles/core.scss";
+@import "../popup.scss";
 
 $info-window-header-height: 42px;
 $info-window-background-color: $white-1 !default;
@@ -50,7 +50,7 @@ $container-background-color: $white-1 !default;
   }
 
   &__triangle {
-    @include custom-triangle('', $background: $container-background-color);
+    @include custom-triangle("", $background: $container-background-color);
     position: absolute;
     box-shadow: $container-triangle-box-shadow;
     width: $tooltip-size;

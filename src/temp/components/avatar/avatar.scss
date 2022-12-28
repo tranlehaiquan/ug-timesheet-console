@@ -21,6 +21,6 @@
 
   &--large {
     @apply sk-w-20 sk-h-20 sk-text-3xl;
-    line-height: config('height.20');
+    line-height: config("height.20");
   }
 }

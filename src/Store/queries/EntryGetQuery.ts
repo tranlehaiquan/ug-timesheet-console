@@ -1,4 +1,4 @@
-import ReduxDataTypes from '../DataTypes'
+import ReduxDataTypes from "../DataTypes";
 
 export const EntryGetQuery = (vendor: ReduxDataTypes.VendorType) => `
 query getEntry($UID: ID!){
@@ -19,7 +19,7 @@ query getEntry($UID: ID!){
     ActualDuration: Duration
     EndDate
     IsNew
-    ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'EndTime' : ''}
+    ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "EndTime" : ""}
     EntryType
     Job {
       UID
@@ -53,7 +53,7 @@ query getEntry($UID: ID!){
       DisplayName
     }
     StartDate
-    ${vendor === ReduxDataTypes.VendorType.SKEDULO ? 'StartTime' : ''}
+    ${vendor === ReduxDataTypes.VendorType.SKEDULO ? "StartTime" : ""}
     TimesheetId
     UID
     Timesheet {
@@ -68,6 +68,6 @@ query getEntry($UID: ID!){
     Premiums
   }
 }
-`
+`;
 
-export default EntryGetQuery
+export default EntryGetQuery;

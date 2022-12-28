@@ -36,6 +36,6 @@ query getResources($orderBy: EQLOrderByClauseResources, $first: PositiveIntMax20
     }
   }
 }
-`
+`;
 
-export default AllResourcesQuery
+export default AllResourcesQuery;

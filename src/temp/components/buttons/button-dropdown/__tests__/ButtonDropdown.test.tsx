@@ -1,40 +1,52 @@
-import * as React from 'react'
-import { render, shallow, mount } from 'enzyme'
+import * as React from "react";
+import { render, shallow, mount } from "enzyme";
 
-import { ButtonDropdown } from '../ButtonDropdown'
+import { ButtonDropdown } from "../ButtonDropdown";
 
-describe('ButtonDropdown', () => {
-  test('it renders correctly', () => {
+describe("ButtonDropdown", () => {
+  test("it renders correctly", () => {
     // Arrange
-    const component = render(<ButtonDropdown label="Button dropdown" />)
+    const component = render(<ButtonDropdown label="Button dropdown" />);
 
     // Assert
-    expect(component).toMatchSnapshot()
-  })
+    expect(component).toMatchSnapshot();
+  });
 
-  test('it renders with compact prop', () => {
+  test("it renders with compact prop", () => {
     // Arrange
-    const component = render(<ButtonDropdown label="Button dropdown" compact />)
+    const component = render(
+      <ButtonDropdown label="Button dropdown" compact />
+    );
 
     // Assert
-    expect(component).toMatchSnapshot()
-  })
+    expect(component).toMatchSnapshot();
+  });
 
-  test('renders with correct initial state', () => {
+  test("renders with correct initial state", () => {
     // Arrange
-    const component = shallow<ButtonDropdown>(<ButtonDropdown label="Button dropwdown" />)
+    const component = shallow<ButtonDropdown>(
+      <ButtonDropdown label="Button dropwdown" />
+    );
 
     // Assert
-    expect(component.state().activeDropdown).toBe(false)
-  })
+    expect(component.state().activeDropdown).toBe(false);
+  });
 
-  test('display dropdown when button clicked', () => {
+  test("display dropdown when button clicked", () => {
     // Arrange
-    const component = mount<ButtonDropdown>(<ButtonDropdown label="Button dropdown"><div data-sk-name="child-dropdown-item">child dropdown menu</div></ButtonDropdown>)
+    const component = mount<ButtonDropdown>(
+      <ButtonDropdown label="Button dropdown">
+        <div data-sk-name="child-dropdown-item">child dropdown menu</div>
+      </ButtonDropdown>
+    );
 
     // Act
-    expect(component.find('[data-sk-name="child-dropdown-item"]')).toHaveLength(0)
-    component.find('button').simulate('click')
-    expect(component.find('[data-sk-name="child-dropdown-item"]')).toHaveLength(1)
-  })
-})
+    expect(component.find('[data-sk-name="child-dropdown-item"]')).toHaveLength(
+      0
+    );
+    component.find("button").simulate("click");
+    expect(component.find('[data-sk-name="child-dropdown-item"]')).toHaveLength(
+      1
+    );
+  });
+});

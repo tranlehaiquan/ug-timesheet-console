@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Loading } from 'skedulo-ui'
+import * as React from "react";
+import { Loading } from "skedulo-ui";
 
 const LoadingIndicator: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const LoadingIndicator: React.FC = () => {
         <Loading align="center" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(LoadingIndicator)
+export default React.memo(LoadingIndicator);

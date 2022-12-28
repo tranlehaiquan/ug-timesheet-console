@@ -2,9 +2,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-y: scroll;
-  font-family: 'sofiapro', 'system-ui', 'BlinkMacSystemFont', '-apple-system',
-    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', 'sans-serif';
+  font-family: "sofiapro", "system-ui", "BlinkMacSystemFont", "-apple-system",
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", "sans-serif";
   box-sizing: border-box;
 }
 
@@ -29,7 +29,7 @@ body {
 
 // fix for react datepicker library
 .react-datepicker-popper {
-  z-index: 20
+  z-index: 20;
 }
 
 .Toastify__toast {

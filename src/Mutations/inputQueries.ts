@@ -1,4 +1,4 @@
-import { inlineLists } from 'common-tags'
+import { inlineLists } from "common-tags";
 
 export const createTimesheetQuery = `
 mutation createTimesheet($createInput: NewTimesheet!) {
@@ -6,7 +6,7 @@ mutation createTimesheet($createInput: NewTimesheet!) {
     insertTimesheet(input: $createInput)
   }
 }
-`
+`;
 
 export const updateTimesheetEntryQuery = `
 mutation updateTimesheetEntry($updateInput: UpdateTimesheetEntry!) {
@@ -14,7 +14,7 @@ mutation updateTimesheetEntry($updateInput: UpdateTimesheetEntry!) {
     updateTimesheetEntry(input: $updateInput)
   }
 }
-`
+`;
 
 export const deleteTimesheetQuery = `
 mutation deleteTimesheet($deleteInput: ID!) {
@@ -22,7 +22,7 @@ mutation deleteTimesheet($deleteInput: ID!) {
     deleteTimesheet(UID: $deleteInput)
   }
 }
-`
+`;
 
 export const deleteTimesheetEntryQuery = `
 mutation deleteTimesheetEntry($deleteInput: ID!) {
@@ -30,26 +30,38 @@ mutation deleteTimesheetEntry($deleteInput: ID!) {
     deleteTimesheetEntry(UID: $deleteInput)
   }
 }
-`
+`;
 
 export const createTimesheetEntryQuery = (count: number) => {
-  const indexes = Array(count).fill(null).map((_, index) => index)
+  const indexes = Array(count)
+    .fill(null)
+    .map((_, index) => index);
   return inlineLists(`
-    mutation createTimesheetEntry(${indexes.map(index => `$input${index}: NewTimesheetEntry!`)}) {
+    mutation createTimesheetEntry(${indexes.map(
+      (index) => `$input${index}: NewTimesheetEntry!`
+    )}) {
       schema {
-      ${indexes.map(index => `entry${index}:insertTimesheetEntry(input: $input${index})`)}
+      ${indexes.map(
+        (index) => `entry${index}:insertTimesheetEntry(input: $input${index})`
+      )}
       }
     }
-  `)
-}
+  `);
+};
 
 export const updateTimesheetsStatusQuery = (count: number) => {
-  const indexes = Array(count).fill(null).map((_, index) => index)
+  const indexes = Array(count)
+    .fill(null)
+    .map((_, index) => index);
   return inlineLists(`
-    mutation updateTimesheet(${indexes.map(index => `$input${index}: UpdateTimesheet!`)}) {
+    mutation updateTimesheet(${indexes.map(
+      (index) => `$input${index}: UpdateTimesheet!`
+    )}) {
       schema {
-      ${indexes.map(index => `timesheet${index}:updateTimesheet(input: $input${index})`)}
+      ${indexes.map(
+        (index) => `timesheet${index}:updateTimesheet(input: $input${index})`
+      )}
       }
     }
-  `)
-}
+  `);
+};
