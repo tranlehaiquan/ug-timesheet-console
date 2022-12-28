@@ -145,7 +145,7 @@ const InputOptionRenderer: React.FC<
           <div className="sk-text-navy-light sk-flex sk-justify-center sk-items-stretch sk-flex-grow">
             <Button
               data-sk-name="sk-filter-apply"
-              className="sked-dropdownlist-apply sk-text-blue sk-px-0 sk-w-full hover:sk-text-blue-dark"
+              className="sked-dropdownlist-apply sk-text-blue-600 sk-px-0 sk-w-full hover:sk-text-blue-dark"
               disabled={!allowApply}
               onClick={onApply(newOptions)}
               buttonType="transparent"

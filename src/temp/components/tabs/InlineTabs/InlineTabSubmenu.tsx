@@ -32,7 +32,7 @@ export const MenuNotification = ({
       className
     )}
   >
-    <p className="sk-text-blue sk-font-semibold sk-text-xxs sk-m-0 sk-flex sk-justify-center sk-items-center sk-h-full">
+    <p className="sk-text-blue-600 sk-font-semibold sk-text-xxs sk-m-0 sk-flex sk-justify-center sk-items-center sk-h-full">
       {text}
     </p>
   </div>

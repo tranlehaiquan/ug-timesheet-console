@@ -47,7 +47,7 @@ export const FilterPill: React.RefForwardingComponent<
           {
             "sk-cursor-default": fixed,
             "sk-cursor-pointer": !fixed,
-            "sk-border-blue sk-bg-blue-lightest": !fixed && isActive,
+            "sk-border-blue-600 sk-bg-blue-lightest": !fixed && isActive,
             "sk-border-transparent sk-bg-grey-lightest": fixed || !isActive,
           },
           classNames

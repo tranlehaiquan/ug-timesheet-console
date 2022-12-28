@@ -57,24 +57,24 @@ $container-background-color: $white-1 !default;
     height: $tooltip-size;
 
     &--position-top {
-      margin-top: -($tooltip-size / 2) - 1;
-      margin-left: $tooltip-size / 4;
+      margin-top: -calc(calc($tooltip-size / 2) - 1);
+      margin-left: calc($tooltip-size / 4);
     }
 
     &--position-bottom {
-      margin-top: $tooltip-size / 4;
-      margin-left: $tooltip-size / 4;
+      margin-top: calc($tooltip-size / 4);
+      margin-left: calc($tooltip-size / 4);
       box-shadow: $container-triangle-box-shadow-bottom;
     }
 
     &--position-right {
-      margin-top: $tooltip-size / 4;
+      margin-top: calc($tooltip-size / 4);
       margin-left: $tooltip-size;
     }
 
     &--position-left {
-      margin-top: $tooltip-size / 4;
-      margin-left: -($tooltip-size / 2) - 1;
+      margin-top: calc($tooltip-size / 4);
+      margin-left: -calc(calc($tooltip-size / 2) - 1);
       box-shadow: $container-triangle-box-shadow-left;
     }
   }

@@ -25,7 +25,7 @@ storiesOf("Forms/", module)
   .add("Overview", () => (
     <>
       <div className="sk-p-8 sk-max-w-lg sk-text-navy-light sk-leading-normal">
-        <h1 className="sk-text-blue sk-text-2xl sk-mb-6">Using forms</h1>
+        <h1 className="sk-text-blue-600 sk-text-2xl sk-mb-6">Using forms</h1>
         <p className="sk-mb-4">
           When creating forms, use the{" "}
           <span className="sk-font-semibold">SkedFormValidation</span> component
@@ -55,7 +55,7 @@ storiesOf("Forms/", module)
           autocomplete widget).
         </p>
         <div>
-          <h3 className="sk-text-blue sk-text-lg sk-mb-3">
+          <h3 className="sk-text-blue-600 sk-text-lg sk-mb-3">
             Click to edit behaviour
           </h3>
           <p className="sk-mb-4">

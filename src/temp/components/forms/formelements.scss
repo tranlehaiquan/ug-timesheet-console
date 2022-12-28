@@ -45,7 +45,7 @@
 
   &:focus,
   &:active {
-    @apply sk-outline-none sk-border-blue;
+    @apply sk-outline-none sk-border-blue-600;
   }
 
   &:disabled {
@@ -100,7 +100,7 @@
   }
 
   &:after {
-    @apply sk-rounded sk-bg-blue sk-absolute sk-opacity-0 sk-w-full sk-h-full sk-text-white;
+    @apply sk-rounded sk-bg-blue-600 sk-absolute sk-opacity-0 sk-w-full sk-h-full sk-text-white;
     box-sizing: border-box;
     top: 50%;
     left: 50%;
@@ -114,7 +114,7 @@
 
   &:checked {
     &:before {
-      @apply sk-border-blue;
+      @apply sk-border-blue-600;
     }
 
     &:after {

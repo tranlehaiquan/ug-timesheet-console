@@ -76,14 +76,14 @@
     }
 
     &--today {
-      @apply sk-text-blue sk-border sk-rounded;
+      @apply sk-text-blue-600 sk-border sk-rounded;
     }
 
     &--selected,
     &--highlighted {
-      @apply sk-border sk-rounded sk-bg-blue sk-text-white sk-rounded sk-border-blue;
+      @apply sk-border sk-rounded sk-bg-blue-600 sk-text-white sk-rounded sk-border-blue-600;
       &:hover {
-        @apply sk-bg-blue sk-text-white sk-rounded sk-border-blue;
+        @apply sk-bg-blue-600 sk-text-white sk-rounded sk-border-blue-600;
       }
     }
 
@@ -101,21 +101,21 @@
 
     &--week-selected,
     &--week-selected:hover {
-      @apply sk-border sk-border-blue sk-text-white sk-bg-blue sk-rounded-none;
+      @apply sk-border sk-border-blue-600 sk-text-white sk-bg-blue-600 sk-rounded-none;
 
       &:first-child,
       &:first-child:hover {
-        @apply sk-border-blue sk-rounded-l;
+        @apply sk-border-blue-600 sk-rounded-l;
       }
 
       &:last-child,
       &:last-child:hover {
-        @apply sk-border-blue sk-rounded-r;
+        @apply sk-border-blue-600 sk-rounded-r;
       }
     }
 
     &--today {
-      @apply sk-border-blue;
+      @apply sk-border-blue-600;
     }
   }
 

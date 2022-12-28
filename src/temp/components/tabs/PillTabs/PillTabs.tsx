@@ -61,7 +61,7 @@ export class PillTabs extends React.PureComponent<
       this.props;
 
     const classes = classNames(
-      "sk-list-reset sk-flex sk-bg-navy-lighter sk-p-2 sk-text-xs",
+      "sk-list-none sk-flex sk-bg-navy-lighter sk-p-2 sk-text-xs",
       className
     );
     const activeClasses = "sk-bg-navy-light sk-opacity-100 sk-shadow";

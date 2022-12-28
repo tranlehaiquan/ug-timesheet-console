@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButtonDropdown default render 1`] = `
+<div
+  data-sk-name="sked-popout"
+>
+  <div>
+    <div
+      class="sked-infowindow__trigger "
+      data-sk-name="sked-infowindow-trigger"
+    >
+      <button
+        class="sked-button sked-button--transparent sked-button--icon-only"
+        type="button"
+      >
+        <div
+          class="sk-visible"
+        >
+          <div
+            class="sk-flex sk-items-center"
+          >
+            <svg
+              class="sk-flex-shrink-0 sk-fill-current sked-button__icon"
+              height="18"
+              id="Layer_1"
+              viewBox="0 0 18 18"
+              width="18"
+            >
+              <circle
+                cx="9"
+                cy="15"
+                r="2"
+              />
+              <circle
+                cx="9"
+                cy="9"
+                r="2"
+              />
+              <circle
+                cx="9"
+                cy="3"
+                r="2"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="sk-inset-0 sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+        >
+          <div
+            class="loading-spinner sk-hidden"
+          >
+            <svg
+              class="loading-spinner--circular"
+              height="18"
+              viewBox="25 25 50 50"
+              width="18"
+            >
+              <circle
+                class="loading-spinner--path"
+                cx="50"
+                cy="50"
+                fill="none"
+                r="20"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="5"
+              />
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

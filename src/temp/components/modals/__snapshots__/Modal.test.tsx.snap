@@ -3,7 +3,7 @@
 exports[`Modal BaseModal renders 1`] = `
 <Portal>
   <div
-    className="sk-fade-in sk-fixed sk-pin sked-modal-bg sk-flex sk-justify-center sk-font-sans"
+    className="sk-fade-in sk-fixed sk-inset-0  sked-modal-bg sk-flex sk-justify-center sk-font-sans"
     data-sk-name="sked-modal"
   >
     <div

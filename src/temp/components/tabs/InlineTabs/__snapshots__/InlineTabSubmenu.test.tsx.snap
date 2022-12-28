@@ -2,7 +2,7 @@
 
 exports[`InlineTabSubmenu renders 1`] = `
 <ul
-  class="sk-list-reset menu-min-width sk-cursor-pointer sk-text-sm sk-text-navy sk-font-normal sk-bg-white sk-max-w-xs sk-mt-1 sk-py-1 sk-border sk-border-solid sk-border-grey-lighter sk-shadow sk-rounded-medium"
+  class="sk-list-none menu-min-width sk-cursor-pointer sk-text-sm sk-text-navy sk-font-normal sk-bg-white sk-max-w-xs sk-mt-1 sk-py-1 sk-border sk-border-solid sk-border-grey-lighter sk-shadow sk-rounded-medium"
 >
   <li
     class="sk-py-2 hover:sk-bg-grey-lightest sk-px-3 sk-break-words sk-text-navy sk-font-semibold"
@@ -17,7 +17,7 @@ exports[`InlineTabSubmenu renders 1`] = `
       class="sk-w-5 sk-h-5 sk-rounded-full sk-bg-blue-lightest sk-inline-block sk-ml-1"
     >
       <p
-        class="sk-text-blue sk-font-semibold sk-text-xxs sk-m-0 sk-flex sk-justify-center sk-items-center sk-h-full"
+        class="sk-text-blue-600 sk-font-semibold sk-text-xxs sk-m-0 sk-flex sk-justify-center sk-items-center sk-h-full"
       >
         2
       </p>

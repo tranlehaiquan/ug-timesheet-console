@@ -28,7 +28,7 @@ describe("Badge", () => {
     expect(
       wrapper
         .find('[data-sk-name="sk-badge-default"]')
-        .hasClass("sk-text-blue sk-bg-blue-lightest")
+        .hasClass("sk-text-blue-600 sk-bg-blue-lightest")
     ).toBe(true);
   });
 

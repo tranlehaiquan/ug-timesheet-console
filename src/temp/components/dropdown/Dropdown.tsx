@@ -1,6 +1,6 @@
+import { Placement } from "@popperjs/core";
 import * as React from "react";
 import { Manager, Popper, Reference } from "react-popper";
-import { Placement, Modifiers } from "popper.js";
 
 interface IProps {
   /**
@@ -10,7 +10,7 @@ interface IProps {
   children: React.ReactNode;
   visible?: boolean;
   placement?: Placement;
-  modifiers?: Modifiers;
+  modifiers?: any;
 }
 
 const defaultModifiers = {

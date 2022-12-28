@@ -2,7 +2,7 @@
 
 exports[`Icon renders correctly 1`] = `
 <svg
-  class="sk-flex-no-shrink sk-fill-current"
+  class="sk-flex-shrink-0 sk-fill-current"
   height="18"
   id="Layer_1"
   viewBox="0 0 18 18"
@@ -16,7 +16,7 @@ exports[`Icon renders correctly 1`] = `
 
 exports[`Icon renders with additional classes 1`] = `
 <svg
-  class="sk-flex-no-shrink sk-fill-current extra-class"
+  class="sk-flex-shrink-0 sk-fill-current extra-class"
   height="18"
   viewBox="0 0 18 18"
   width="18"

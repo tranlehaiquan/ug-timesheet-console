@@ -1,5 +1,5 @@
 .sked-avatar {
-  @apply sk-font-sans sk-bg-navy-lighter sk-w-8 sk-h-8 sk-text-xxs sk-font-medium sk-text-white sk-rounded-full sk-text-center sk-relative sk-flex-no-shrink;
+  @apply sk-font-sans sk-bg-navy-lighter sk-w-8 sk-h-8 sk-text-xxs sk-font-medium sk-text-white sk-rounded-full sk-text-center sk-relative sk-flex-shrink-0;
   line-height: 30px;
 
   &__image {

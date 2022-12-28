@@ -11,7 +11,7 @@ exports[`ButtonGroup it renders compact correctly 1`] = `
       class="sk-visible"
     />
     <div
-      class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+      class="sk-inset-0  sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
     >
       <div
         class="loading-spinner sk-invisible"
@@ -43,7 +43,7 @@ exports[`ButtonGroup it renders compact correctly 1`] = `
       class="sk-visible"
     />
     <div
-      class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+      class="sk-inset-0  sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
     >
       <div
         class="loading-spinner sk-invisible"
@@ -82,7 +82,7 @@ exports[`ButtonGroup it renders correctly 1`] = `
       class="sk-visible"
     />
     <div
-      class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+      class="sk-inset-0  sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
     >
       <div
         class="loading-spinner sk-invisible"
@@ -114,7 +114,7 @@ exports[`ButtonGroup it renders correctly 1`] = `
       class="sk-visible"
     />
     <div
-      class="sk-pin sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
+      class="sk-inset-0  sk-absolute sk-m-auto sk-flex sk-justify-center sk-items-center"
     >
       <div
         class="loading-spinner sk-invisible"

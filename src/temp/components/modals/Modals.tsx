@@ -10,7 +10,7 @@ export const BaseModal: React.SFC = ({ children, ...otherProps }) => {
     <Portal>
       {/* TODO: UPDATE FOLLOWING LINES ON DESIGN COMPONENT */}
       <div
-        className="sk-fade-in sk-fixed sk-pin sked-modal-bg sk-flex sk-justify-center sk-items-center sk-font-sans"
+        className="sk-fade-in sk-fixed sk-inset-0  sked-modal-bg sk-flex sk-justify-center sk-items-center sk-font-sans"
         data-sk-name="sked-modal"
       >
         <div

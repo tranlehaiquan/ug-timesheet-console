@@ -213,7 +213,7 @@ export class Filter<T> extends React.PureComponent<FilterProps<T>, State<T>> {
                 modifiers={modifiers}
                 trigger={
                   <Button
-                    className="sk-text-blue hover:sk-text-blue-dark sk-m-1"
+                    className="sk-text-blue-600 hover:sk-text-blue-dark sk-m-1"
                     sked-filter-type={ADD_FILTER}
                     data-sk-name={ADD_FILTER}
                     buttonType="transparent"

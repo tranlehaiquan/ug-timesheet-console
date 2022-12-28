@@ -31,7 +31,7 @@ export const ReadOnly: React.SFC<IProps> = ({
     className
   );
   const iconClasses =
-    "sk-flex-no-shrink sk-invisible group-hover:sk-fill-navy group-hover:sk-visible group-hover:sk-text-grey sk-mx-2 sk-pointer-events-none";
+    "sk-flex-shrink-0 sk-invisible group-hover:sk-fill-navy group-hover:sk-visible group-hover:sk-text-grey sk-mx-2 sk-pointer-events-none";
 
   return (
     <div className="sk-flex">

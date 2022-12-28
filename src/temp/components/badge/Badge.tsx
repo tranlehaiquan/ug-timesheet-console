@@ -38,7 +38,7 @@ export const Badge: React.SFC<IProps> = ({
         "sked-badge-min-w",
         "sk-text-xxs sk-font-medium sk-tracking-wide sk-h-5 sk-pb-px sk-rounded-full sk-inline-flex sk-items-center sk-justify-center",
         { "sked-badge-wider": checkedCount > 9 || countLimiter < 9 },
-        { "sk-text-blue sk-bg-blue-lightest": badgeType === "default" },
+        { "sk-text-blue-600 sk-bg-blue-lightest": badgeType === "default" },
         { "sk-text-white sk-bg-blue": badgeType === "primary" },
         { "sk-text-white sk-bg-red": badgeType === "important" },
         { "sk-text-navy-light sk-bg-grey-lighter": badgeType === "neutral" },

@@ -1,0 +1,25 @@
+@import 'tailwindcss/base';
+@import "tailwindcss/components";
+
+@import "./animations.scss";
+/** Legacy **/
+@import "../temp/components/loader/loading.scss";
+@import "../temp/components/popups/info-window/info-window.scss";
+@import "../temp/components/popups/tooltip/tooltip.scss";
+@import "../temp/components/button-group/buttongroup.scss";
+@import "../temp/components/avatar/avatar.scss";
+@import "../temp/components/tabs/InlineTabs/inlineTabs.scss";
+@import "../temp/components/forms/formelements.scss";
+@import "../temp/components/modals/modals.scss";
+@import "../temp/components/buttons/buttons.scss";
+@import "../temp/components/loader/spinner/loadingspinner.scss";
+@import "../temp/components/loader/loading.scss";
+@import "../temp/components/pagination/pagination.scss";
+@import "../temp/components/dynamic-table/dynamictable.scss";
+@import "../temp/components/badge/badge.scss";
+@import "../temp/components/menu/menu.scss";
+@import "../temp/components/filter/filter.scss";
+@import "../temp/components/datepicker/datepicker.scss";
+@import "../temp/components/calendar-controls/calendar-controls.scss";
+
+@import "tailwindcss/utilities";

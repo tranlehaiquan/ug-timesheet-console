@@ -2,7 +2,9 @@ export * from "./components/action-bar/ActionBar";
 export * from "./components/action-bar/ActionBarSearchItem/ActionBarSearchItem";
 export * from "./components/avatar/Avatar";
 export * from "./components/badge/Badge";
-export * from "./components/buttons/button/Button";
+export * from './components/buttons/button/Button'
+export * from './components/buttons/icon-button/IconButton'
+export * from './components/buttons/icon-button-dropdown/IconButtonDropdown'
 export * from "./components/buttons/button-dropdown/ButtonDropdown";
 export * from "./components/button-group/ButtonGroup";
 export * from "./components/calendar-controls/CalendarControls";
@@ -26,8 +28,8 @@ export * from "./components/menu/Menu";
 export * from "./components/modals/Modals";
 export * from "./components/pagination/Pagination";
 export * from "./components/pill/Pill";
-export * from "./components/popout/PopOutBase";
 export * from "./components/popout/PopOut";
+export * from "./components/popout/PopOutBase";
 export * from "./components/popups/info-window/InfoWindow";
 export * from "./components/popups/overflow-tooltip/OverflowTooltip";
 export * from "./components/popups/tooltip/Tooltip";

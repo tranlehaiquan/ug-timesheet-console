@@ -1,23 +1,23 @@
 .sked-fixed-cell-head {
-  @apply sk-sticky sk-pin sk-bg-grey-lightest sk-z-10;
+  @apply sk-sticky sk-inset-0  sk-bg-grey-lightest sk-z-10;
   left: 0;
   background-clip: padding-box;
 }
 
 .sked-fixed-cell-row {
-  @apply sk-sticky sk-pin sk-bg-white sk-z-10;
+  @apply sk-sticky sk-inset-0  sk-bg-white sk-z-10;
   left: 0;
   background-clip: padding-box;
 }
 
 .sked-fixed-cell-head-selectable {
-  @apply sk-sticky sk-pin sk-bg-grey-lightest sk-z-10;
+  @apply sk-sticky sk-inset-0  sk-bg-grey-lightest sk-z-10;
   left: 40px;
   background-clip: padding-box;
 }
 
 .sked-fixed-cell-row-selectable {
-  @apply sk-sticky sk-pin sk-bg-white sk-z-10;
+  @apply sk-sticky sk-inset-0  sk-bg-white sk-z-10;
   left: 40px;
   background-clip: padding-box;
 }

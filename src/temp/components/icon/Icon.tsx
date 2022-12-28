@@ -42,7 +42,7 @@ export const Icon = ({
       height={size || DEFAULT_SIZE}
       width={size || DEFAULT_SIZE}
       onClick={onClick}
-      className={classNames("sk-flex-no-shrink sk-fill-current", className)}
+      className={classNames("sk-flex-shrink-0 sk-fill-current", className)}
     />
   );
 };

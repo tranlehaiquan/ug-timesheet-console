@@ -12,7 +12,7 @@ exports[`ReadOnly renders correctly 1`] = `
     Hello world
      
     <Icon
-      className="sk-flex-no-shrink sk-invisible group-hover:sk-fill-navy group-hover:sk-visible group-hover:sk-text-grey sk-mx-2 sk-pointer-events-none"
+      className="sk-flex-shrink-0 sk-invisible group-hover:sk-fill-navy group-hover:sk-visible group-hover:sk-text-grey sk-mx-2 sk-pointer-events-none"
       name="edit"
       size={14}
     />

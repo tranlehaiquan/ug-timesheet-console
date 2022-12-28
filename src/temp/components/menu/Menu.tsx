@@ -10,7 +10,7 @@ export const Menu: React.FC<IPropsSub> = ({
   className = "",
   ...props
 }) => {
-  const ulClasses = "sk-list-reset";
+  const ulClasses = "sk-list-none";
   const menuItemClasses =
     "menu-min-width sk-cursor-pointer sk-text-sm sk-text-navy sk-font-normal sk-bg-white sk-max-w-xs sk-mt-1 sk-py-1 sk-border sk-border-solid sk-border-grey-lighter sk-shadow sk-rounded-medium";
 

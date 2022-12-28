@@ -224,7 +224,7 @@ export class InlineTabs extends React.PureComponent<IProps, IState> {
       this.props;
 
     const listContainer = classNames(
-      "sk-flex sk-border-b sk-border-grey-light sk-text-navy-lighter sk-capitalize sk-text-base sk-flex-no-shrink",
+      "sk-flex sk-border-b sk-border-grey-light sk-text-navy-lighter sk-capitalize sk-text-base sk-flex-shrink-0",
       className
     );
 
@@ -243,7 +243,7 @@ export class InlineTabs extends React.PureComponent<IProps, IState> {
 
     return (
       <div {...newProps} className={listContainer}>
-        <ul className="sk-list-reset">
+        <ul className="sk-list-none">
           {tabs.map((tab) => {
             const tabClasses = classNames(
               defaultTabClasses,

@@ -1,22 +1,30 @@
-import * as React from "react";
-import { Manager, Popper, Reference, PopperProps } from "react-popper";
+import * as React from 'react'
+import * as PopperJS from '@popperjs/core'
+import { Manager, Popper, Reference, StrictModifier } from 'react-popper'
+import { Portal } from '../portal/Portal'
 
 export interface IPopOutBase {
   /**
    * The element you are rendering the content from
    */
-  trigger: JSX.Element | React.ReactNode;
-  children: React.ReactNode;
-  visible?: boolean;
-  placement?: NonNullable<PopperProps["placement"]>;
-  modifiers?: NonNullable<PopperProps["modifiers"]>;
+  trigger: JSX.Element
+  visible?: boolean
+  placement?: PopperJS.Options['placement']
+  modifiers?: PopperJS.Options['modifiers']
+  popOutContainer?: (PopperWrappedContent: JSX.Element) => JSX.Element
+  children?: React.ReactNode
 }
 
-const defaultModifiers = {
-  flip: { enabled: true },
-  shift: { enabled: true },
-  preventOverflow: { enabled: true },
-};
+const DEFAULT_MODIFIERS: StrictModifier[] = [
+  {
+    name: 'flip',
+    enabled: true
+  },
+  {
+    name: 'preventOverflow',
+    enabled: true
+  }
+]
 
 /**
  * PopOutBase uses react-popper/popperjs under the hood and is a wrapper that sets up the Popperjs Manager, Reference and Popper.
@@ -29,10 +37,23 @@ export const PopOutBase: React.FC<IPopOutBase> = React.memo(
   ({
     trigger,
     visible = true,
+    popOutContainer: portalContainer = (content: JSX.Element) => <Portal>{content}</Portal>,
     children,
     placement,
-    modifiers = defaultModifiers,
+    modifiers = DEFAULT_MODIFIERS
   }) => {
+    const PopperWithContent = (
+      <Popper placement={placement} modifiers={modifiers} strategy="fixed">
+        {({ placement: localPlacement, style, ref }) => {
+          return (
+            <div style={style} ref={ref} data-placement={localPlacement}>
+              {children}
+            </div>
+          )
+        }}
+      </Popper>
+    )
+
     return (
       <Manager>
         <Reference>
@@ -42,16 +63,8 @@ export const PopOutBase: React.FC<IPopOutBase> = React.memo(
             </div>
           )}
         </Reference>
-        {visible && (
-          <Popper placement={placement} modifiers={modifiers}>
-            {({ style, ref }) => (
-              <div style={style} ref={ref} className="sk-z-20 sk-w-full">
-                {children}
-              </div>
-            )}
-          </Popper>
-        )}
+        {visible && portalContainer(PopperWithContent)}
       </Manager>
-    );
+    )
   }
-);
+)
