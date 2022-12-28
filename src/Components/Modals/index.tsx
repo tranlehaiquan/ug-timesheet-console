@@ -1,2 +1,4 @@
-export { ConfirmationModal, ConfirmationModalProps } from "./ConfirmationModal";
-export { BaseModal, BaseModalProps } from "./BaseModal";
+export { ConfirmationModal } from "./ConfirmationModal";
+export type { ConfirmationModalProps } from './ConfirmationModal'
+export { BaseModal } from "./BaseModal";
+export type { BaseModalProps } from './BaseModal'

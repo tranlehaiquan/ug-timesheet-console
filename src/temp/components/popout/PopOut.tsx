@@ -179,6 +179,7 @@ export class PopOut extends React.PureComponent<IPopOutProps, IPopOutState> {
 
   render() {
     const { placement, children, trigger, popOutContainer } = this.props;
+    console.log()
     const { isOpen } = this.state;
     return (
       <PopOutBase

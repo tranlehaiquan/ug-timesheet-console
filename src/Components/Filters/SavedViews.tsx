@@ -142,37 +142,39 @@ const SavedViews: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <PopOut placement="bottom" trigger={myFilterSetsTrigger()}>
-      <Menu>
-        {!accessAbleSavedFilters.length && (
-          <MenuItem className="sk-p-0" contentEditable={false}>
-            <div className="sk-flex sk-justify-between sk-items-center sk-px-3 sk-py-2">
-              <span className="sk-w-full">No saved items</span>
-            </div>
-          </MenuItem>
-        )}
-        {accessAbleSavedFilters.map(
-          (item: ReduxDataTypes.SavedFilter, index: number) => (
-            <MenuItem
-              key={`${item.filterName}-${index}`}
-              className="sk-p-0"
-              onClick={(e) => onSelectSavedFilter(e, item)}
-            >
-              <div className="sk-flex sk-justify-between sk-items-center">
-                {/* tslint:disable-next-line: jsx-no-lambda */}
-                <p className="sk-w-full sk-px-3 sk-py-2">{item.filterName}</p>
-                <Icon
-                  name="trash"
-                  size={24}
-                  className="sk-text-neutral-500 sk-pl-2"
-                  /* tslint:disable-next-line: jsx-no-lambda */
-                  onClick={(e) => onRemoveFilter(e, item.filterName, index)}
-                />
+    <PopOut placement="bottom" trigger={myFilterSetsTrigger}>
+      {() => (
+        <Menu>
+          {!accessAbleSavedFilters.length && (
+            <MenuItem className="sk-p-0" contentEditable={false}>
+              <div className="sk-flex sk-justify-between sk-items-center sk-px-3 sk-py-2">
+                <span className="sk-w-full">No saved items</span>
               </div>
             </MenuItem>
-          )
-        )}
-      </Menu>
+          )}
+          {accessAbleSavedFilters.map(
+            (item: ReduxDataTypes.SavedFilter, index: number) => (
+              <MenuItem
+                key={`${item.filterName}-${index}`}
+                className="sk-p-0"
+                onClick={(e) => onSelectSavedFilter(e, item)}
+              >
+                <div className="sk-flex sk-justify-between sk-items-center">
+                  {/* tslint:disable-next-line: jsx-no-lambda */}
+                  <p className="sk-w-full sk-px-3 sk-py-2">{item.filterName}</p>
+                  <Icon
+                    name="trash"
+                    size={24}
+                    className="sk-text-neutral-500 sk-pl-2"
+                    /* tslint:disable-next-line: jsx-no-lambda */
+                    onClick={(e) => onRemoveFilter(e, item.filterName, index)}
+                  />
+                </div>
+              </MenuItem>
+            )
+          )}
+        </Menu>
+      )}
     </PopOut>
   );
 };

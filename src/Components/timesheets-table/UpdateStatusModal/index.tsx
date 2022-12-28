@@ -7,7 +7,7 @@ export type UpdateStatusModalProps =
   | SingleUpdateModalProps
   | BatchUpdateModalProps
   | NoUpdateModalProps;
-export { Action as SingleUpdateModalAction } from "./SingleUpdateModal";
+export type { Action as SingleUpdateModalAction } from "./SingleUpdateModal";
 
 export default (props: UpdateStatusModalProps) => {
   if (!props.isOpened) return null;

@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "skedulo-ui": path.resolve(__dirname, "./src/temp/"),
+      'src': path.resolve(__dirname, './src'),
     },
   },
 });
