@@ -6,7 +6,6 @@
     @apply sk-outline-none;
   }
 
-
   &[disabled] {
     @apply sk-pointer-events-none sk-text-neutral-550 sk-tracking-normal;
   }
@@ -14,7 +13,8 @@
   &--primary {
     @apply sk-bg-blue-600  sk-text-white sk-border-blue-600 sk-tracking-wide;
 
-    &:hover, &.sked-button--active  {
+    &:hover,
+    &.sked-button--active {
       @apply sk-border-blue-700 sk-bg-blue-700;
     }
 
@@ -25,8 +25,9 @@
 
   &--secondary {
     @apply sk-text-neutral-750 sk-bg-transparent sk-border-neutral-400;
-    
-    &:hover, &.sked-button--active {
+
+    &:hover,
+    &.sked-button--active {
       @apply sk-bg-neutral-250;
     }
 
@@ -54,18 +55,17 @@
 }
 
 .sked-button:not(.sked-button--icon-only) .sked-button__icon {
-   @apply sk-mr-2;
+  @apply sk-mr-2;
 }
 
-.sked-button--icon-only { 
-    @apply sk-px-2;
+.sked-button--icon-only {
+  @apply sk-px-2;
 
-    &.sked-button--transparent:hover {
-      @apply sk-bg-neutral-250;
-    }
-} 
+  &.sked-button--transparent:hover {
+    @apply sk-bg-neutral-250;
+  }
+}
 
 .sked-button--compact.sked-button--icon-only {
-  padding: .375rem;
+  padding: 0.375rem;
 }
-

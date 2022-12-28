@@ -2,7 +2,9 @@
 import axios from "axios";
 import "jspdf-autotable";
 import mapValues from "lodash/mapValues";
+import ReduxDataTypes, { EntryTypes, UID } from "src/StoreV2/DataTypes";
 import { Vocabulary, Services, credentials, GraphQLRequest } from "./Services";
+import { inlineLists } from "common-tags";
 
 interface IGraphPageInfo {
   hasNextPage: boolean;
@@ -20,8 +22,17 @@ interface IGraphQLFetchByFilter {
   pageInfo?: IGraphPageInfo;
 }
 
+interface CreationResp {
+  schema: { insertTimesheet: UID };
+}
 interface IGraphQLFetchResult {
   [key: string]: IGraphQLFetchById | IGraphQLFetchByFilter;
+}
+
+export interface IGraphQLMutationResult<T> {
+  schema: {
+    [operationName: string]: T;
+  };
 }
 
 export class DataServices {
@@ -54,6 +65,15 @@ export class DataServices {
     const { data } = await this.httpApi.post("/graphql/graphql", params);
 
     return this.transformResult(data.data);
+  };
+
+  mutateGraphQl = async <T>(
+    params: GraphQLRequest
+  ): Promise<IGraphQLMutationResult<T>> => {
+    const { data } = await this.httpApi.post<{
+      data: IGraphQLMutationResult<T>;
+    }>("/graphql/graphql", params);
+    return data.data;
   };
 
   getVocabulary() {
@@ -94,6 +114,18 @@ export class DataServices {
     });
   }
 
+  fetchTimeSheetEntriesByTypeID(
+    typeIds: string[],
+    typeName: EntryTypes
+  ): Promise<{ timesheetEntry: Partial<ReduxDataTypes.TimesheetEntry[]> }> {
+    return this.fetchGraphQl({
+      query: TimeSheetEntryQuery,
+      variables: {
+        filter: `${typeName}Id IN ${JSON.stringify(typeIds)}`,
+      },
+    });
+  }
+
   fetchProducts() {
     return this.fetchGraphQl<{ products: Product[] }>({
       query: ProductsQuery,
@@ -104,6 +136,25 @@ export class DataServices {
     return this.services.graphQL.mutate({
       query: CreateProductMutation,
       variables: { input },
+    });
+  }
+
+  createTimeSheet(input: Partial<ReduxDataTypes.Timesheet>) {
+    return this.mutateGraphQl<string>({
+      query: createTimesheetQuery,
+      variables: {
+        createInput: input,
+      },
+    });
+  }
+
+  createTimeSheetEntry(
+    input: Partial<ReduxDataTypes.TimesheetEntry>,
+    count: number
+  ) {
+    return this.mutateGraphQl<Partial<ReduxDataTypes.TimesheetEntry>>({
+      query: createTimeSheetEntryQuery(count),
+      variables: input,
     });
   }
 
@@ -176,6 +227,16 @@ export class DataServices {
     const { data } = await this.httpApi.get("/auth/metadata/user");
     return data.result;
   }
+
+  async addConfigPreference(data: Record<string, unknown>) {
+    const res = await this.httpApi.post("/config/preference", data);
+    return res.data;
+  }
+
+  async fetchConfigPreference() {
+    const res = await this.httpApi.get("/config/preference");
+    return res.data.result;
+  }
 }
 
 export const dataService = new DataServices(Services);
@@ -210,6 +271,25 @@ const JobAllocationsQuery = `
       edges {
         node {
           UID
+        }
+      }
+    }
+  }
+`;
+
+const TimeSheetEntryQuery = `
+  query fetchTimeSheetEntries($filter: EQLQueryFilterTimesheetEntry!) {
+    timesheetEntry(filter: $filter) {
+      edges {
+        node {
+          UID 
+          JobId
+          ActivityId
+          UnavailabilityId
+          ShiftId
+          Timesheet {
+            ResourceId
+          }
         }
       }
     }
@@ -321,6 +401,31 @@ const DeleteProductMutation = `
 mutation DeleteProductMutation($id: ID!) {
   schema {
     deleteProducts(UID: $id)
+  }
+}
+`;
+
+const createTimeSheetEntryQuery = (count: number) => {
+  const indexes = Array(count)
+    .fill(null)
+    .map((_, index) => index);
+  return inlineLists(`
+    mutation createTimesheetEntry(${indexes.map(
+      (index) => `$input${index}: NewTimesheetEntry!`
+    )}) {
+      schema {
+      ${indexes.map(
+        (index) => `entry${index}:insertTimesheetEntry(input: $input${index})`
+      )}
+      }
+    }
+  `);
+};
+
+const createTimesheetQuery = `
+mutation createTimesheet($createInput: NewTimesheet!) {
+  schema {
+    insertTimesheet(input: $createInput)
   }
 }
 `;

@@ -7,6 +7,14 @@ export const DEFAULT_TS_ENTRY_PAGINATION = {
   page: 0,
 };
 
+export const TS_ENTRY_TYPE = {
+  SHIFT: "Shift",
+  UNAVAILABILITY: "Unavailability",
+  JOB: "Job",
+  ACTIVITY: "Activity",
+  MANUAL: "Manual",
+};
+
 export const getEntryTimezone = (entry: ReduxDataTypes.TimesheetEntry) => {
   switch (entry.EntryType) {
     case "Job":

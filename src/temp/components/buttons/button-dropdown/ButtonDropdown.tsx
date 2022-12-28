@@ -1,15 +1,15 @@
-import * as React from 'react'
+import * as React from "react";
 
-import { Icon } from '../../icon/Icon'
-import { PopOut, IPopOutState } from '../../popout/PopOut'
-import { Button } from '../button/Button'
-import { IButtonDropdownCommon } from '../interfaces'
+import { Icon } from "../../icon/Icon";
+import { PopOut, IPopOutState } from "../../popout/PopOut";
+import { Button } from "../button/Button";
+import { IButtonDropdownCommon } from "../interfaces";
 
 interface IButtonDropdownProps extends IButtonDropdownCommon {
   /**
    * Text to display on the button
    */
-  label: string
+  label: string;
 }
 
 /**
@@ -25,18 +25,28 @@ export const ButtonDropdown: React.FC<IButtonDropdownProps> = ({
   buttonType,
   ...otherProps
 }) => {
-  const trigger = (isOpen: IPopOutState['isOpen']) => (
-    <Button {...otherProps} buttonType={buttonType || 'secondary'} className={className} active={isOpen}>
+  const trigger = (isOpen: IPopOutState["isOpen"]) => (
+    <Button
+      {...otherProps}
+      buttonType={buttonType || "secondary"}
+      className={className}
+      active={isOpen}
+    >
       {label}
       <Icon name="chevronDown" className="sk-ml-1 sk--mr-1" />
     </Button>
-  )
+  );
 
-  const renderContent = () => children
+  const renderContent = () => children;
 
   return (
-    <PopOut placement={placement} popOutContainer={popOutContainer} trigger={trigger} closeOnFirstClick>
+    <PopOut
+      placement={placement}
+      popOutContainer={popOutContainer}
+      trigger={trigger}
+      closeOnFirstClick
+    >
       {renderContent}
     </PopOut>
-  )
-}
+  );
+};

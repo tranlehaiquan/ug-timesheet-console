@@ -5,6 +5,7 @@ import {
   hoursToDuration,
   minutesToDuration,
 } from "../../../common/utils/dateTimeHelpers";
+import { trim } from "lodash";
 
 interface Props {
   value?: number;
@@ -18,7 +19,7 @@ export const DurationCell: React.FC<Props> = ({ value, bold, isInMinutes }) => {
     : hoursToDuration(value);
   return (
     <span className={classnames({ "sk-font-semibold": bold })}>
-      {!(value === null || value === undefined) ? duration : "0"}
+      {!(value === null || value === undefined) ? trim(duration) || "0" : "0"}
     </span>
   );
 };

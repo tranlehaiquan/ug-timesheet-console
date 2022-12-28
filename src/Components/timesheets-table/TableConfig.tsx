@@ -128,14 +128,15 @@ export const getTSEntryColumns = (
     {
       key: "LunchBreakDuration" as keyof ReduxDataTypes.TimesheetEntry,
       name: "Lunch Break",
+      emptyPlaceholderText: "0",
       cellRenderer: (
-        lunchBreakDuration: string,
+        lunchBreakDuration: number,
         entry: ReduxDataTypes.TimesheetEntry
       ) => {
         const jobAllocation = getJobAllocationByTimeSheetEntry(entry);
         if (!isEmpty(jobAllocation) && jobAllocation.LunchBreakDuration) {
           const lunchBreakDurationJA =
-            jobAllocation.LunchBreakDuration || lunchBreakDuration;
+            jobAllocation.LunchBreakDuration || lunchBreakDuration || 0;
           return (
             <DurationCell value={lunchBreakDurationJA as number} isInMinutes />
           );
@@ -147,7 +148,7 @@ export const getTSEntryColumns = (
     {
       key: "ActualDuration" as keyof ReduxDataTypes.TimesheetEntry,
       name: "Total Hours",
-      emptyPlaceholderText: "-",
+      emptyPlaceholderText: "0",
       cellRenderer: (id: string, entry: ReduxDataTypes.TimesheetEntry) => {
         const loggedTimeInMinute = getActualLoggedTimeInMinute(entry);
         return (
@@ -166,7 +167,7 @@ export const getTSEntryColumns = (
     {
       key: "Distance" as keyof ReduxDataTypes.TimesheetEntry,
       name: "Travel Distance",
-      emptyPlaceholderText: "-",
+      emptyPlaceholderText: "0",
       cellRenderer: (
         uid: string,
         { Distance, DistanceUnit }: ReduxDataTypes.TimesheetEntry

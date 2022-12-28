@@ -1,12 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import moment from "moment";
 import { format } from "date-fns";
+import { RangeType } from "skedulo-ui";
 import ReduxDataTypes from "../DataTypes";
 import { RootState } from "../store";
 
 interface FilterState {
   filterValues: ReduxDataTypes.Filter[];
   dateRange: { startDate: string; endDate: string };
+  dateRangeType: RangeType;
+  savedFilters: ReduxDataTypes.SavedFilter[];
+  selectedSavedFilter: ReduxDataTypes.SavedFilter | null;
 }
 
 const SLICE_NAME = "TIME_SHEET_FILTER";
@@ -45,6 +49,9 @@ export const getDefaultTimeRange = () => {
 const initialState: FilterState = {
   filterValues: [],
   dateRange: getDefaultTimeRange(),
+  dateRangeType: "week",
+  savedFilters: [],
+  selectedSavedFilter: null,
 };
 
 const buildFilters = (
@@ -190,17 +197,51 @@ export const filterSlice = createSlice({
       };
     },
 
+    setDateRangeType: (state, action: PayloadAction<RangeType>) => {
+      return {
+        ...state,
+        dateRangeType: action.payload,
+      };
+    },
+
     resetFilters: (state) => {
       return {
         ...state,
         ...initialState,
       };
     },
+
+    setSavedFilter: (
+      state,
+      action: PayloadAction<ReduxDataTypes.SavedFilter[]>
+    ) => {
+      return {
+        ...state,
+        savedFilters: action.payload,
+      };
+    },
+
+    setSelectedSavedFilter: (
+      state,
+      action: PayloadAction<ReduxDataTypes.SavedFilter>
+    ) => {
+      return {
+        ...state,
+        selectedSavedFilter: action.payload,
+      };
+    },
   },
 });
 
-export const { initFilters, setFilters, setDateRange, resetFilters } =
-  filterSlice.actions;
+export const {
+  initFilters,
+  setFilters,
+  setDateRange,
+  resetFilters,
+  setSavedFilter,
+  setSelectedSavedFilter,
+  setDateRangeType,
+} = filterSlice.actions;
 
 export const selectTimeSheetFilter = (state: RootState) => state.filter;
 

@@ -28,6 +28,7 @@ import ActionBar from "../../Components/ActionBar";
 import {
   DEFAULT_TS_ENTRY_PAGINATION,
   ITEMS_PER_PAGE,
+  TS_ENTRY_TYPE,
 } from "../../common/constants/timeSheetEntry";
 import Stats from "../../Components/Stats";
 import { dataService } from "../../Services/DataServices";
@@ -126,8 +127,10 @@ class AllTimeSheetsEntryPage extends React.PureComponent<Props, State> {
     const newEntries = this.getNewEntries(timeSheetEntryId);
     let jobAllocations: string[] = [];
     newEntries.forEach((entry) => {
-      const jas = entry.Job.JobAllocations;
-      jobAllocations = jobAllocations.concat(jas.map((ja) => ja.UID));
+      if (entry.EntryType === TS_ENTRY_TYPE.JOB) {
+        const jas = entry.Job.JobAllocations;
+        jobAllocations = jobAllocations.concat(jas.map((ja) => ja.UID));
+      }
     });
     return jobAllocations;
   };
@@ -322,7 +325,7 @@ class AllTimeSheetsEntryPage extends React.PureComponent<Props, State> {
           />
         </section>
         {this.state.showLoading && (
-          <div className="sk-flex sk-fixed sk-w-full sk-h-full sk-justify-center sk-inset-t sk-inset-l sk-bg-black/5">
+          <div className="sk-flex sk-fixed sk-w-full sk-h-full sk-justify-center sk-pin-t sk-pin-l sk-bg-black/5 sk-z-max">
             <LoadingSpinner size={84} color="#0b86ff" />
           </div>
         )}

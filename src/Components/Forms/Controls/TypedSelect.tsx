@@ -14,7 +14,8 @@ import {
   LoadingSpinner,
   DropdownListProps,
 } from "skedulo-ui";
-import { EntryTypes, ReduxDataTypes } from "../../../Store/DataTypes";
+import { RootState } from "src/StoreV2/store";
+import { EntryTypes, ReduxDataTypes } from "../../../StoreV2/DataTypes";
 
 const containsString = (value?: string | number, searchString = "") => {
   return (
@@ -44,13 +45,13 @@ const searchObject = (
 };
 
 const selectData =
-  (type: EntryTypes, searchValue: string) => (state: ReduxDataTypes.State) => {
+  (type: EntryTypes, searchValue: string) => (state: RootState) => {
     const data: (
       | ReduxDataTypes.Job
       | ReduxDataTypes.Shift
       | ReduxDataTypes.Activity
       | ReduxDataTypes.Availability
-    )[] = state[`newEntry${type}`];
+    )[] = get(state.timeSheetEntries.newEntryInForm, `newEntry${type}`);
 
     if (!data) {
       return [];
@@ -107,7 +108,10 @@ export const TypedSelect: React.FC<{
             <Button
               className="tse-element__select"
               buttonType="secondary"
-              onClick={onButtonClick}
+              onClick={(event) => {
+                event.stopPropagation();
+                onButtonClick();
+              }}
               loading={loading}
             >
               {label}
@@ -173,8 +177,8 @@ const ArrayOptionRenderer: React.FC<{
   ) => onSearch(event.target.value);
   return (
     <div
-      data-sk-name="sk-dropdownlist"
-      className="sk-dropdownlist"
+      data-sk-name="sked-dropdownlist"
+      className="sked-dropdownlist"
       style={{ maxWidth: "auto" }}
     >
       {children}
@@ -185,13 +189,13 @@ const ArrayOptionRenderer: React.FC<{
             searchPlaceholder={searchPlaceholder || "Search"}
           />
           <DropdownBr />
-          <ul className="sk-dropdownlist-list">
+          <ul className="sked-dropdownlist-list">
             <ListLoadingIndicator>
               {options && options.length ? (
                 options.map((option, index) => (
                   <DropdownRow
                     onClick={onOptionClick(option)}
-                    className="sk-dropdownlist-item sk-dropdownlist-item--array sk-py-1 sk-text-navy sk-flex sk-px-3"
+                    className="sked-dropdownlist-item sked-dropdownlist-item--array sk-py-1 sk-text-navy sk-flex sk-px-3"
                     key={index}
                   >
                     <OptionRenderer

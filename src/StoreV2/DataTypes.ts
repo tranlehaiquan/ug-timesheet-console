@@ -7,7 +7,7 @@ export type EntryTypes =
   | "Activity"
   | "Unavailability"
   | "Manual";
-export type DefinedEntryTypes = Exclude<EntryTypes, "Manual">;
+export type DefinedEntryTypes = EntryTypes;
 export type UID = string;
 export type TimeRange = {
   startDate: string;
@@ -78,7 +78,21 @@ export namespace ReduxDataTypes {
     options: string[];
     filterValues?: string[];
   }
-
+  export interface FilterSet {
+    name: string;
+    filterValues: string[];
+  }
+  export interface SavedFilter {
+    filterName: string;
+    filterSet: FilterSet[];
+    dateRange: {
+      startDate: string;
+      endDate: string;
+    };
+    dateRangeType: string;
+    userId: string;
+    isPrivate: boolean;
+  }
   export interface ResourceTag {
     Tag: Tag;
   }

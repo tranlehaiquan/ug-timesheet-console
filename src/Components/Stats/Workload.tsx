@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PieChart } from "react-minimal-pie-chart";
+import PieChart, { PieChartData } from "react-minimal-pie-chart";
 import { useSelector } from "react-redux";
 
 import { Tooltip } from "skedulo-ui";
@@ -86,7 +86,7 @@ export const Workload: React.FC = () => {
 
   const onMouseOverChart = (
     event: React.MouseEvent,
-    data: any[],
+    data: PieChartData[],
     index: number
   ) => {
     setTooltipPosition({ x: event.clientX, y: event.clientY });

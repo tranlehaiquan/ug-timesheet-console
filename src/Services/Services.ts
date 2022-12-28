@@ -91,11 +91,10 @@ const skedInjected = get(window, "skedInjected", {}) as {
 const getCredential = () => {
   return {
     ...get(window, "skedInjected", {}),
-    apiServer:
-      import.meta.env.VITE_API_SERVER || skedInjected?.credentials?.apiServer,
+    apiServer: import.meta.env.API_SERVER || skedInjected.credentials.apiServer,
     apiAccessToken:
-      import.meta.env.VITE_API_ACCESS_TOKEN ||
-      skedInjected?.credentials?.apiAccessToken,
+      import.meta.env.API_ACCESS_TOKEN ||
+      skedInjected.credentials.apiAccessToken,
   };
 };
 

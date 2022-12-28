@@ -4,8 +4,13 @@ import { Filter, IFilter, IActiveFilter } from "skedulo-ui";
 import ReduxDataTypes from "src/StoreV2/DataTypes";
 import { RootState } from "src/StoreV2/store";
 import { initFilters, setFilters } from "../../StoreV2/slices/filterSlice";
+import SaveFilterPopOut from "./SaveFilterPopOut";
+import SavedViews from "./SavedViews";
 
-type ReduxProps = Pick<ReduxDataTypes.State, "resources" | "filters">;
+type ReduxProps = Pick<
+  ReduxDataTypes.State,
+  "resources" | "filters" | "selectedSavedFilter"
+>;
 
 interface Props extends ReduxProps {
   initFilters: typeof initFilters;
@@ -45,21 +50,40 @@ class Filters extends React.PureComponent<Props, {}> {
     this.props.setFilters(value);
   };
 
-  getFilterProps() {
+  getFilterProps(selectedSavedFilter: ReduxDataTypes.SavedFilter) {
     return {
       onFilter: this.onChange,
-      filters: this.props.filters.map((filter) => ({
-        name: filter.description,
-        options: filter.options,
-      })) as IFilter<string>[],
+      filters: this.props.filters.map((filter) => {
+        if (selectedSavedFilter) {
+          const filterSet = selectedSavedFilter.filterSet.find(
+            ({ name }) => filter.name === name
+          );
+          return {
+            name: filter.description,
+            options: filter.options,
+            preselected: filterSet.filterValues,
+          };
+        }
+
+        return {
+          name: filter.description,
+          options: filter.options,
+        };
+      }) as IFilter<string>[],
     };
   }
 
   render() {
+    const { selectedSavedFilter } = this.props;
+
     return (
       <div>
+        <div className="sk-flex sk-items-center sk-ml-4">
+          <SavedViews />
+          <SaveFilterPopOut />
+        </div>
         {this.props.filters && this.props.filters.length > 0 && (
-          <Filter {...this.getFilterProps()} />
+          <Filter {...this.getFilterProps(selectedSavedFilter)} />
         )}
       </div>
     );
@@ -69,6 +93,7 @@ class Filters extends React.PureComponent<Props, {}> {
 const mapStateToProps = (state: RootState) => ({
   resources: state.resource.values,
   filters: state.filter.filterValues,
+  selectedSavedFilter: state.filter.selectedSavedFilter,
 });
 
 const mapDispatchToProps = { initFilters, setFilters };

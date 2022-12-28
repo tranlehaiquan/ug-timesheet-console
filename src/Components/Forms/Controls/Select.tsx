@@ -151,8 +151,8 @@ const ArrayOptionRenderer: React.FC<{
 
   return (
     <div
-      data-sk-name="sk-dropdownlist"
-      className="sk-dropdownlist sk-mx-1"
+      data-sk-name="sked-dropdownlist"
+      className="sked-dropdownlist sk-mx-1"
       style={{ maxWidth: "auto" }}
     >
       {children}
@@ -163,12 +163,12 @@ const ArrayOptionRenderer: React.FC<{
         />
       )}
       <DropdownBr />
-      <ul className="sk-dropdownlist-list">
+      <ul className="sked-dropdownlist-list">
         {options && options.length ? (
           options.map((option, index) => (
             <DropdownRow
               onClick={() => onOptionClick(option)}
-              className="sk-dropdownlist-item sk-dropdownlist-item--array sk-py-2 sk-text-navy sk-flex sk-px-3"
+              className="sked-dropdownlist-item sked-dropdownlist-item--array sk-py-2 sk-text-navy sk-flex sk-px-3"
               key={index}
             >
               {customOptionRenderer

@@ -1,17 +1,17 @@
-import * as React from 'react'
-import classNames from 'classnames'
+import * as React from "react";
+import classNames from "classnames";
 
-import { Tooltip, ITooltipProps } from '../../popups/tooltip/Tooltip'
-import { IconNames } from '../../icon/Icon'
-import { Button, IButtonProps } from '../button/Button'
+import { Tooltip, ITooltipProps } from "../../popups/tooltip/Tooltip";
+import { IconNames } from "../../icon/Icon";
+import { Button, IButtonProps } from "../button/Button";
 
 interface IconButtonProps {
-  icon: IconNames
-  tooltipContent: ITooltipProps['content']
-  tooltipDelay?: ITooltipProps['delayShow']
-  disableTooltip?: boolean
+  icon: IconNames;
+  tooltipContent: ITooltipProps["content"];
+  tooltipDelay?: ITooltipProps["delayShow"];
+  disableTooltip?: boolean;
 }
-export type IIconButton = IconButtonProps & Partial<IButtonProps>
+export type IIconButton = IconButtonProps & Partial<IButtonProps>;
 
 export const IconButton: React.FC<IIconButton> = ({
   icon,
@@ -24,20 +24,20 @@ export const IconButton: React.FC<IIconButton> = ({
 }) => {
   const button = (
     <Button
-      buttonType={buttonType || 'transparent'}
-      className={classNames('sked-button--icon-only', className)}
+      buttonType={buttonType || "transparent"}
+      className={classNames("sked-button--icon-only", className)}
       icon={icon}
       {...otherProps}
     />
-  )
+  );
 
   if (disableTooltip) {
-    return button
+    return button;
   }
 
   return (
     <Tooltip content={tooltipContent} position="top" delayShow={tooltipDelay}>
       {button}
     </Tooltip>
-  )
-}
+  );
+};

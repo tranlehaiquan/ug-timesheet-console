@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "skedulo-ui";
-import TimesheetForm from "../../components/Forms/TimesheetForm/TimesheetForm";
+import TimeSheetEntryForm from "../../components/Forms/TimeSheetEntryFormV2";
 import { BaseModal } from "../../components/Modals";
 
 export const NewTimesheetButton: React.FC<{}> = () => {
@@ -8,18 +8,17 @@ export const NewTimesheetButton: React.FC<{}> = () => {
   return (
     <>
       <Button buttonType="primary" onClick={() => setModalVisible(true)}>
-        New Timesheet
+        New Timesheet Entry
       </Button>
 
       <BaseModal
-        title="New Timesheet Record"
+        title="New Timesheet Entry Record"
         isOpened={modalVisible}
         onClose={() => setModalVisible(false)}
       >
-        <TimesheetForm
-          onCancel={() => setModalVisible(false)}
-          onSuccess={() => setModalVisible(false)}
-          onError={() => setModalVisible(false)}
+        <TimeSheetEntryForm
+          timeSheetEntryId=""
+          setModalVisible={setModalVisible}
         />
       </BaseModal>
     </>

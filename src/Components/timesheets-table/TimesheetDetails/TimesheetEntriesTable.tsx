@@ -43,7 +43,7 @@ const TimesheetEntriesGroupRows: React.FC<ITimesheetEntriesGroupRows> = ({
     <>
       {entries.map((entry, entryIndex) => {
         return (
-          <tr key={entryIndex} className="sk-table-row">
+          <tr key={entryIndex} className="sked-table-row">
             {columns.map((column, colIndex) => {
               const isFirst = entryIndex === 0;
               const isLast = entryIndex === entries.length - 1;
@@ -284,7 +284,7 @@ export const TimesheetEntriesTable: React.FC<ITimesheetEntriesTable> = ({
                 <th
                   key={index}
                   className={classnames(
-                    "sk-px-5 sk-font-medium sk-table-header-cell",
+                    "sk-px-5 sk-font-medium sked-table-header-cell",
                     column.className
                   )}
                   style={{ width: column.width ? `${column.width}px` : "" }}
@@ -325,7 +325,7 @@ export const TimesheetEntriesTable: React.FC<ITimesheetEntriesTable> = ({
           onClose={() => setDeleteTimesheetEntryId(undefined)}
           confirmLabel="Yes, remove"
           title="Delete Timesheet Entry"
-          className="sk-modal-small"
+          className="sked-modal-small"
         >
           <p className="sk-mb-16">
             Do you really want to delete this Timesheet Entry? You won't be able

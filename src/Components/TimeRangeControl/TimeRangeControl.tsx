@@ -5,7 +5,10 @@ import { CalendarControls, RangeType } from "skedulo-ui";
 // import { ReduxDataTypes } from '../../StoreV2/DataTypes'
 
 import "./TimeRangeControl.scss";
-import { setDateRange } from "../../StoreV2/slices/filterSlice";
+import {
+  setDateRange,
+  setDateRangeType,
+} from "../../StoreV2/slices/filterSlice";
 import { RootState } from "../../StoreV2/store";
 
 const rangeOptions: RangeType[] = ["week", "2-weeks", "month"];
@@ -40,7 +43,9 @@ export const TimeRangeControl: React.FC = () => {
     (state: RootState) => state.filter.dateRange.startDate
   );
   const selectedDate = moment(selectedDateISO, "YYYY-MM-DD").toDate();
-  const [selectedRange, setSelectedRange] = React.useState(rangeOptions[0]);
+  const selectedRange = useSelector(
+    (state: RootState) => state.filter.dateRangeType
+  );
 
   const onDateSelect = (date: Date) => {
     const startDate = new Date(
@@ -60,7 +65,7 @@ export const TimeRangeControl: React.FC = () => {
   };
 
   const onRangeSelect = (range: RangeType) => {
-    setSelectedRange(range);
+    dispatch(setDateRangeType(range));
     dispatch(
       setDateRange({
         startDate: selectedDate,

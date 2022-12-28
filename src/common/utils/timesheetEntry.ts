@@ -1,5 +1,6 @@
 import { get } from "lodash";
 import ReduxDataTypes from "src/StoreV2/DataTypes";
+import { TS_ENTRY_TYPE } from "../constants/timeSheetEntry";
 import { calculateDurationInMinutes } from "./dateTimeHelpers";
 
 export const getNameOrDisplayName = (
@@ -40,24 +41,23 @@ export const convertPremiumsToString = (premiums: string): string => {
 
 export const getJobAllocationByTimeSheetEntry = (
   tsEntry: ReduxDataTypes.TimesheetEntry
-): ReduxDataTypes.JobAllocation | undefined => {
-  if (tsEntry.EntryType === "Job") {
+): ReduxDataTypes.JobAllocation => {
+  if (tsEntry.EntryType === TS_ENTRY_TYPE.JOB && tsEntry.Job) {
     const {
       Timesheet: { ResourceId },
-      Job: { JobAllocations },
+      Job: { JobAllocations = [] },
     } = tsEntry;
     const jobAllocation = JobAllocations.find(
       (ja) => ja.ResourceId === ResourceId
     );
     return jobAllocation;
   }
-
-  return;
+  return null;
 };
 
 export const getActualLoggedTimeInMinute = (
   entry: ReduxDataTypes.TimesheetEntry
-): number | undefined => {
+): number => {
   const duration =
     entry.ActualDuration ||
     calculateDurationInMinutes(

@@ -380,7 +380,9 @@ export class TimesheetEntryForm extends React.PureComponent<Props, State> {
 
   documentClickHandler = (ev: MouseEvent) => {
     const target = ev.target as HTMLElement;
-    if (!target.matches(`[data-sk-name="sk-dropdownlist"] ${target.tagName}`)) {
+    if (
+      !target.matches(`[data-sk-name="sked-dropdownlist"] ${target.tagName}`)
+    ) {
       this.hideDropdown();
     }
   };
@@ -1207,7 +1209,7 @@ export class TimesheetEntryForm extends React.PureComponent<Props, State> {
         </div>
 
         {this.props.timesheetData && this.state.loading && (
-          <div className="sk-flex sk-fixed sk-w-full sk-h-full sk-justify-center sk-inset-t sk-inset-l sk-bg-black/5">
+          <div className="sk-flex sk-fixed sk-w-full sk-h-full sk-justify-center sk-pin-t sk-pin-l sk-bg-black/5">
             <LoadingSpinner size={84} color="#0b86ff" />
           </div>
         )}

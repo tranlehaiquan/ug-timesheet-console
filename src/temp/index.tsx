@@ -2,9 +2,9 @@ export * from "./components/action-bar/ActionBar";
 export * from "./components/action-bar/ActionBarSearchItem/ActionBarSearchItem";
 export * from "./components/avatar/Avatar";
 export * from "./components/badge/Badge";
-export * from './components/buttons/button/Button'
-export * from './components/buttons/icon-button/IconButton'
-export * from './components/buttons/icon-button-dropdown/IconButtonDropdown'
+export * from "./components/buttons/button/Button";
+export * from "./components/buttons/icon-button/IconButton";
+export * from "./components/buttons/icon-button-dropdown/IconButtonDropdown";
 export * from "./components/buttons/button-dropdown/ButtonDropdown";
 export * from "./components/button-group/ButtonGroup";
 export * from "./components/calendar-controls/CalendarControls";

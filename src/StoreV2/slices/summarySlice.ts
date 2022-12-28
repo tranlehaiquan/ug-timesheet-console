@@ -44,7 +44,7 @@ const createAllTimeSheetsFilters = (store: RootState) => {
   const dateFilter = (startDate: string, endDate: string) =>
     `StartDate >= ${startDate} AND EndDate <= ${endDate}`;
   const arrayFilter = (array: string[]) =>
-    `[${array.map((element) => `'${element}'`).join(",")}]`;
+    `[${array.map((element) => `${JSON.stringify(element)}`).join(",")}]`;
   const formatFilterValue = (valueArray: string[]) =>
     valueArray.length === 1
       ? `== "${valueArray[0]}"`

@@ -41,5 +41,3 @@ export const BaseModal: React.FC<BaseModalProps> = (props) => {
     </UIBaseModal>
   ) : null;
 };
-
-export default BaseModal;

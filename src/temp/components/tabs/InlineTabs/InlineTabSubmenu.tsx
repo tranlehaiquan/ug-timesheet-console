@@ -56,7 +56,10 @@ export const InlineTabSubmenu = ({
       >
         {item.name}
         {item.icon && (
-          <MenuNotification text={item.icon} className={item.iconClasses || ''} />
+          <MenuNotification
+            text={item.icon}
+            className={item.iconClasses || ""}
+          />
         )}
       </MenuItem>
     ))}
