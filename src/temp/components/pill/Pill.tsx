@@ -18,7 +18,7 @@ export interface IPillProps {
  * @requires OverflowTooltip
  * @requires Icon
  */
-export const Pill: React.SFC<IPillProps> = ({
+export const Pill: React.FC<IPillProps> = ({
   iconName,
   tooltipPosition,
   text,

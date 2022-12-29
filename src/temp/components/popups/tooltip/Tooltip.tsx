@@ -1,9 +1,9 @@
 import * as React from "react";
+import { Position } from "../info-window/info-window-utils";
 
 import {
   InfoWindow,
   IInfoWindowProps,
-  Position,
 } from "../info-window/InfoWindow";
 
 import "./tooltip.scss";
@@ -21,7 +21,7 @@ export interface ITooltipProps extends IInfoWindowProps {
 /**
  * Tooltips are an extened version of the info window that triggers on hover by default, delayed slightly and is styled with tooltip styles
  */
-export class Tooltip extends React.PureComponent<ITooltipProps, {}> {
+export class Tooltip extends React.PureComponent<React.PropsWithChildren<ITooltipProps>, {}> {
   static defaultProps = {
     event: "hover",
     delayShow: 250,

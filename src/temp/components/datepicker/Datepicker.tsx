@@ -12,10 +12,10 @@ export interface CustomInput extends React.PureComponent {
   onClick: React.MouseEventHandler;
 }
 
-type ReactDatePickerPropsSubset = Pick<
-  ReactDatePickerProps,
-  "showTimeSelect" | "showTimeSelectOnly"
->;
+type ReactDatePickerPropsSubset = Partial<Pick<
+ReactDatePickerProps,
+"showTimeSelect" | "showTimeSelectOnly"
+>>;
 
 export interface IDatepickerProps extends ReactDatePickerPropsSubset {
   /**

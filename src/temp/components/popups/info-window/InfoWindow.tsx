@@ -14,8 +14,6 @@ import {
   Position,
 } from "./info-window-utils";
 
-export type Position = Position;
-
 export type IEvent = "click" | "hover" | "mount";
 
 export interface IInfoWindowStyles<T> {
@@ -109,7 +107,7 @@ interface IState {
     where the least amount of overflow is occuring. The order it tries to find a new placement in is top, right, down, left.
     The above example uses a button as the trigger for the info window, but any html element can be used as long as its passed as a child of the <InfoWindow /> component
  */
-export class InfoWindow extends React.PureComponent<IInfoWindowProps, IState> {
+export class InfoWindow extends React.PureComponent<React.PropsWithChildren<IInfoWindowProps>, IState> {
   private _showDelayId: NodeJS.Timer | number = null;
   private _triggerRef: HTMLSpanElement = null;
   private _renderContainer: HTMLDivElement = null;
@@ -327,10 +325,10 @@ export class InfoWindow extends React.PureComponent<IInfoWindowProps, IState> {
 
     const positionScores = getPositionScores(
       triggerPoint,
-      triggerRectScrollShifted,
+      triggerRectScrollShifted as any,
       contentRect,
       triangleRect,
-      windowRect,
+      windowRect as any,
       cursorOption,
       this.props.positionOffset
     );
@@ -338,7 +336,7 @@ export class InfoWindow extends React.PureComponent<IInfoWindowProps, IState> {
     const bestFit = getBestFit(positionEvaluationOrder, positionScores);
 
     if (bestFit.displayScore < 1) {
-      return adjustContentDisplayCoordinates(bestFit, windowRect);
+      return adjustContentDisplayCoordinates(bestFit, windowRect as any);
     }
     return bestFit;
   };

@@ -23,7 +23,7 @@ interface InlineBannerStyleSet {
 /**
  * Displays a inline banner with various styling depending on the type.
  */
-export const InlineBanner: React.SFC<IInlineBannerProps> = ({
+export const InlineBanner: React.FC<IInlineBannerProps> = ({
   type,
   className,
   children,

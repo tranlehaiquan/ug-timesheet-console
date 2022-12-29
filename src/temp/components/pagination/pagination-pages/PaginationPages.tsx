@@ -5,7 +5,7 @@ import { range } from "lodash";
 import { Icon } from "../../icon/Icon";
 import { IProps } from "../interfaces";
 
-export const PaginationPages: React.SFC<IProps> = (props) => {
+export const PaginationPages: React.FC<IProps> = (props) => {
   const { onPageChange } = props;
   const currentPage = props.currentPage < 1 || null ? 1 : props.currentPage;
   const itemsTotal = props.itemsTotal < 1 || null ? 1 : props.itemsTotal;

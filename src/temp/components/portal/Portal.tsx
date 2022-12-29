@@ -12,6 +12,7 @@ interface IProps {
     right: number;
     maxWidth: number;
   }>;
+  children?: React.ReactNode
 }
 
 export class Portal extends React.PureComponent<IProps, {}> {

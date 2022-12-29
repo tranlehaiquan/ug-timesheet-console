@@ -11,7 +11,7 @@ interface IProps {
   placeholderValue?: string;
 }
 
-export const ReadOnly: React.SFC<IProps> = ({
+export const ReadOnly: React.FC<IProps> = ({
   value,
   name,
   placeholderValue,

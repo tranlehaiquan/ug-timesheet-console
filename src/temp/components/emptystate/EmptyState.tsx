@@ -8,7 +8,7 @@ interface IEmptyState extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const EmptyState: React.SFC<IEmptyState> = ({
+export const EmptyState: React.FC<IEmptyState> = ({
   imgSrc,
   title,
   message,

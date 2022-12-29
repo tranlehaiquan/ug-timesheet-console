@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { IProps } from "../interfaces";
 
-export const PaginationCount: React.SFC<IProps> = React.memo((props) => {
+export const PaginationCount: React.FC<IProps> = React.memo((props) => {
   const itemsTotal = props.itemsTotal < 1 || null ? 1 : props.itemsTotal;
   const itemsPerPage = props.itemsPerPage < 1 || null ? 1 : props.itemsPerPage;
   const currentPage = props.currentPage < 1 || null ? 1 : props.currentPage;

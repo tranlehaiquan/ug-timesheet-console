@@ -20,7 +20,7 @@ export interface IOverflowTooltipState {
  * @requires Tooltip
  */
 export class OverflowTooltip extends React.PureComponent<
-  IOverflowTooltipProps,
+  React.PropsWithChildren<IOverflowTooltipProps>,
   IOverflowTooltipState
 > {
   static defaultProps = {

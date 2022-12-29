@@ -13,7 +13,7 @@ export interface IHeaderCell {
   resizable?: boolean;
 }
 
-export const Table: React.SFC<React.HTMLAttributes<HTMLTableElement>> = (
+export const Table: React.FC<React.HTMLAttributes<HTMLTableElement>> = (
   props
 ) => {
   const { className, children, ...otherProps } = props;
@@ -36,7 +36,7 @@ export interface ITableHeadProps {
   className?: string;
 }
 
-export const TableHead: React.SFC<ITableHeadProps> = (props) => {
+export const TableHead: React.FC<ITableHeadProps> = (props) => {
   return (
     <thead
       className={classnames(
@@ -58,7 +58,7 @@ export interface ITableHeaderCellProps {
   index: number;
 }
 
-export const TableHeaderCell: React.SFC<ITableHeaderCellProps> = ({
+export const TableHeaderCell: React.FC<ITableHeaderCellProps> = ({
   cell,
   index,
 }) => {
@@ -88,11 +88,11 @@ export const TableHeaderCell: React.SFC<ITableHeaderCellProps> = ({
   );
 };
 
-export const TableBody: React.SFC = (props) => {
+export const TableBody: React.FC = (props) => {
   return <tbody>{props.children}</tbody>;
 };
 
-export const TableRow: React.SFC<
+export const TableRow: React.FC<
   React.HtmlHTMLAttributes<HTMLTableRowElement>
 > = (props) => {
   const { className, children, ...otherProps } = props;
@@ -107,7 +107,7 @@ export const TableRow: React.SFC<
   );
 };
 
-export const TableCell: React.SFC<
+export const TableCell: React.FC<
   React.HTMLAttributes<HTMLTableCellElement>
 > = (props) => {
   const { className, children, ...otherProps } = props;

@@ -168,7 +168,7 @@ FormLabel.displayName = "FormLabel";
  *  are displayed in a consistent fashion. The resulting input will need to have the class form-element__outline applied
  *  to it for us to hook into it to apply appropriate styling.
  */
-export const FormElementWrapper: React.SFC<
+export const FormElementWrapper: React.FC<
   FormElementWrapperProps &
     ValidationProps &
     React.HTMLAttributes<HTMLDivElement>

@@ -9,10 +9,7 @@ interface CustomDatePickerInputProps {
   disabled?: boolean;
 }
 
-const CustomDatePickerInput: React.RefForwardingComponent<
-  HTMLButtonElement,
-  CustomDatePickerInputProps
-> = React.forwardRef<HTMLButtonElement, CustomDatePickerInputProps>(
+const CustomDatePickerInput = React.forwardRef<HTMLButtonElement, CustomDatePickerInputProps>(
   ({ onClick, value, disabled = false }, ref) => {
     return (
       <Button

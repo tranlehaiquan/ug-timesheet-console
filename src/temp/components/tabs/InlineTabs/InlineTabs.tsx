@@ -72,7 +72,7 @@ export const getInitialSubmenuItem = ({
 }: Pick<
   IProps,
   "initialActiveSubmenuItem" | "tabs" | "initialActiveTab"
->): string => {
+>): string | undefined => {
   if (initialActiveTab && initialActiveTab.submenu) {
     const item = initialActiveSubmenuItem
       ? initialActiveTab.submenu.find(
@@ -83,7 +83,7 @@ export const getInitialSubmenuItem = ({
   } else if (tabs[0].submenu) {
     return tabs[0].submenu[0].id;
   }
-  return null;
+  return;
 };
 
 export interface IState {
@@ -282,7 +282,7 @@ export class InlineTabs extends React.PureComponent<IProps, IState> {
           })}
         </ul>
         {submenuIsActive && activeSubmenuRef && (
-          <Dropdown trigger={activeSubmenuRef}>
+          <Dropdown trigger={activeSubmenuRef as any}>
             <InlineTabSubmenu
               activeItem={activeSubmenuItem}
               items={submenuItems}

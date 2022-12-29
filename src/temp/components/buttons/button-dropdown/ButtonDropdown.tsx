@@ -33,7 +33,7 @@ export const ButtonDropdown: React.FC<IButtonDropdownProps> = ({
       active={isOpen}
     >
       {label}
-      <Icon name="chevronDown" className="sk-ml-1 sk--mr-1" />
+      <Icon name="chevronDown" size={8} className="sk-ml-1 sk--mr-1" />
     </Button>
   );
 

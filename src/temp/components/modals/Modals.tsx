@@ -5,7 +5,7 @@ import { Portal } from "../portal/Portal";
 import { Button } from "../buttons/button/Button";
 import { ButtonGroup } from "../button-group/ButtonGroup";
 
-export const BaseModal: React.SFC = ({ children, ...otherProps }) => {
+export const BaseModal: React.FC = ({ children, ...otherProps }) => {
   return (
     <Portal>
       {/* TODO: UPDATE FOLLOWING LINES ON DESIGN COMPONENT */}
@@ -41,7 +41,7 @@ export interface IConfirmationModalState {
 }
 
 export class ConfirmationModal extends React.PureComponent<
-  IConfirmationModalProps,
+  React.PropsWithChildren<IConfirmationModalProps>,
   IConfirmationModalState
 > {
   constructor(props: IConfirmationModalProps) {

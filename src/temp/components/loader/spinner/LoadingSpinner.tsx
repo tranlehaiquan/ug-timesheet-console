@@ -20,7 +20,7 @@ interface ILoadingSpinnerProps {
  * Loading Spinner inherits the color used in the parent element.
  * It accepts a size prop which defines the size of the spinner in px.
  */
-export const LoadingSpinner: React.SFC<ILoadingSpinnerProps> = ({
+export const LoadingSpinner: React.FC<ILoadingSpinnerProps> = ({
   size = 24,
   color = "currentColor",
   className,

@@ -19,7 +19,7 @@ interface IProps {
   className?: string;
 }
 
-export const Badge: React.SFC<IProps> = ({
+export const Badge: React.FC<IProps> = ({
   count = 0,
   countLimiter = 99,
   badgeType = "default",
